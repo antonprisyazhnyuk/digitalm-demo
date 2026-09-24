@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Digital M — четыре экрана</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400&family=Viaoda+Libre&display=swap" rel="stylesheet">
+<style>
+html{ font-size: calc(100vw / 120); }        
+html{ scrollbar-width:none }
+html::-webkit-scrollbar{ display:none }
+:root{
+  --paper:#FBFAF8; --ink:#211E1B; --sand:#E0C8A3; --teal:#417E8D; --terra:#E0622C;
+  --mark-dark:#B9B5AC;
+  --mark: var(--mark-dark);
+  --pole: 0.75rem;     
+  --col:  7rem;        
+  --gut:  3rem;        
+  --pad:  0.75rem;     
+  --inset: 1rem;       
+  --mark-inset: 0.25rem; 
+  --plate-h: 3.25rem;  
+  --btn-size: 0.875rem;  
+  --btn-h: 3.5rem;       
+  --btn-pad: 1.5625rem;  
+  --cross: 0.75rem;    
+  --win: var(--paper);
+  --win-ink: var(--ink);
+  --mm: 1rem;
+  --mm-major: calc(var(--col) + var(--gut));
+  --vellum: #F6F2EC; --chalk: #F1F0EC; --shell: #FAF2EE;
+  --white: #FFFFFF;
+  --mm-c: var(--white);          
+  --mm-major-c: var(--white);
+}
+*{box-sizing:border-box; margin:0}
+html{ font-synthesis: none; -webkit-font-smoothing: antialiased; }
+body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; color:var(--ink);
+      font-weight:400; }
+.sheet{ position:fixed; inset:0; z-index:1; padding:var(--pole); }
+.window{
+  position:relative; width:100%; height:100%; background:var(--win); color:var(--win-ink);
+  background-image:
+    linear-gradient(to right,  var(--mm-major-c) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mm-major-c) 1px, transparent 1px),
+    linear-gradient(to right,  var(--mm-c) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mm-c) 1px, transparent 1px);
+  background-size: var(--mm-major) var(--mm-major), var(--mm-major) var(--mm-major), var(--mm) var(--mm), var(--mm) var(--mm);
+  background-position: var(--pad) var(--pad);
+  overflow:hidden;
+  transition: background .35s ease, color .35s ease;
+}
+.x{ position:absolute; width:var(--cross); height:var(--cross); pointer-events:none; z-index:4 }
+.x::before,.x::after{ content:""; position:absolute; background:var(--mark); }
+.x::before{ left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
+.x::after{ top:0; left:50%; height:100%; width:1px; transform:translateX(-50%); }
+.x.tl{ left:var(--mark-inset); top:var(--mark-inset); }
+.x.tr{ right:var(--mark-inset); top:var(--mark-inset); }
+.x.bl{ left:var(--mark-inset); bottom:var(--mark-inset); }
+.x.br{ right:var(--mark-inset); bottom:var(--mark-inset); }
+.plate{ position:absolute; z-index:5; width:13.75rem; height:var(--btn-h);   
+        border:1px solid var(--mark-dark); background:var(--win);
+        display:flex; align-items:center; padding:0 var(--btn-pad);
+        font-size:var(--btn-size); letter-spacing:.08em; text-transform:uppercase;
+        cursor:pointer; overflow:hidden; }
+.plate span{ position:relative; z-index:1; transition:color .25s ease; margin-right:auto; }
+.plate i{ position:relative; z-index:1; width:1.5rem; height:1.5rem; flex:none; display:block; }
+.plate i::before,.plate i::after{ content:""; position:absolute; left:0; top:50%;
+          height:1px; width:100%; background:currentColor; transform-origin:center; }
+.plate i::before{ transform:translateY(-3px); }
+.plate i::after{  transform:translateY(3px); }
+.plate::before{ content:""; position:absolute; inset:0; background:var(--terra);
+        transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
+.plate:hover::before{ transform:scaleX(1); }
+.plate:hover span{ color:var(--paper); }
+.plate:hover i::before,.plate:hover i::after{ background:var(--paper); }
+.menu{ border-color:var(--terra); }
+.logo{ cursor:pointer; position:absolute; z-index:5; left:var(--inset); top:var(--inset);
+       height:var(--plate-h); color:var(--win-ink); line-height:0; }
+.logo svg{ height:100%; width:auto; display:block; }
+.contact{ position:absolute; z-index:5; right:var(--inset); top:.55625rem;
+          width:auto; height:auto; border:0; background:none; padding:0;
+          line-height:1.5rem; overflow:visible; }
+.contact::before{ content:none; }
+.contact span{ transition:color .25s ease; margin-right:-.08em; }
+.contact:hover span{ color:var(--terra); }
+.menu{ left:var(--inset); bottom:var(--inset); }
+.scale{ position:absolute; z-index:5; right:var(--inset); bottom:.75rem;
+        font-size:0.6875rem; line-height:1rem; opacity:.75;
+        background:var(--win); padding-left:.5rem; }
+.grain, .grain-hot{ position:absolute; pointer-events:none; z-index:6;
+                    mix-blend-mode:multiply; will-change:transform; }
+.grain{ inset:0; opacity:.1; }   
+.grain-hot{ top:0; left:0; width:34rem; height:34rem; opacity:.3;
+            margin:-17rem 0 0 -17rem;             
+            -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0,0,0,.55) 38%, transparent 70%);
+                    mask-image: radial-gradient(circle at center, #000 0%, rgba(0,0,0,.55) 38%, transparent 70%); }
+@media (prefers-reduced-motion:reduce){ .grain-hot{ display:none; } }
+.fx{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:6; mix-blend-mode:multiply; }
+.menu-wrap{
+  position:absolute; z-index:5; left:var(--inset); bottom:calc(var(--inset) + var(--btn-h));
+  width:13.75rem;   
+  pointer-events:none;
+}
+.menu-wrap .x{ opacity:0; transition:opacity .2s ease .12s; }
+.window.menu-open .menu-wrap .x{ opacity:1; }
+.menu-wrap .x.tl{ left:calc(var(--cross)*-1); top:calc(var(--cross)*-1); }
+.menu-wrap .x.tr{ right:calc(var(--cross)*-1); top:calc(var(--cross)*-1); }
+.menu-wrap .x.br{ right:calc(var(--cross)*-1); bottom:calc(var(--cross)*-1); }
+.menu-wrap .x.bl{ left:calc(var(--cross)*-1); bottom:calc(var(--btn-h) * -1 - var(--cross)); }
+.menu-wrap .x.br{ right:calc(var(--cross)*-1); bottom:calc(var(--btn-h) * -1 - var(--cross)); }
+.menu-panel{
+  border:1px solid var(--terra); border-bottom:none; background:var(--win);
+  display:grid; overflow:hidden;
+  transform:scaleY(0); transform-origin:bottom; opacity:0;
+  transition:transform .28s ease, opacity .18s ease;
+  pointer-events:none;
+}
+.menu-panel a{
+  position:relative; height:var(--btn-h); display:flex; align-items:center;
+  padding:0 var(--btn-pad); overflow:hidden;
+  font-size:var(--btn-size); letter-spacing:.08em; text-transform:uppercase;
+  color:inherit; text-decoration:none;
+}
+.menu-panel a:last-of-type{ position:relative; }
+.menu-panel a:last-of-type::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px; z-index:2;
+  background-image: repeating-linear-gradient(to right,
+    var(--rule) 0 10px, transparent 10px 13px);
+}
+.menu-panel{ --rule: var(--terra); }
+.menu-panel a span{ position:relative; z-index:1; transition:color .25s ease; }
+.menu-panel a::before{ content:""; position:absolute; inset:0; background:var(--terra);
+  transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
+.menu-panel a:hover::before{ transform:scaleX(1); }
+.menu-panel a:hover span{ color:var(--paper); }
+.menu-contacts{ display:none; }   
+.menu-panel a.inert{ color:var(--mark-dark); cursor:default; }
+.menu-panel a.inert:hover::before{ transform:scaleX(0); }
+.menu-panel a.inert:hover span{ color:var(--mark-dark); }
+.window.menu-open .menu-panel{ transform:scaleY(1); opacity:1; pointer-events:auto; }
+.window.menu-open .menu{ border-top:none; }
+.plate i::before,.plate i::after{ transition:background .25s ease, transform .28s ease; }
+.window.menu-open .menu i::before{ transform:translateY(0) rotate(45deg); }
+.window.menu-open .menu i::after{  transform:translateY(0) rotate(-45deg); }
+.stage{ position:absolute; inset:0; z-index:2; overflow:hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 100%); }
+.belt{ position:absolute; inset:0; will-change:transform; }
+.scene{ position:relative; width:100%; height:100%; }
+.scene-hero{ display:grid;
+  grid-template-columns: repeat(12, var(--col));
+  grid-template-rows: 1fr;
+  column-gap: var(--gut);
+  padding: var(--pad);
+  align-content:end;
+}
+.kicker{ position:absolute; z-index:5; left:30.75rem; top:.6125rem; width:27rem;   
+        font-size:1rem; line-height:1.5rem; opacity:.75; }
+.hero-body{ grid-column: 1 / -1; display:grid; grid-template-columns: subgrid; align-items:end;
+       padding-bottom:0; margin-bottom:-0.9925rem; }
+.tezis{ grid-column: 4 / span 8; font-family:"Viaoda Libre",Georgia,serif;
+        font-weight:400; font-size:6.25rem; line-height:6.75rem; }
+.tezis{ position:relative; }
+.tezis br.m{ display:none; }
+.tezis.ждёт{ visibility:hidden; }
+.tw{ visibility:hidden; }
+.tw.on{ visibility:visible; }
+.tw-tail{ display:inline; }
+.cursor{ position:absolute; color:var(--terra); opacity:0; pointer-events:none; }
+.cursor svg{ display:block; width:100%; height:100%; overflow:visible;
+             transform-origin:50% 100%; transition:transform .42s cubic-bezier(.4,0,.2,1); }
+.cursor .head{ opacity:0; transition:opacity .28s ease .18s; }
+.cursor.typing{ opacity:1; animation:caret-blink 1.06s steps(1,end) infinite; }
+.cursor.typing svg{ transform:scaleY(var(--k,1.4)); }
+.cursor.done{ opacity:1; pointer-events:auto; cursor:pointer;
+              animation:arrow-hint 1.9s ease-in-out infinite; }
+.cursor.done .head{ opacity:1; }
+.cursor.done:hover{ opacity:.7; }
+@keyframes caret-blink{ 0%,52%{opacity:1} 53%,100%{opacity:0} }
+@keyframes arrow-hint{ 0%,100%{transform:translateY(-.125rem)} 50%{transform:translateY(.25rem)} }
+@media (prefers-reduced-motion:reduce){
+  .tw{ visibility:visible; }
+  .cursor{ animation:none; }
+  .cursor.typing{ display:none; }
+}
+.scene-team{ display:grid;
+  grid-template-columns: repeat(12, var(--col));
+  column-gap: var(--gut);
+  padding: 9.5rem var(--pad) 0;     
+  align-content:start;
+}
+.marina{ grid-column: 4 / span 3; align-self:start; }
+.staff{ grid-column: 8 / span 5; display:grid;
+        grid-template-columns: 17rem 17rem; column-gap: 13rem; row-gap: 11rem;
+        align-items:start; will-change:transform; }
+.card{ display:block; }
+.shot{ width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--mark-dark); }
+.shot img{ width:100%; height:100%; object-fit:cover; display:block; }
+.role{ margin-top:2rem; font-family:"IBM Plex Mono",ui-monospace,monospace;
+       font-size:1rem; line-height:1.5rem; }      
+.role.accent{ color:var(--terra); }
+.name{ margin-top:1.625rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400;
+       font-size:2.5rem; line-height:2.625rem; }  
+.bio{ margin-top:1.25rem; font-family:"IBM Plex Sans",system-ui,sans-serif;
+      font-size:1.25rem; line-height:2.0625rem; letter-spacing:-.02em; }  
+.scene-services{ display:grid;
+  grid-template-columns: repeat(12, var(--col));
+  column-gap: var(--gut);
+  padding: 9.5rem var(--pad) 0;
+  align-content:start;
+}
+.svc{ grid-column: 4 / span 9; display:grid; grid-template-columns: subgrid;
+      padding: 2rem 0; will-change:transform;
+      background-image: repeating-linear-gradient(to right,
+        var(--mark) 0 .625rem, transparent .625rem .8125rem);
+      background-size: 100% 1px; background-repeat: no-repeat; background-position: top left; }
+.svc:first-child{ background-image:none; padding-top:0; }
+.svc-name{ grid-column: 1 / span 5; font-family:"Viaoda Libre",Georgia,serif;
+           font-weight:400; font-size:6.25rem; line-height:6.75rem; }
+.svc-list{ grid-column: 7 / span 3; }
+.svc-list li{ list-style:none; }
+.svc-list li{ font-family:"IBM Plex Sans",system-ui,sans-serif;
+              font-size:1.25rem; line-height:2.0625rem; letter-spacing:-.02em; }
+.scene-form{ display:grid;
+  grid-template-columns: repeat(12, var(--col));
+  column-gap: var(--gut);
+  padding: 9.5rem var(--pad) 0;
+  align-content:start;
+}
+.form-head{ grid-column: 4 / span 6; font-family:"Viaoda Libre",Georgia,serif;
+            font-weight:400; font-size:6.25rem; line-height:6.75rem; will-change:transform; }
+.form-grid{ grid-column: 4 / span 8; display:grid; grid-template-columns: 1fr 1fr;
+            column-gap: var(--gut); margin-top:2rem; }
+.f{ position:relative; height:6rem; will-change:transform; }
+.f.wide{ grid-column: 1 / -1; }
+.f.tall{ height:9rem; }
+.f textarea{ position:absolute; left:0; bottom:1rem; top:3rem; width:100%;
+          border:0; background:transparent; color:inherit; outline:none; resize:none;
+          font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:2rem;
+          line-height:2.75rem; letter-spacing:-.02em; }
+.f.tall .f-file{ position:absolute; right:0; top:1.25rem; height:1.5rem;
+         cursor:pointer; display:flex; align-items:center; z-index:2; }
+.f-file input{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+.f-file b{ font-weight:400; font-family:"IBM Plex Mono",ui-monospace,monospace;
+           font-size:var(--btn-size); letter-spacing:.08em; text-transform:uppercase;
+           color:var(--mark-dark); transition:color .25s ease; }
+.f-file:hover b{ color:var(--terra); }
+.f-file.has b{ color:var(--win-ink); }
+.f-label{ position:absolute; left:0; top:1.25rem; pointer-events:none;
+          font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--btn-size);
+          line-height:1.5rem; letter-spacing:.08em; text-transform:uppercase;
+          color:var(--mark-dark); }
+.f input{ position:absolute; left:0; bottom:1rem; width:100%; height:2.25rem;
+          border:0; background:transparent; color:inherit; outline:none;
+          font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:2rem;
+          line-height:2.25rem; letter-spacing:-.02em; }
+.f-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--mark); }
+.f-line::after{ content:""; position:absolute; inset:0; background:var(--terra);
+          transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
+.f:focus-within .f-line::after{ transform:scaleX(1); }
+.form-send{ grid-column: 1 / -1; margin-top:0; width:100%; height:7rem;
+            border:0; background:transparent; color:inherit;
+            font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--btn-size);
+            letter-spacing:.08em; text-transform:uppercase; text-align:left;
+            padding:0; cursor:pointer; position:relative;
+            display:flex; align-items:center; will-change:transform; }
+.form-send span{ position:relative; z-index:1; padding-left:var(--btn-pad);
+            transition:color .25s ease; }
+.form-send::before{ content:""; position:absolute; inset:-1px 0 0 0; background:var(--terra);
+            transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
+.form-send:hover::before{ transform:scaleX(1); }
+.form-send:hover span{ color:var(--paper); }
+.form-info{ position:absolute; left:30.75rem; right:var(--pad); bottom:.4375rem;
+            margin:0; padding:0; border:0;
+            display:grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gut);
+            will-change:transform; }   
+.form-info div{ display:block; }
+.form-info dt{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--btn-size);
+               line-height:1.5rem; letter-spacing:.08em; text-transform:uppercase;
+               color:var(--mark-dark); }
+.form-info dd{ margin:.75rem 0 0; font-family:"IBM Plex Sans",system-ui,sans-serif;
+               font-size:1.5rem; line-height:2.25rem; }
+.form-info dd.fish{ }
+.form-info a, .form-info .lnk{ color:inherit; text-decoration:none; cursor:pointer;
+            transition:color .25s ease; }
+.form-info a:hover, .form-info .lnk:hover{ color:var(--terra); }
+.form-info .lnk + .lnk{ margin-left:1.5rem; }
+.window.paper{ --win:var(--paper); --win-ink:var(--ink);   --mark:var(--mark-dark); }
+.window.sand { --win:var(--sand);  --win-ink:var(--ink);   --mark:var(--paper); }
+.window.teal { --win:var(--teal);  --win-ink:var(--paper); --mark:var(--paper); }
+.window.ink  { --win:var(--ink);   --win-ink:var(--paper); --mark:var(--paper); }
+</style>
+<link rel="stylesheet" href="mobile.css" media="(max-width: 767px)">
+<div class="sheet">
+  <div class="window paper" id="win">
+    <span class="x tl"></span><span class="x tr"></span><span class="x bl"></span><span class="x br"></span>
+    <div class="grain" id="grain"></div>
+    <div class="grain-hot" id="grainHot"></div>
+    <div class="stage">
+    <div class="belt" id="belt">
+    <section class="scene scene-hero" id="hero">
+      <div class="hero-body">
+        <h1 class="tezis">Привет!<br class="m"> Мы Digital&nbsp;M. <br>Просто и&nbsp;быстро<br class="m"> о&nbsp;том, <br class="d">кто мы<br class="m"> и что умеем.<br><span class="tw-tail">&#8203;</span></h1>
+        <script>
+          (function(){
+            var h = document.currentScript.previousElementSibling;
+            h.classList.add('ждёт');
+            setTimeout(function(){ h.classList.remove('ждёт'); }, 4000);
+          })();
+        </script>
+      </div>
+    </section>
+    <section class="scene scene-team" id="team">
+      <article class="card marina">
+        <div class="shot"><img src="foto/marina.png" alt=""></div>
+        <div class="role accent">CEO, управляющий партнер</div>
+        <h2 class="name">Марина <br>Зрилова</h2>
+        <p class="bio">Опыт в digital 15 лет. Строю партнерские отношения вдолгую и&nbsp;с&nbsp;направленностью на результат. Средний срок контракта 3 года</p>
+      </article>
+      <div class="staff" id="staff">
+          <article class="card">
+            <div class="shot"><img src="foto/anastasia.png" alt=""></div>
+            <div class="role">директор по развитию</div>
+            <h2 class="name">Анастасия <br>Шелехова</h2>
+            <p class="bio">Эксперт в digital 7 лет. 4 высших образования.<br>Нахожу идеальное решение для вашей бизнес-задачи</p>
+          </article>
+          <article class="card">
+            <div class="shot"><img src="foto/anna.png" alt=""></div>
+            <div class="role">медиадиректор</div>
+            <h2 class="name">Анна <br>Стец</h2>
+            <p class="bio">Опыт в диджитал 10 лет.<br>Поиск новых источников трафика, медиа-миксов, новых технологий, обзор медиарынка, трендов</p>
+          </article>
+          <article class="card">
+            <div class="shot"><img src="foto/varvara.png" alt=""></div>
+            <div class="role">performance-директор</div>
+            <h2 class="name">Варвара <br>Негробова</h2>
+            <p class="bio">Эксперт в digital 13 лет. Опыт маркетолога на стороне клиента и диджитал-менеджера помогает выстроить четкий бизнес-процесс для быстрой и качественной работы с клиентами</p>
+          </article>
+          <article class="card">
+            <div class="shot"><img src="foto/maria.png" alt=""></div>
+            <div class="role">SM-директор</div>
+            <h2 class="name">Мария <br>Барабанова</h2>
+            <p class="bio">Опыт в digital 8 лет.<br>Успешное создание смм-стратегий и реализация btl-кампаний и спецпроектов</p>
+          </article>
+      </div>
+    </section>
+    <section class="scene scene-services" id="services">
+      <div class="svc">
+        <h2 class="svc-name">Brandformance</h2>
+        <ul class="svc-list"><li>performance-маркетинг</li><li>медийная реклама</li><li>контекстная реклама</li></ul>
+      </div>
+      <div class="svc">
+        <h2 class="svc-name">Social Media</h2>
+        <ul class="svc-list"><li>инфлюэнс-маркетинг</li><li>smm-стратегии</li><li>создание контента / продвижение / публикации / модерация</li><li>посевы в пабликах</li><li>спецпроекты</li></ul>
+      </div>
+      <div class="svc">
+        <h2 class="svc-name">Promo</h2>
+        <ul class="svc-list"><li>чековые промо под ключ</li><li>креативные идеи и адаптация под форматы</li><li>варианты механики</li><li>создание промо-сайтов</li><li>размещение</li><li>модерация чеков</li></ul>
+      </div>
+    </section>
+    <section class="scene scene-form" id="form">
+      <h2 class="form-head">Связаться с нами</h2>
+      <form class="form-grid" id="formGrid" onsubmit="return false">
+        <div class="f"><span class="f-label">имя</span><input type="text" aria-label="имя"><span class="f-line"></span></div>
+        <div class="f"><span class="f-label">компания</span><input type="text" aria-label="компания"><span class="f-line"></span></div>
+        <div class="f"><span class="f-label">почта</span><input type="email" aria-label="почта"><span class="f-line"></span></div>
+        <div class="f"><span class="f-label">телефон</span><input type="tel" aria-label="телефон"><span class="f-line"></span></div>
+        <div class="f wide tall">
+          <span class="f-label">задача</span>
+          <label class="f-file" id="fileRow"><b>прикрепить файл</b><input type="file" id="fileInput"></label>
+          <textarea aria-label="задача" rows="3"></textarea>
+          <span class="f-line"></span>
+        </div>
+        <button class="form-send" type="submit"><span>отправить</span></button>
+      </form>
+      <dl class="form-info">
+        <div><dt>телефон</dt><dd class="fish"><span class="lnk">+7 000 000-00-00</span></dd></div>
+        <div><dt>почта</dt><dd><a href="mailto:info@digitalm.agency">info@digitalm.agency</a></dd></div>
+        <div><dt>мессенджеры</dt><dd class="fish"><span class="lnk">телеграм</span><span class="lnk">вотсап</span><span class="lnk">макс</span></dd></div>
+      </dl>
+    </section>
+    </div>
+    </div>
+    <div class="kicker">salestech agency</div>
+    <div class="logo"><svg class="logo-svg" viewBox="0 0 476 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_4_1129)">
+<rect x="320" width="156" height="156" fill="#E0622C"/>
+<path d="M369.104 32.7461L400.194 109.627L425.126 32.7871L425.267 32.3555H447.256V36.9082L446.442 36.6514C444.931 36.1741 443.56 35.9424 442.325 35.9424C440.894 35.9424 439.837 36.3527 439.077 37.1123C438.416 37.7737 438.03 38.8168 438.03 40.3604V116.62C438.03 118.144 438.407 119.239 439.078 119.99C439.834 120.666 440.892 121.038 442.325 121.038C443.56 121.038 444.931 120.806 446.442 120.329L447.256 120.072V124.625H418.33V120.086L419.135 120.327C420.737 120.808 422.11 121.038 423.261 121.038C424.711 121.038 425.719 120.658 426.386 119.991C427.139 119.237 427.556 118.144 427.556 116.62V41.5449L398.369 127.086H395.657L395.499 126.696L363.743 48.8486L363.861 116.619C363.861 117.929 364.458 118.968 365.766 119.771C367.208 120.605 368.98 121.038 371.108 121.038C372.685 121.038 374.265 120.802 375.849 120.327L376.653 120.086V124.625H347.605V120.072L348.419 120.329C349.916 120.802 351.451 121.038 353.027 121.038C355.072 121.038 356.709 120.606 357.977 119.786C359.206 118.99 359.782 117.95 359.782 116.62V40.3604C359.782 38.9797 359.285 37.9366 358.3 37.1621C357.295 36.3726 355.888 35.9425 354.012 35.9424C352.691 35.9424 351.234 36.176 349.64 36.6543L348.836 36.8955V32.3555H368.947L369.104 32.7461Z" fill="#211E1B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M127.422 67.8574C132.107 67.8574 136.089 68.9632 139.334 71.208C140.293 70.3337 141.402 69.6174 142.658 69.0576L143.222 68.8057C144.531 68.2559 145.802 67.9717 147.03 67.9717C147.861 67.9717 148.556 68.0439 149.051 68.2324C150.29 68.6454 151.331 69.3491 152.163 70.3389C153.08 71.2631 153.583 72.3201 153.583 73.498C153.583 74.4301 153.21 75.3549 152.552 76.2598L152.547 76.2666L152.541 76.2734C152.14 76.7947 151.737 77.2159 151.329 77.5107C150.921 77.8056 150.472 77.999 149.994 77.999C149.213 77.999 148.584 77.5934 148.117 76.9395C147.709 76.3677 147.236 75.5354 146.699 74.4619L146.691 74.4463C146.164 73.3157 145.727 72.5222 145.381 72.0381L145.37 72.0225L145.36 72.0059C145.043 71.4987 144.727 71.3095 144.434 71.2676L144.396 71.2617L144.361 71.252C143.986 71.1518 143.522 71.2036 142.933 71.5146C142.449 71.7697 141.908 72.1873 141.309 72.7871C143.126 74.5243 144.506 76.6271 145.447 79.0889C146.464 81.7472 146.971 84.5596 146.971 87.5205C146.971 93.2654 145.376 97.9837 142.139 101.616C138.939 105.292 133.985 107.069 127.422 107.069C122.285 107.069 118.043 105.816 114.749 103.26C113.387 103.697 112.461 104.476 111.907 105.584L111.903 105.591L111.9 105.597C111.258 106.811 110.947 108.003 110.947 109.181C110.947 109.995 111.13 110.678 111.477 111.251C111.824 111.825 112.356 112.325 113.104 112.737C114.618 113.573 116.971 114.027 120.24 114.027H120.252L132.563 114.256C139.123 114.334 144.136 116.149 147.481 119.807L147.794 120.14C150.965 123.606 152.557 127.715 152.557 132.437C152.557 136.28 151.495 139.888 149.386 143.25L149.387 143.251C147.273 146.695 144.302 149.466 140.491 151.565C136.664 153.674 132.302 154.722 127.422 154.722C123.313 154.722 119.502 153.946 115.996 152.388L115.991 152.386C112.566 150.829 109.82 148.716 107.773 146.04L107.771 146.038C105.792 143.426 104.795 140.52 104.795 137.339C104.795 135.094 105.398 132.9 106.584 130.765L106.589 130.756C107.796 128.663 109.674 126.918 112.182 125.508L112.188 125.504C114.814 124.072 118.079 123.375 121.95 123.375H122.575V125.537H121.95C118.255 125.537 115.983 126.605 114.852 128.534C113.638 130.605 112.999 133.521 112.999 137.339C112.999 141.18 114.131 144.403 116.381 147.043L116.603 147.297L116.607 147.303C118.962 150.014 122.527 151.419 127.422 151.419C132.679 151.419 136.673 149.797 139.494 146.614L139.504 146.603C142.405 143.484 143.896 139.057 143.896 133.234C143.896 129.048 142.115 125.949 138.509 123.857C134.85 121.736 129.282 120.636 121.722 120.636C116.745 120.636 112.915 119.959 110.308 118.535C108.995 117.818 107.979 116.905 107.295 115.783C106.61 114.66 106.277 113.364 106.277 111.916C106.277 109.816 106.884 107.698 108.065 105.571L108.069 105.563L108.074 105.556C109.211 103.638 110.819 102.249 112.879 101.393C109.9 97.9578 108.443 93.3095 108.443 87.5205C108.443 82.073 110.003 77.4419 113.147 73.668C116.338 69.7628 121.138 67.8574 127.422 67.8574ZM127.422 70.4756C125.575 70.4756 124.04 70.8732 122.789 71.6377C121.54 72.4012 120.532 73.5556 119.778 75.1357L119.775 75.1406C118.235 78.295 117.445 82.4102 117.445 87.5205C117.445 92.9466 118.201 97.1326 119.662 100.128C120.409 101.583 121.418 102.652 122.684 103.363C123.957 104.078 125.528 104.451 127.422 104.451C129.356 104.451 130.956 104.078 132.249 103.361C133.537 102.648 134.555 101.575 135.302 100.117L135.307 100.106C136.91 97.1178 137.741 92.9403 137.741 87.5205C137.741 82.4137 136.914 78.3027 135.302 75.1514L135.299 75.1455C134.509 73.5652 133.465 72.408 132.176 71.6416C130.885 70.874 129.309 70.4756 127.422 70.4756Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M234.967 67.7432C239.614 67.7433 243.405 68.8266 246.279 71.0557L246.812 71.458C249.257 73.3625 251.056 75.639 252.189 78.2871L252.641 79.3965C253.736 82.1711 254.287 84.9561 254.287 87.748V112.486C254.287 115.311 254.592 117.346 255.149 118.653C255.425 119.3 255.75 119.737 256.1 120.01C256.44 120.275 256.835 120.411 257.311 120.411C257.754 120.411 258.272 120.133 258.83 119.227L258.837 119.216C259.468 118.234 259.764 117.285 259.764 116.362V115.737H262.153V116.362C262.153 119.307 261.232 121.658 259.326 123.321L259.327 123.322C257.543 124.944 255.456 125.765 253.093 125.766C251.709 125.766 250.507 125.46 249.525 124.806C248.541 124.149 247.831 123.177 247.376 121.936L247.372 121.927L247.369 121.918C246.578 119.545 246.197 116.275 246.197 112.145V112.06C246.079 112.405 245.953 112.765 245.818 113.139L245.819 113.14C244.796 116.21 242.951 119.065 240.311 121.706C237.59 124.426 234 125.766 229.608 125.766C225.215 125.766 221.49 124.426 218.476 121.729L218.469 121.724C215.423 118.918 213.935 114.972 213.935 109.979C213.935 106.326 215.173 103.204 217.646 100.651C220.06 98.0832 222.729 96.3099 225.653 95.3613L225.658 95.3604C227.125 94.8973 228.815 94.4742 230.725 94.0918C232.698 93.6363 234.03 93.3322 234.717 93.1797L234.729 93.1768C238.521 92.4185 241.342 91.7403 243.208 91.1436C244.974 90.5049 245.877 89.7208 246.195 88.8916C246.181 83.5482 245.135 79.1407 243.091 75.6367L243.086 75.6289C241.165 72.2134 237.938 70.4758 233.257 70.4756C230.392 70.4756 228.319 71.4989 226.933 73.5059L226.934 73.5068C225.584 75.4963 224.876 78.2472 224.876 81.8203C224.876 82.7232 225.049 83.2612 225.28 83.5576C225.357 83.6241 225.533 83.7243 225.894 83.8027C226.27 83.8846 226.783 83.9316 227.442 83.9316C228.181 83.9316 228.784 83.7642 229.277 83.4561C229.773 83.146 229.896 82.8624 229.896 82.6182V81.9932H232.172V86.3213H215.987V85.6963C215.987 82.8325 216.824 80.0241 218.471 77.2803C220.122 74.453 222.401 72.176 225.299 70.4531C228.21 68.6458 231.438 67.7432 234.967 67.7432ZM245.634 92.793C244.851 93.0278 243.883 93.2597 242.736 93.4893C237.813 94.7772 234.236 95.8336 231.989 96.6572L231.987 96.6582C228.498 97.9203 225.996 99.6805 224.418 101.904L224.413 101.912C222.822 104.082 222.025 106.536 222.025 109.294C222.025 112.513 222.9 115.346 224.641 117.816C226.408 120.144 228.909 121.323 232.23 121.323C234.63 121.323 236.878 120.376 238.986 118.413C241.129 116.418 242.83 114.053 244.089 111.313C245.364 108.538 245.97 106.277 245.97 104.506V92.6826C245.863 92.7201 245.751 92.7579 245.634 92.793Z" fill="currentColor"/>
+<path d="M197.361 70.0225H206.706V72.9824H197.355L197.243 112.487C197.243 115.497 197.509 117.594 197.991 118.85C198.257 119.409 198.578 119.79 198.937 120.034C199.295 120.278 199.73 120.411 200.267 120.411C201.561 120.411 202.636 119.844 203.521 118.618C204.464 117.313 205.155 115.861 205.592 114.26L205.594 114.251L205.597 114.242C206.123 112.513 206.367 111.215 206.367 110.32V109.695H208.758V110.32C208.758 112.546 208.24 114.87 207.227 117.287L207.225 117.294C206.201 119.657 204.739 121.672 202.844 123.33L202.843 123.331C200.979 124.952 198.78 125.765 196.276 125.765C194.796 125.765 193.518 125.485 192.484 124.882C191.441 124.273 190.687 123.36 190.223 122.177L190.218 122.164L190.214 122.151C189.42 119.849 189.04 116.575 189.04 112.372V72.9824H181.515V70.0225H189.04V57.8252H189.665C191.109 57.825 192.074 57.3528 192.69 56.4902L192.698 56.4785L192.707 56.4678C193.473 55.4926 193.827 54.5228 193.827 53.5479V52.9229H197.476L197.361 70.0225Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M38.9268 32.3555C46.0902 32.3555 52.6803 34.1895 58.6836 37.8574L59.251 38.2061C65.0716 41.8527 69.6751 46.9069 73.0596 53.3535C76.5564 60.0141 78.2968 67.5783 78.2969 76.0303C78.2969 84.5664 76.5148 92.5722 72.9473 100.039C69.4637 107.502 64.6854 113.49 58.6094 117.984C52.6039 122.405 46.0373 124.625 38.9268 124.625H0.294922V120.072L1.1084 120.329C2.61961 120.806 3.99 121.038 5.22461 121.038C6.6755 121.038 7.68264 120.658 8.34961 119.991C9.10349 119.237 9.51953 118.144 9.51953 116.62V40.3604C9.51951 38.8329 9.10217 37.7974 8.37109 37.1328L8.34961 37.1133L8.3291 37.0908C7.65859 36.3534 6.65851 35.9424 5.22461 35.9424C3.99004 35.9424 2.61956 36.1742 1.1084 36.6514L0.294922 36.9082V32.3555H38.9268ZM25.1514 35.5732C23.813 35.5732 22.5885 35.9795 21.4619 36.8057L21.4551 36.8105L21.4541 36.8096C20.523 37.4749 19.9951 38.6023 19.9951 40.3604V116.62C19.9951 118.373 20.5206 119.498 21.4463 120.164C22.5718 120.912 23.8019 121.284 25.1514 121.284H36.2207C40.7496 121.284 45.3899 119.776 50.1504 116.71L50.1543 116.707C54.958 113.665 59.0311 108.923 62.3555 102.437C65.6604 95.906 67.3301 87.769 67.3301 77.998C67.33 70.4552 65.8705 63.45 62.957 56.9756L62.9531 56.9678C60.1176 50.4056 56.2802 45.2041 51.4512 41.3408L51.4473 41.3369C46.7068 37.4804 41.6358 35.5732 36.2207 35.5732H25.1514Z" fill="currentColor"/>
+<path d="M98.2959 117.16C98.2959 119.111 98.4479 120.464 98.7148 121.277C98.8556 121.602 99.0574 121.825 99.3203 121.976C99.5991 122.135 99.9877 122.235 100.521 122.235C101.032 122.235 101.908 122.069 103.194 121.69L103.995 121.455V124.625H83.9346V121.455L84.7373 121.69C86.0234 122.069 86.899 122.235 87.4102 122.235C88.6326 122.235 89.2024 121.845 89.4502 121.264C89.7879 120.383 89.9775 119.032 89.9775 117.16V77.4062C89.0138 77.6484 88.0052 77.7705 86.9541 77.7705C86.376 77.7705 85.5413 77.6899 84.4717 77.5371L83.9346 77.46V73.2148H86.2119V73.8398C86.2119 74.1196 86.3354 74.3985 86.7334 74.6875C87.2317 74.9945 87.7938 75.1533 88.4365 75.1533C89.3154 75.1532 90.1118 74.815 90.8447 74.082C91.6416 73.2851 92.643 72.0284 93.8516 70.291L94.0381 70.0234H98.2959V117.16Z" fill="currentColor"/>
+<path d="M173.296 117.16C173.296 119.111 173.448 120.464 173.715 121.277C173.856 121.602 174.057 121.825 174.32 121.976C174.599 122.135 174.988 122.235 175.521 122.235C176.032 122.235 176.908 122.069 178.194 121.69L178.995 121.455V124.625H158.935V121.455L159.737 121.69C161.023 122.069 161.899 122.235 162.41 122.235C163.633 122.235 164.202 121.845 164.45 121.264C164.788 120.383 164.978 119.032 164.978 117.16V77.4062C164.014 77.6484 163.005 77.7705 161.954 77.7705C161.376 77.7705 160.541 77.6899 159.472 77.5371L158.935 77.46V73.2148H161.212V73.8398C161.212 74.1196 161.335 74.3985 161.733 74.6875C162.232 74.9945 162.794 75.1533 163.437 75.1533C164.315 75.1532 165.112 74.815 165.845 74.082C166.642 73.2851 167.643 72.0284 168.852 70.291L169.038 70.0234H173.296V117.16Z" fill="currentColor"/>
+<path d="M280.016 117.161C280.016 119.109 280.167 120.461 280.434 121.274C280.574 121.6 280.776 121.825 281.04 121.976C281.319 122.135 281.707 122.234 282.24 122.234C282.751 122.234 283.627 122.069 284.914 121.69L285.715 121.454V124.625H265.655V121.454L266.457 121.69C267.743 122.069 268.619 122.234 269.13 122.234C270.354 122.234 270.924 121.844 271.171 121.261C271.508 120.38 271.697 119.03 271.697 117.16V39.8613C271.08 39.9782 270.413 40.0371 269.7 40.0371C268.592 40.0371 267.413 39.9185 266.165 39.6846L265.655 39.5889V35.3672H267.932V35.9922C267.932 36.0839 268.025 36.3707 268.737 36.8047C269.496 37.1452 270.195 37.3046 270.84 37.3047C272.469 37.3046 273.857 36.8817 275.031 36.0557C276.173 35.1779 276.713 34.1055 276.713 32.7998V32.1748H280.13L280.016 117.161Z" fill="currentColor"/>
+<path d="M94.5928 53.835C96.1046 53.8351 97.3994 54.3428 98.4326 55.3652C99.5397 56.309 100.119 57.5005 100.119 58.9062C100.119 60.3644 99.596 61.5985 98.5488 62.5586C97.5027 63.5175 96.165 63.9764 94.5928 63.9766C93.0864 63.9766 91.7898 63.5116 90.75 62.5586C89.7027 61.5985 89.1798 60.3645 89.1797 58.9062C89.1797 57.4478 89.7025 56.2131 90.75 55.2529C91.7898 54.3 93.0864 53.835 94.5928 53.835Z" fill="currentColor"/>
+<path d="M169.593 53.835C171.105 53.8351 172.399 54.3428 173.433 55.3652C174.54 56.309 175.119 57.5005 175.119 58.9062C175.119 60.3644 174.596 61.5985 173.549 62.5586C172.503 63.5175 171.165 63.9764 169.593 63.9766C168.086 63.9766 166.79 63.5116 165.75 62.5586C164.703 61.5985 164.18 60.3645 164.18 58.9062C164.18 57.4478 164.703 56.2131 165.75 55.2529C166.79 54.3 168.086 53.835 169.593 53.835Z" fill="currentColor"/>
+</g>
+<defs>
+<clipPath id="clip0_4_1129">
+<rect width="476" height="156" fill="white"/>
+</clipPath>
+</defs>
+</svg></div>
+    <div class="plate contact"><span>связаться</span></div>
+    <div class="menu-wrap">
+      <span class="x tl"></span><span class="x tr"></span><span class="x br"></span>
+      <nav class="menu-panel" id="menuPanel" aria-hidden="true">
+        <a href="#"><span>Кто мы?</span></a>
+        <a href="#"><span>Что умеем?</span></a>
+        <a class="inert"><span>Кейсы</span></a>
+        <a href="#"><span>Связаться</span></a>
+        <dl class="menu-contacts">
+          <div><dt>телефон</dt><dd><span class="lnk">+7 000 000-00-00</span></dd></div>
+          <div><dt>мессенджеры</dt><dd><span class="lnk">телеграм</span><span class="lnk">вотсап</span><span class="lnk">макс</span></dd></div>
+          <div><dt>почта</dt><dd><a href="mailto:info@digitalm.agency">info@digitalm.agency</a></dd></div>
+        </dl>
+      </nav>
+    </div>
+    <div class="plate menu" id="menuBtn" role="button" tabindex="0" aria-expanded="false"><span>меню</span><i></i></div>
+    <div class="scale" id="scale">M 1:1920</div>
+  </div>
+</div>
+<script>
+const win   = document.getElementById('win');
+const hero  = document.getElementById('hero');
+const team  = document.getElementById('team');
+const staff = document.getElementById('staff');
+const belt  = document.getElementById('belt');
+const cards = [...staff.children];
+const CARD_STEP = 34;
+const ГРУППА = [0, 90, 90, 190, 190];
+const карточки = [document.querySelector('.marina'), ...cards];
+const сдвигГруппы = new Map();
+const частиКарточек = карточки.map(c => [...c.querySelectorAll('.role, .name, .bio')]);
+let W = 0, T = 0, STOPS = [];
+const HOLD  = 320;
+const TEAM  = 240;
+const MICRO = 144;
+const STAFF_LAG = 240;
+const ROW_LAG   = 120;
+const ROW_STEP  = 80;
+const clamp01 = v => Math.min(1, Math.max(0, v));
+const trail = t => Math.pow(1 - clamp01(t), 0.7);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const МОБ = matchMedia('(max-width: 767px)');
+const сцена = document.querySelector('.stage');
+const скроллер = () => МОБ.matches ? сцена : window;
+const гдеY = () => МОБ.matches ? сцена.scrollTop : window.scrollY;
+const svcRows  = [...document.querySelectorAll('.svc')];
+const formRows = [document.querySelector('.form-head'),
+                  ...document.querySelectorAll('.form-grid > *'),
+                  document.querySelector('.form-info')].filter(Boolean);
+function measure(){
+  staff.style.transform = 'none';
+  belt.style.transform  = 'none';
+  частиКарточек.forEach(части => части.forEach(el => el.style.transform = 'none'));
+  карточки.forEach(c => c.style.transform = 'none');
+  сдвигГруппы.clear();
+  svcRows.forEach(el => el.style.transform = 'none');
+  formRows.forEach(el => el.style.transform = 'none');
+  if (МОБ.matches){ document.body.style.height = ''; обложки(); return; }
+  W = win.clientHeight;
+  const top1 = cards[0].getBoundingClientRect().top;
+  const top2 = cards[2].getBoundingClientRect().top;
+  T = Math.round(top2 - top1);
+  STOPS = [
+    { belt: 0 * W, hold: HOLD },
+    { belt: 1 * W, hold: TEAM },
+    { belt: 1 * W, hold: T, isStaff: true },
+    { belt: 1 * W, hold: MICRO },
+    { belt: 2 * W, hold: HOLD },
+  ];
+  const holds = STOPS.reduce((a, s) => a + s.hold, 0);
+  document.body.style.height = (3 * W + holds + window.innerHeight) + 'px';
+  smooth = window.scrollY;
+  render(smooth);
+}
+function обложки(){
+  if (!МОБ.matches) return;
+  const cs = [...team.querySelectorAll('.card')];
+  const max = team.scrollWidth - team.clientWidth;
+  const фокус = max > 0 ? team.scrollLeft / max * (cs.length - 1) : 0;
+  cs.forEach((c, i) => {
+    const d = Math.min(1, Math.abs(i - фокус));
+    c.style.transform = 'translate3d(0,' + (d * 2) + 'rem,0)';
+  });
+}
+team.addEventListener('scroll', () => requestAnimationFrame(обложки), { passive: true });
+function belted(y){
+  let eaten = 0, p2 = 0;
+  for (const st of STOPS){
+    const startY = st.belt + eaten;
+    const held   = Math.min(Math.max(y - startY, 0), st.hold);
+    eaten += held;
+    if (st.isStaff) p2 = st.hold > 0 ? held / st.hold : 0;
+  }
+  return { L: y - eaten, p2 };
+}
+function anchorOf(i){
+  if (МОБ.matches) return document.querySelectorAll('.scene')[i].offsetTop;
+  return i * W + STOPS.reduce((a, st) => a + (st.belt < i * W ? st.hold : 0), 0);
+}
+function render(y){
+  const { L, p2 } = belted(y);
+  belt.style.transform = 'translate3d(0,' + (-L) + 'px,0)';
+  const arrive = i => clamp01(L / W - (i - 1));
+  const lagStaff = reduced ? 0 : trail(arrive(1)) * STAFF_LAG;
+  const shiftStaff = lagStaff - p2 * T;
+  const lagRow = (scene, k) =>
+    reduced ? 0 : trail(arrive(scene)) * (ROW_LAG + k * ROW_STEP);
+  staff.style.transform = 'translate3d(0,' + shiftStaff + 'px,0)';
+  if (!reduced && L > -W && L < 2.4 * W){
+    const winTop = win.getBoundingClientRect().top;
+    const доли = карточки.map(c =>
+      clamp01((W - (c.getBoundingClientRect().top - winTop - (сдвигГруппы.get(c) || 0)))
+              / (W * 0.8)));
+    карточки.forEach((c, i) => {
+      const s = trail(доли[i]) * ГРУППА[i];
+      сдвигГруппы.set(c, s);
+      c.style.transform = 'translate3d(0,' + s + 'px,0)';
+    });
+    частиКарточек.forEach((части, i) => части.forEach((el, j) =>
+      el.style.transform =
+        'translate3d(0,' + trail(доли[i]) * CARD_STEP * (j + 1) + 'px,0)'));
+  }
+  svcRows.forEach((el, k) =>
+    el.style.transform = 'translate3d(0,' + lagRow(2, k) + 'px,0)');
+  formRows.forEach((el, k) =>
+    el.style.transform = 'translate3d(0,' + lagRow(3, k) + 'px,0)');
+  win.dataset.belt = Math.round(L) + ' / ' + p2.toFixed(2);
+}
+let smooth = 0;
+function tick(){
+  const target = window.scrollY;
+  if (reduced) { smooth = target; }
+  else {
+    smooth += (target - smooth) * 0.1;
+    if (Math.abs(target - smooth) < 0.05) smooth = target;
+  }
+  if (!МОБ.matches) render(smooth);
+  зернуКадр();
+  requestAnimationFrame(tick);
+}
+addEventListener('resize', measure);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+const ЗЕРНО = { тайл: 512, пятна: 14, зерно: 16, волокон: 900, крапин: 260, тепло: [0, 3, 8], догон: 0.12 };
+(function зерно(){
+  const s = ЗЕРНО.тайл;
+  const c = document.createElement('canvas'); c.width = c.height = s;
+  const g = c.getContext('2d');
+  const октава = (клетка) => {
+    const n = s / клетка, сетка = [];
+    for (let i = 0; i < n * n; i++) сетка.push(Math.random());
+    const v = (x, y) => сетка[((y % n + n) % n) * n + ((x % n + n) % n)];
+    const гладко = t => t * t * (3 - 2 * t);
+    return (x, y) => {
+      const gx = x / клетка, gy = y / клетка, x0 = Math.floor(gx), y0 = Math.floor(gy);
+      const fx = гладко(gx - x0), fy = гладко(gy - y0);
+      const a = v(x0, y0) + (v(x0 + 1, y0) - v(x0, y0)) * fx;
+      const b = v(x0, y0 + 1) + (v(x0 + 1, y0 + 1) - v(x0, y0 + 1)) * fx;
+      return a + (b - a) * fy;
+    };
+  };
+  const о1 = октава(128), о2 = октава(64), о3 = октава(16);
+  const img = g.createImageData(s, s), d = img.data;
+  for (let y = 0; y < s; y++){
+    for (let x = 0; x < s; x++){
+      const пятно = (о1(x, y) * .55 + о2(x, y) * .3 + о3(x, y) * .15);
+      let v = 255 - пятно * ЗЕРНО.пятна - Math.random() * ЗЕРНО.зерно;
+      const i = (y * s + x) * 4;
+      d[i]   = v - ЗЕРНО.тепло[0];
+      d[i+1] = v - ЗЕРНО.тепло[1];
+      d[i+2] = v - ЗЕРНО.тепло[2];
+      d[i+3] = 255;
+    }
+  }
+  g.putImageData(img, 0, 0);
+  const повсюду = (рисуй) => { for (const ox of [-s, 0, s]) for (const oy of [-s, 0, s]) { g.save(); g.translate(ox, oy); рисуй(); g.restore(); } };
+  const волокна = [], крапины = [];
+  for (let k = 0; k < ЗЕРНО.волокон; k++){
+    const x = Math.random() * s, y = Math.random() * s, дл = 3 + Math.random() * 11, уг = Math.random() * Math.PI;
+    волокна.push([x, y, x + Math.cos(уг) * дл, y + Math.sin(уг) * дл, Math.random() < .7]);
+  }
+  for (let k = 0; k < ЗЕРНО.крапин; k++) крапины.push([Math.random() * s, Math.random() * s, .4 + Math.random() * .9, .12 + Math.random() * .3]);
+  повсюду(() => {
+    g.lineWidth = .6;
+    for (const [x1, y1, x2, y2, тёмн] of волокна){
+      g.strokeStyle = тёмн ? 'rgba(90,70,50,.10)' : 'rgba(255,255,255,.35)';
+      g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke();
+    }
+    for (const [x, y, r, a] of крапины){
+      g.fillStyle = 'rgba(33,30,27,' + a + ')';
+      g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+    }
+  });
+  const url = 'url(' + c.toDataURL('image/png') + ')';
+  for (const el of [grain, grainHot]){
+    el.style.backgroundImage = url;
+    el.style.backgroundRepeat = 'repeat';
+    el.style.backgroundSize = s + 'px ' + s + 'px';
+  }
+})();
+(function шлейф(){
+  if (reduced) return;
+  const cv = document.createElement('canvas'); cv.className = 'fx';
+  win.appendChild(cv);
+  const gl = cv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+  if (!gl) { cv.remove(); return; }
+  grainHot.style.display = 'none';
+  const VS = 'attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+  const SIM = 'precision highp float;varying vec2 uv;uniform sampler2D prev;uniform vec2 m0,m1;uniform float asp,r,live;' +
+    'float seg(vec2 p,vec2 a,vec2 b){vec2 pa=p-a,ba=b-a;float h=clamp(dot(pa,ba)/max(dot(ba,ba),1e-6),0.,1.);return length(pa-ba*h);}' +
+    'void main(){vec4 a=texture2D(prev,uv);' +
+    'float s=max(a.r*.985-1./255.,0.);vec2 dir=a.gb;vec2 k=vec2(asp,1.);' +
+    'float add=(1.-smoothstep(r*.25,r,seg(uv*k,m0*k,m1*k)))*live;' +
+    'if(add>s){vec2 v=(m1-m0)*k;float l=length(v);dir=l>1e-5?(v/l)*.5+.5:vec2(.5);s=add;}' +
+    'gl_FragColor=vec4(s,dir,1.);}';
+  const OUT = 'precision highp float;varying vec2 uv;uniform sampler2D tr;uniform float t;uniform vec2 res;uniform vec3 col;' +
+    'float h(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}' +
+    'void main(){float s=texture2D(tr,uv).r;float g=h(floor(uv*res));' +
+    'float a=s*(.55+.45*g);gl_FragColor=vec4(col*a,a);}';
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+  const prog = (fs) => { const p = gl.createProgram(); gl.attachShader(p, sh(gl.VERTEX_SHADER, VS));
+    gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); return p; };
+  let pSim, pOut;
+  try { pSim = prog(SIM); pOut = prog(OUT); } catch (e) { console.warn('шлейф:', e); cv.remove(); grainHot.style.display = ''; return; }
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const U = (p, n) => gl.getUniformLocation(p, n);
+  let W = 0, H = 0, tex = [], fbo = [], cur = 0;
+  const make = () => {
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = Math.max(2, Math.round(win.clientWidth * dpr)); H = Math.max(2, Math.round(win.clientHeight * dpr));
+    cv.width = W; cv.height = H;
+    tex.forEach(x => gl.deleteTexture(x)); fbo.forEach(x => gl.deleteFramebuffer(x)); tex = []; fbo = [];
+    for (let i = 0; i < 2; i++){
+      const tx = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tx);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, W, H, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR));
+      [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+      const fb = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tx, 0);
+      gl.clearColor(0, .5, .5, 1); gl.clear(gl.COLOR_BUFFER_BIT);
+      tex.push(tx); fbo.push(fb);
+    }
+  };
+  make(); addEventListener('resize', make);
+  let mx = -1, my = -1, px = -1, py = -1, движ = false;
+  const куда = (x, y) => { const r = win.getBoundingClientRect(); mx = (x - r.left) / r.width; my = 1 - (y - r.top) / r.height;
+    if (px < 0) { px = mx; py = my; } движ = true; };
+  addEventListener('pointermove', e => куда(e.clientX, e.clientY), { passive: true });
+  addEventListener('touchmove', e => { const t0 = e.touches[0]; if (t0) куда(t0.clientX, t0.clientY); }, { passive: true });
+  addEventListener('touchend', () => { px = py = -1; }, { passive: true });
+  const ochre = [201 / 255, 166 / 255, 118 / 255];
+  const кадр = (now) => {
+    const pos = (p) => { const l = gl.getAttribLocation(p, 'p'); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, 2, gl.FLOAT, false, 0, 0); };
+    gl.viewport(0, 0, W, H);
+    gl.useProgram(pSim); pos(pSim);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo[1 - cur]);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tex[cur]); gl.uniform1i(U(pSim, 'prev'), 0);
+    gl.uniform2f(U(pSim, 'm0'), px < 0 ? mx : px, py < 0 ? my : py); gl.uniform2f(U(pSim, 'm1'), mx, my);
+    gl.uniform1f(U(pSim, 'asp'), W / H); gl.uniform1f(U(pSim, 'r'), .7 / H);
+    gl.uniform1f(U(pSim, 'live'), движ && mx >= 0 ? 1 : 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    cur = 1 - cur; px = mx; py = my; движ = false;
+    gl.useProgram(pOut); pos(pOut);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.bindTexture(gl.TEXTURE_2D, tex[cur]); gl.uniform1i(U(pOut, 'tr'), 0);
+    gl.uniform1f(U(pOut, 't'), now / 1000); gl.uniform2f(U(pOut, 'res'), W, H); gl.uniform3f(U(pOut, 'col'), ...ochre);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(кадр);
+  };
+  requestAnimationFrame(кадр);
+})();
+let мышьX = 0, мышьY = 0, пятноX = 0, пятноY = 0, мышьЕсть = false;
+win.addEventListener('pointermove', e => {
+  const r = win.getBoundingClientRect();
+  мышьX = e.clientX - r.left; мышьY = e.clientY - r.top;
+  if (!мышьЕсть){ пятноX = мышьX; пятноY = мышьY; мышьЕсть = true; }
+  grainHot.style.opacity = '';
+});
+win.addEventListener('pointerleave', () => { мышьЕсть = false; grainHot.style.opacity = '0'; });
+let рябьКадр = 0;
+const РЯБЬ = false;
+function зернуКадр(){
+  if (РЯБЬ && !reduced && ++рябьКадр % 5 === 0){
+    const rx = Math.random() * ЗЕРНО.тайл | 0, ry = Math.random() * ЗЕРНО.тайл | 0;
+    grain.style.backgroundPosition = rx + 'px ' + ry + 'px';
+    grainHot.style.backgroundPosition = rx + 'px ' + ry + 'px';
+  }
+  if (!мышьЕсть) return;
+  пятноX += (мышьX - пятноX) * ЗЕРНО.догон;
+  пятноY += (мышьY - пятноY) * ЗЕРНО.догон;
+  grainHot.style.transform = 'translate3d(' + пятноX + 'px,' + пятноY + 'px,0)';
+}
+addEventListener('load', measure);
+measure();
+tick();
+const scale = document.getElementById('scale');
+const drawScale = () => {
+  const w = Math.round(window.screen?.width || document.documentElement.clientWidth);
+  if (w) scale.textContent = 'M 1:' + w;
+};
+drawScale();
+new ResizeObserver(drawScale).observe(document.documentElement);
+addEventListener('resize', drawScale, {passive:true});
+const menuBtn = document.getElementById('menuBtn'), menuPanel = document.getElementById('menuPanel');
+const toggleMenu = () => {
+  const open = win.classList.toggle('menu-open');
+  menuBtn.setAttribute('aria-expanded', open);
+  menuPanel.setAttribute('aria-hidden', !open);
+  menuBtn.querySelector('span').textContent = open ? 'закрыть' : 'меню';
+};
+menuBtn.addEventListener('click', toggleMenu);
+menuBtn.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleMenu(); }});
+addEventListener('keydown', e => { if(e.key==='Escape' && win.classList.contains('menu-open')) toggleMenu(); });
+const ANCHORS = { 'кто мы?': 1, 'что умеем?': 2, 'связаться': 3 };
+menuPanel.addEventListener('click', e => {
+  const a = e.target.closest('a'); if (!a || a.closest('.menu-contacts')) return;
+  e.preventDefault();
+  const key = a.textContent.trim().toLowerCase();
+  if (!(key in ANCHORS)) return;
+  toggleMenu();
+  скроллер().scrollTo(0, anchorOf(ANCHORS[key]));
+});
+document.querySelector('.logo').addEventListener('click', () => увести(0));
+document.querySelector('.contact').addEventListener('click',
+  () => скроллер().scrollTo(0, anchorOf(3)));
+const fileRow = document.getElementById('fileRow'), fileInput = document.getElementById('fileInput');
+fileInput.addEventListener('change', () => {
+  const f = fileInput.files && fileInput.files[0];
+  fileRow.querySelector('b').textContent = f ? f.name : 'прикрепить файл';
+  fileRow.classList.toggle('has', !!f);
+});
+const НАБОР = {
+  знак:        34,
+  разброс:     30,
+  пробел:      34,
+  зазапятой:  210,
+  заточкой:   330,
+  конецСтроки: 560,
+  началоСтроки: 340,
+  дозапуска:   300,
+  послеконца:  560,
+  настроке:    520,
+  зазор:        8,
+  уход:      1700,
+  стрелкаH:    44,
+  стрелкаW:    16
+};
+function увести(куда){
+  const откуда = гдеY(), путь = куда - откуда;
+  if (reducedType || !путь) return скроллер().scrollTo(0, куда);
+  const t0 = performance.now();
+  const плавно = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+  const кадр = now => {
+    const p = Math.min((now - t0) / НАБОР.уход, 1);
+    скроллер().scrollTo(0, откуда + путь * плавно(p));
+    if (p < 1) requestAnimationFrame(кадр);
+  };
+  requestAnimationFrame(кадр);
+}
+const tezis = document.querySelector('.tezis');
+const reducedType = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let знаки = [], cursor = null, строкаХвоста = null, прогон = 0;
+function разметить(){
+  if (знаки.length) return;
+  const фраг = document.createDocumentFragment();
+  for (const узел of [...tezis.childNodes]){
+    if (узел.nodeType !== 3){
+      фраг.appendChild(узел);
+      if (узел.classList && узел.classList.contains('tw-tail')) строкаХвоста = узел;
+      continue;
+    }
+    for (const ch of [...узел.textContent]){
+      if (/\s/.test(ch)) { фраг.appendChild(document.createTextNode(ch)); continue; }
+      const s = document.createElement('span');
+      s.className = 'tw'; s.textContent = ch;
+      фраг.appendChild(s); знаки.push(s);
+    }
+  }
+  tezis.textContent = '';
+  tezis.appendChild(фраг);
+  tezis.classList.remove('ждёт');
+  const H = НАБОР.стрелкаH, W = НАБОР.стрелкаW, c = W / 2;
+  const штрих = 'stroke-width="1" vector-effect="non-scaling-stroke"';
+  cursor = document.createElement('a');
+  cursor.className = 'cursor';
+  cursor.setAttribute('role', 'button');
+  cursor.setAttribute('aria-label', 'листайте вниз');
+  cursor.innerHTML =
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" fill="none" stroke="currentColor" ' +
+    'stroke-linecap="square" aria-hidden="true">' +
+      '<path ' + штрих + ' d="M' + c + ' 0 V' + H + '"/>' +
+      '<path class="head" ' + штрих + ' d="M1.5 ' + (H - 11) + ' L' + c + ' ' + (H - .5) +
+        ' L' + (W - 1.5) + ' ' + (H - 11) + '"/>' +
+    '</svg>';
+  cursor.addEventListener('click', e => {
+    if (!cursor.classList.contains('done')) return;
+    e.stopPropagation();
+    увести(anchorOf(1));
+  });
+  tezis.appendChild(cursor);
+}
+let кеш = null;
+function метрики(){
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  const cs = getComputedStyle(tezis);
+  const ctx = document.createElement('canvas').getContext('2d');
+  ctx.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+  const м = document.createElement('span');
+  м.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+  строкаХвоста.appendChild(м);
+  const доБазы = м.getBoundingClientRect().top - строкаХвоста.getBoundingClientRect().top;
+  м.remove();
+  кеш = { k: parseFloat(cs.fontSize) / 100, ka: МОБ.matches ? rem / 16 * 36 / 44 : parseFloat(cs.fontSize) / 100,
+          rem, cap: ctx.measureText('П').actualBoundingBoxAscent, доБазы };
+}
+function поставить(после, перед){
+  if (!кеш) метрики();
+  const k = кеш.k, cap = кеш.cap;
+  const hr = tezis.getBoundingClientRect();
+  const wr = после.getBoundingClientRect();
+  const база = wr.top - hr.top + кеш.доБазы;
+  const H = НАБОР.стрелкаH * кеш.ka, W = НАБОР.стрелкаW * кеш.ka;
+  const зазор = (после === строкаХвоста) ? 0 : НАБОР.зазор;
+  cursor.style.width  = W + 'px';
+  cursor.style.height = H + 'px';
+  cursor.style.left = (перед ? wr.left - hr.left - зазор * k
+                             : wr.right - hr.left + зазор * k) + 'px';
+  cursor.style.top  = (база - H) + 'px';
+  cursor.style.setProperty('--k', cap / H);
+}
+function набрать(){
+  разметить();
+  метрики();
+  const мой = ++прогон;
+  if (reducedType){
+    знаки.forEach(s => s.classList.add('on'));
+    поставить(строкаХвоста);
+    cursor.classList.remove('typing'); cursor.classList.add('done');
+    return;
+  }
+  знаки.forEach(s => s.classList.remove('on'));
+  cursor.classList.remove('done');
+  const верх = s => Math.round(s.getBoundingClientRect().top);
+  let i = 0;
+  const набратьЗнак = () => {
+    if (мой !== прогон) return;
+    const s = знаки[i];
+    s.classList.add('on');
+    поставить(s);
+    cursor.classList.add('typing');
+    const ch = s.textContent;
+    let ждать = НАБОР.знак + Math.random() * НАБОР.разброс;
+    if (ch === '.' || ch === '!') ждать += НАБОР.заточкой;
+    if (ch === ',') ждать += НАБОР.зазапятой;
+    i++;
+    if (i < знаки.length){
+      const между = s.nextSibling;
+      if (между && между.nodeType === 3 && /\s/.test(между.textContent)) ждать += НАБОР.пробел;
+      setTimeout(шаг, ждать);
+    } else {
+      setTimeout(конец, НАБОР.послеконца);
+    }
+  };
+  const шаг = () => {
+    if (мой !== прогон) return;
+    const новаяСтрока = i > 0 && верх(знаки[i]) !== верх(знаки[i - 1]);
+    if (!новаяСтрока) return набратьЗнак();
+    setTimeout(() => {
+      if (мой !== прогон) return;
+      поставить(знаки[i], true);
+      setTimeout(набратьЗнак, НАБОР.началоСтроки);
+    }, НАБОР.конецСтроки);
+  };
+  const конец = () => {
+    if (мой !== прогон) return;
+    поставить(строкаХвоста);
+    setTimeout(() => {
+      if (мой !== прогон) return;
+      cursor.classList.remove('typing');
+      cursor.classList.add('done');
+    }, НАБОР.настроке);
+  };
+  шаг();
+}
+tezis.addEventListener('click', набрать);
+addEventListener('resize', () => {
+  if (знаки.length) метрики();
+  const где = cursor && cursor.classList.contains('done')
+    ? строкаХвоста : знаки.filter(s => s.classList.contains('on')).pop();
+  if (где && cursor) поставить(где);
+});
+(document.fonts ? document.fonts.ready : Promise.resolve())
+  .then(() => setTimeout(набрать, reducedType ? 0 : НАБОР.дозапуска));
+</script>
+</html>
