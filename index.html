@@ -21,6 +21,7 @@ html::-webkit-scrollbar{ display:none }
   --pad:  0.75rem;     
   --inset: 1rem;       
   --mark-inset: 0.25rem; 
+  --ui-inset: 0.75rem;  
   --plate-h: 3.25rem;  
   --btn-size: 0.875rem;  
   --btn-h: 3.5rem;       
@@ -28,30 +29,49 @@ html::-webkit-scrollbar{ display:none }
   --cross: 0.75rem;    
   --win: var(--paper);
   --win-ink: var(--ink);
-  --mm: 1rem;
-  --mm-major: calc(var(--col) + var(--gut));
-  --vellum: #F6F2EC; --chalk: #F1F0EC; --shell: #FAF2EE;
+  --mm: .25rem;
+  --mm-mid: 1.25rem;
+  --mm-major: 2.5rem;
+  --vellum: #F6F2EC;
   --white: #FFFFFF;
-  --mm-c: var(--white);          
-  --mm-major-c: var(--white);
+  --ash: #D9D6D1;    
+  --bark: #38362D;   
+  --mm-c:       #F7F5F1;                                              
+  --mm-mid-c:   color-mix(in srgb, #F2EDE6 41%, transparent);         
+  --mm-major-c: color-mix(in srgb, #F2EDE6 37%, transparent);         
+  --mm-w: .5px;   
+  --paper-tex: none;
 }
+:root.paper-heron{ --paper-tex: url(paper-heron.png); }
+:root.paper-white{ --paper-tex: url(paper-heron-white.png); }
+@media (max-resolution: 1.5dppx){ :root{ --mm-w: 1px; } }
+@media (max-resolution: 1.5dppx){ :root .svc:not(:last-child)::after, :root .f-line, :root .menu-panel a:last-of-type::after{ transform:none; } }   
 *{box-sizing:border-box; margin:0}
 html{ font-synthesis: none; -webkit-font-smoothing: antialiased; }
-body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; color:var(--ink);
+body{ background:var(--white); font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; color:var(--ink);
       font-weight:400; }
 .sheet{ position:fixed; inset:0; z-index:1; padding:var(--pole); }
 .window{
   position:relative; width:100%; height:100%; background:var(--win); color:var(--win-ink);
-  background-image:
-    linear-gradient(to right,  var(--mm-major-c) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--mm-major-c) 1px, transparent 1px),
-    linear-gradient(to right,  var(--mm-c) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--mm-c) 1px, transparent 1px);
-  background-size: var(--mm-major) var(--mm-major), var(--mm-major) var(--mm-major), var(--mm) var(--mm), var(--mm) var(--mm);
-  background-position: var(--pad) var(--pad);
+  background-image: var(--paper-tex);   
+  background-size: 124px 124px;
   overflow:hidden;
   transition: background .35s ease, color .35s ease;
 }
+.window::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:
+    linear-gradient(to right,  var(--mm-major-c) var(--mm-w), transparent var(--mm-w)),
+    linear-gradient(to bottom, var(--mm-major-c) var(--mm-w), transparent var(--mm-w)),
+    linear-gradient(to right,  var(--mm-mid-c) var(--mm-w), transparent var(--mm-w)),
+    linear-gradient(to bottom, var(--mm-mid-c) var(--mm-w), transparent var(--mm-w)),
+    linear-gradient(to right,  var(--mm-c) var(--mm-w), transparent var(--mm-w)),
+    linear-gradient(to bottom, var(--mm-c) var(--mm-w), transparent var(--mm-w));
+  background-size: var(--mm-major) var(--mm-major), var(--mm-major) var(--mm-major),
+    var(--mm-mid) var(--mm-mid), var(--mm-mid) var(--mm-mid), var(--mm) var(--mm), var(--mm) var(--mm);
+  background-position: var(--pad) var(--pad);
+}
+.window::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:4;
+  border:1px solid var(--ash); }   
 .x{ position:absolute; width:var(--cross); height:var(--cross); pointer-events:none; z-index:4 }
 .x::before,.x::after{ content:""; position:absolute; background:var(--mark); }
 .x::before{ left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
@@ -60,8 +80,9 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .x.tr{ right:var(--mark-inset); top:var(--mark-inset); }
 .x.bl{ left:var(--mark-inset); bottom:var(--mark-inset); }
 .x.br{ right:var(--mark-inset); bottom:var(--mark-inset); }
+.x{ display:none; }
 .plate{ position:absolute; z-index:5; width:13.75rem; height:var(--btn-h);   
-        border:1px solid var(--mark-dark); background:var(--win);
+        border:1px solid var(--mark-dark); background:var(--white);   
         display:flex; align-items:center; padding:0 var(--btn-pad);
         font-size:var(--btn-size); letter-spacing:.08em; text-transform:uppercase;
         cursor:pointer; overflow:hidden; }
@@ -77,19 +98,21 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .plate:hover span{ color:var(--paper); }
 .plate:hover i::before,.plate:hover i::after{ background:var(--paper); }
 .menu{ border-color:var(--terra); }
-.logo{ cursor:pointer; position:absolute; z-index:5; left:var(--inset); top:var(--inset);
-       height:var(--plate-h); color:var(--win-ink); line-height:0; }
-.logo svg{ height:100%; width:auto; display:block; }
-.contact{ position:absolute; z-index:5; right:var(--inset); top:.55625rem;
+.logo{ cursor:pointer; position:absolute; z-index:5; left:0; top:0;
+       padding:calc(var(--ui-inset) - 1px) calc(var(--inset) - 1px);
+       background:var(--white); border:1px solid var(--ash);   
+       color:var(--win-ink); line-height:0; }
+.logo svg{ height:var(--plate-h); width:auto; display:block; }
+.contact{ position:absolute; z-index:5; right:var(--ui-inset); top:var(--ui-inset);
           width:auto; height:auto; border:0; background:none; padding:0;
           line-height:1.5rem; overflow:visible; }
 .contact::before{ content:none; }
 .contact span{ transition:color .25s ease; margin-right:-.08em; }
 .contact:hover span{ color:var(--terra); }
-.menu{ left:var(--inset); bottom:var(--inset); }
-.scale{ position:absolute; z-index:5; right:var(--inset); bottom:.75rem;
-        font-size:0.6875rem; line-height:1rem; opacity:.75;
-        background:var(--win); padding-left:.5rem; }
+.menu{ left:0; bottom:0; }   
+.scale{ position:absolute; z-index:5; right:0; bottom:0;
+        font-size:0.6875rem; line-height:1rem;
+        background:var(--bark); color:var(--white); padding:0 .375rem 0 .3125rem; }   
 .grain, .grain-hot{ position:absolute; pointer-events:none; z-index:6;
                     mix-blend-mode:multiply; will-change:transform; }
 .grain{ inset:0; opacity:.1; }   
@@ -100,7 +123,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 @media (prefers-reduced-motion:reduce){ .grain-hot{ display:none; } }
 .fx{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:6; mix-blend-mode:multiply; }
 .menu-wrap{
-  position:absolute; z-index:5; left:var(--inset); bottom:calc(var(--inset) + var(--btn-h));
+  position:absolute; z-index:5; left:0; bottom:var(--btn-h);
   width:13.75rem;   
   pointer-events:none;
 }
@@ -112,7 +135,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .menu-wrap .x.bl{ left:calc(var(--cross)*-1); bottom:calc(var(--btn-h) * -1 - var(--cross)); }
 .menu-wrap .x.br{ right:calc(var(--cross)*-1); bottom:calc(var(--btn-h) * -1 - var(--cross)); }
 .menu-panel{
-  border:1px solid var(--terra); border-bottom:none; background:var(--win);
+  border:1px solid var(--terra); border-bottom:none; background:var(--white);   
   display:grid; overflow:hidden;
   transform:scaleY(0); transform-origin:bottom; opacity:0;
   transition:transform .28s ease, opacity .18s ease;
@@ -127,6 +150,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .menu-panel a:last-of-type{ position:relative; }
 .menu-panel a:last-of-type::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:1px; z-index:2;
+  transform:scaleY(.5); transform-origin:bottom;   
   background-image: repeating-linear-gradient(to right,
     var(--rule) 0 10px, transparent 10px 13px);
 }
@@ -145,9 +169,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .plate i::before,.plate i::after{ transition:background .25s ease, transform .28s ease; }
 .window.menu-open .menu i::before{ transform:translateY(0) rotate(45deg); }
 .window.menu-open .menu i::after{  transform:translateY(0) rotate(-45deg); }
-.stage{ position:absolute; inset:0; z-index:2; overflow:hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 100%);
-          mask-image: linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 100%); }
+.stage{ position:absolute; inset:0; z-index:2; overflow:hidden; }
 .belt{ position:absolute; inset:0; will-change:transform; }
 .scene{ position:relative; width:100%; height:100%; }
 .scene-hero{ display:grid;
@@ -159,6 +181,9 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 }
 .kicker{ position:absolute; z-index:5; left:30.75rem; top:.6125rem; width:27rem;   
         font-size:1rem; line-height:1.5rem; opacity:.75; }
+.kicker, .contact{ mix-blend-mode:difference; color:var(--white); }
+.contact span{ color:var(--white); }
+.contact:hover span{ color:#1F9DD3; }
 .hero-body{ grid-column: 1 / -1; display:grid; grid-template-columns: subgrid; align-items:end;
        padding-bottom:0; margin-bottom:-0.9925rem; }
 .tezis{ grid-column: 4 / span 8; font-family:"Viaoda Libre",Georgia,serif;
@@ -200,8 +225,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
 .shot{ width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--mark-dark); }
 .shot img{ width:100%; height:100%; object-fit:cover; display:block; }
 .role{ margin-top:2rem; font-family:"IBM Plex Mono",ui-monospace,monospace;
-       font-size:1rem; line-height:1.5rem; }      
-.role.accent{ color:var(--terra); }
+       font-size:1rem; line-height:1.5rem; color:var(--terra); }      
 .name{ margin-top:1.625rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400;
        font-size:2.5rem; line-height:2.625rem; }  
 .bio{ margin-top:1.25rem; font-family:"IBM Plex Sans",system-ui,sans-serif;
@@ -213,11 +237,14 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
   align-content:start;
 }
 .svc{ grid-column: 4 / span 9; display:grid; grid-template-columns: subgrid;
-      padding: 2rem 0; will-change:transform;
-      background-image: repeating-linear-gradient(to right,
-        var(--mark) 0 .625rem, transparent .625rem .8125rem);
-      background-size: 100% 1px; background-repeat: no-repeat; background-position: top left; }
-.svc:first-child{ background-image:none; padding-top:0; }
+      padding: 2rem 0; will-change:transform; position:relative; }
+.svc:not(:last-child)::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+      transform:scaleY(.5); transform-origin:bottom;
+      background: repeating-linear-gradient(to right, var(--mark) 0 .625rem, transparent .625rem .8125rem); }
+.svc:first-child{ padding-top:0; }
+.svc::after, .f .f-line{ clip-path:inset(0 100% 0 0);
+      transition:clip-path .8s cubic-bezier(.215,.61,.355,1) var(--dl,0s); }
+.svc.in::after, .f.in .f-line{ clip-path:inset(0 0 0 0); }
 .svc-name{ grid-column: 1 / span 5; font-family:"Viaoda Libre",Georgia,serif;
            font-weight:400; font-size:6.25rem; line-height:6.75rem; }
 .svc-list{ grid-column: 7 / span 3; }
@@ -257,7 +284,8 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
           border:0; background:transparent; color:inherit; outline:none;
           font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:2rem;
           line-height:2.25rem; letter-spacing:-.02em; }
-.f-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--mark); }
+.f-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--mark);
+        transform:scaleY(.5); transform-origin:bottom; }   
 .f-line::after{ content:""; position:absolute; inset:0; background:var(--terra);
           transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
 .f:focus-within .f-line::after{ transform:scaleX(1); }
@@ -288,12 +316,12 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
             transition:color .25s ease; }
 .form-info a:hover, .form-info .lnk:hover{ color:var(--terra); }
 .form-info .lnk + .lnk{ margin-left:1.5rem; }
-.window.paper{ --win:var(--paper); --win-ink:var(--ink);   --mark:var(--mark-dark); }
+.window.paper{ --win:var(--paper); --win-ink:var(--ink);   --mark:var(--mark-dark); }   
 .window.sand { --win:var(--sand);  --win-ink:var(--ink);   --mark:var(--paper); }
 .window.teal { --win:var(--teal);  --win-ink:var(--paper); --mark:var(--paper); }
 .window.ink  { --win:var(--ink);   --win-ink:var(--paper); --mark:var(--paper); }
 </style>
-<link rel="stylesheet" href="mobile.css" media="(max-width: 767px)">
+<link rel="stylesheet" href="mobile.css?v=2909g" media="(max-width: 767px)">
 <div class="sheet">
   <div class="window paper" id="win">
     <span class="x tl"></span><span class="x tr"></span><span class="x bl"></span><span class="x br"></span>
@@ -303,7 +331,7 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
     <div class="belt" id="belt">
     <section class="scene scene-hero" id="hero">
       <div class="hero-body">
-        <h1 class="tezis">Привет!<br class="m"> Мы Digital&nbsp;M. <br>Просто и&nbsp;быстро<br class="m"> о&nbsp;том, <br class="d">кто мы<br class="m"> и что умеем.<br><span class="tw-tail">&#8203;</span></h1>
+        <h1 class="tezis">Привет!<br class="m"> Мы Digital&nbsp;M. <br>Просто и&nbsp;быстро<br class="m"> о&nbsp;том, <br class="d">кто мы<br class="m"> и&nbsp;что умеем.<br><span class="tw-tail">&#8203;</span></h1>
         <script>
           (function(){
             var h = document.currentScript.previousElementSibling;
@@ -318,32 +346,32 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
         <div class="shot"><img src="foto/marina.png" alt=""></div>
         <div class="role accent">CEO, управляющий партнер</div>
         <h2 class="name">Марина <br>Зрилова</h2>
-        <p class="bio">Опыт в digital 15 лет. Строю партнерские отношения вдолгую и&nbsp;с&nbsp;направленностью на результат. Средний срок контракта 3 года</p>
+        <p class="bio">Опыт в&nbsp;digital 15&nbsp;лет. Строю партнерские отношения вдолгую и&nbsp;с&nbsp;направленностью на&nbsp;результат. Средний срок контракта 3&nbsp;года</p>
       </article>
       <div class="staff" id="staff">
           <article class="card">
             <div class="shot"><img src="foto/anastasia.png" alt=""></div>
             <div class="role">директор по развитию</div>
             <h2 class="name">Анастасия <br>Шелехова</h2>
-            <p class="bio">Эксперт в digital 7 лет. 4 высших образования.<br>Нахожу идеальное решение для вашей бизнес-задачи</p>
+            <p class="bio">Эксперт в&nbsp;digital 7 лет. 4&nbsp;высших образования.<br>Нахожу идеальное решение для&nbsp;вашей бизнес-задачи</p>
           </article>
           <article class="card">
             <div class="shot"><img src="foto/anna.png" alt=""></div>
             <div class="role">медиадиректор</div>
             <h2 class="name">Анна <br>Стец</h2>
-            <p class="bio">Опыт в диджитал 10 лет.<br>Поиск новых источников трафика, медиа-миксов, новых технологий, обзор медиарынка, трендов</p>
+            <p class="bio">Опыт в&nbsp;диджитал 10&nbsp;лет.<br>Поиск новых источников трафика, медиа-миксов, новых технологий, обзор медиарынка, трендов</p>
           </article>
           <article class="card">
             <div class="shot"><img src="foto/varvara.png" alt=""></div>
             <div class="role">performance-директор</div>
             <h2 class="name">Варвара <br>Негробова</h2>
-            <p class="bio">Эксперт в digital 13 лет. Опыт маркетолога на стороне клиента и диджитал-менеджера помогает выстроить четкий бизнес-процесс для быстрой и качественной работы с клиентами</p>
+            <p class="bio">Эксперт в&nbsp;digital 13&nbsp;лет. Опыт маркетолога на стороне клиента и диджитал-менеджера помогает выстроить четкий бизнес-процесс для&nbsp;быстрой и&nbsp;качественной работы с&nbsp;клиентами</p>
           </article>
           <article class="card">
             <div class="shot"><img src="foto/maria.png" alt=""></div>
             <div class="role">SM-директор</div>
             <h2 class="name">Мария <br>Барабанова</h2>
-            <p class="bio">Опыт в digital 8 лет.<br>Успешное создание смм-стратегий и реализация btl-кампаний и спецпроектов</p>
+            <p class="bio">Опыт в&nbsp;digital 8&nbsp;лет.<br>Успешное создание смм-стратегий и&nbsp;реализация btl-кампаний и спецпроектов</p>
           </article>
       </div>
     </section>
@@ -354,15 +382,15 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
       </div>
       <div class="svc">
         <h2 class="svc-name">Social Media</h2>
-        <ul class="svc-list"><li>инфлюэнс-маркетинг</li><li>smm-стратегии</li><li>создание контента / продвижение / публикации / модерация</li><li>посевы в пабликах</li><li>спецпроекты</li></ul>
+        <ul class="svc-list"><li>инфлюэнс-маркетинг</li><li>smm-стратегии</li><li>создание контента / продвижение / публикации / модерация</li><li>посевы в&nbsp;пабликах</li><li>спецпроекты</li></ul>
       </div>
       <div class="svc">
         <h2 class="svc-name">Promo</h2>
-        <ul class="svc-list"><li>чековые промо под ключ</li><li>креативные идеи и адаптация под форматы</li><li>варианты механики</li><li>создание промо-сайтов</li><li>размещение</li><li>модерация чеков</li></ul>
+        <ul class="svc-list"><li>чековые промо под&nbsp;ключ</li><li>креативные идеи и&nbsp;адаптация под&nbsp;форматы</li><li>варианты механики</li><li>создание промо-сайтов</li><li>размещение</li><li>модерация чеков</li></ul>
       </div>
     </section>
     <section class="scene scene-form" id="form">
-      <h2 class="form-head">Связаться с нами</h2>
+      <h2 class="form-head">Связаться с&nbsp;нами</h2>
       <form class="form-grid" id="formGrid" onsubmit="return false">
         <div class="f"><span class="f-label">имя</span><input type="text" aria-label="имя"><span class="f-line"></span></div>
         <div class="f"><span class="f-label">компания</span><input type="text" aria-label="компания"><span class="f-line"></span></div>
@@ -425,6 +453,8 @@ body{ background:var(--paper); font-family:"IBM Plex Mono",ui-monospace,Menlo,mo
   </div>
 </div>
 <script>
+{ const p = new URLSearchParams(location.search).get('paper');
+  if (p === 'heron' || p === 'white') document.documentElement.classList.add('paper-' + p); }
 const win   = document.getElementById('win');
 const hero  = document.getElementById('hero');
 const team  = document.getElementById('team');
@@ -504,15 +534,16 @@ function anchorOf(i){
   if (МОБ.matches) return document.querySelectorAll('.scene')[i].offsetTop;
   return i * W + STOPS.reduce((a, st) => a + (st.belt < i * W ? st.hold : 0), 0);
 }
+const px = v => Math.round(v * devicePixelRatio) / devicePixelRatio;
 function render(y){
   const { L, p2 } = belted(y);
-  belt.style.transform = 'translate3d(0,' + (-L) + 'px,0)';
+  belt.style.transform = 'translate3d(0,' + px(-L) + 'px,0)';
   const arrive = i => clamp01(L / W - (i - 1));
   const lagStaff = reduced ? 0 : trail(arrive(1)) * STAFF_LAG;
   const shiftStaff = lagStaff - p2 * T;
   const lagRow = (scene, k) =>
     reduced ? 0 : trail(arrive(scene)) * (ROW_LAG + k * ROW_STEP);
-  staff.style.transform = 'translate3d(0,' + shiftStaff + 'px,0)';
+  staff.style.transform = 'translate3d(0,' + px(shiftStaff) + 'px,0)';
   if (!reduced && L > -W && L < 2.4 * W){
     const winTop = win.getBoundingClientRect().top;
     const доли = карточки.map(c =>
@@ -521,16 +552,16 @@ function render(y){
     карточки.forEach((c, i) => {
       const s = trail(доли[i]) * ГРУППА[i];
       сдвигГруппы.set(c, s);
-      c.style.transform = 'translate3d(0,' + s + 'px,0)';
+      c.style.transform = 'translate3d(0,' + px(s) + 'px,0)';
     });
     частиКарточек.forEach((части, i) => части.forEach((el, j) =>
       el.style.transform =
-        'translate3d(0,' + trail(доли[i]) * CARD_STEP * (j + 1) + 'px,0)'));
+        'translate3d(0,' + px(trail(доли[i]) * CARD_STEP * (j + 1)) + 'px,0)'));
   }
   svcRows.forEach((el, k) =>
-    el.style.transform = 'translate3d(0,' + lagRow(2, k) + 'px,0)');
+    el.style.transform = 'translate3d(0,' + px(lagRow(2, k)) + 'px,0)');
   formRows.forEach((el, k) =>
-    el.style.transform = 'translate3d(0,' + lagRow(3, k) + 'px,0)');
+    el.style.transform = 'translate3d(0,' + px(lagRow(3, k)) + 'px,0)');
   win.dataset.belt = Math.round(L) + ' / ' + p2.toFixed(2);
 }
 let smooth = 0;
@@ -619,7 +650,7 @@ const ЗЕРНО = { тайл: 512, пятна: 14, зерно: 16, волоко
     'float add=(1.-smoothstep(r*.25,r,seg(uv*k,m0*k,m1*k)))*live;' +
     'if(add>s){vec2 v=(m1-m0)*k;float l=length(v);dir=l>1e-5?(v/l)*.5+.5:vec2(.5);s=add;}' +
     'gl_FragColor=vec4(s,dir,1.);}';
-  const OUT = 'precision highp float;varying vec2 uv;uniform sampler2D tr;uniform float t;uniform vec2 res;uniform vec3 col;' +
+  const OUT = 'precision highp float;varying vec2 uv;uniform sampler2D tr;uniform vec2 res;uniform vec3 col;' +
     'float h(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}' +
     'void main(){float s=texture2D(tr,uv).r;float g=h(floor(uv*res));' +
     'float a=s*(.55+.45*g);gl_FragColor=vec4(col*a,a);}';
@@ -672,7 +703,7 @@ const ЗЕРНО = { тайл: 512, пятна: 14, зерно: 16, волоко
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     gl.bindTexture(gl.TEXTURE_2D, tex[cur]); gl.uniform1i(U(pOut, 'tr'), 0);
-    gl.uniform1f(U(pOut, 't'), now / 1000); gl.uniform2f(U(pOut, 'res'), W, H); gl.uniform3f(U(pOut, 'col'), ...ochre);
+    gl.uniform2f(U(pOut, 'res'), W, H); gl.uniform3f(U(pOut, 'col'), ...ochre);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     requestAnimationFrame(кадр);
   };
@@ -900,5 +931,27 @@ addEventListener('resize', () => {
 });
 (document.fonts ? document.fonts.ready : Promise.resolve())
   .then(() => setTimeout(набрать, reducedType ? 0 : НАБОР.дозапуска));
+</script>
+<script>
+(() => {
+  const chains = [
+    { trigger: document.querySelector('.svc'), items: [...document.querySelectorAll('.svc')], step: .4 },
+    { trigger: document.querySelector('.form-head') || document.querySelector('.form-grid .f'),
+      items: [...document.querySelectorAll('.form-grid .f')], step: .15 },
+  ].filter(c => c.trigger && c.items.length);
+  const play = c => c.items.forEach((el, i) => {
+    el.style.setProperty('--dl', i * c.step + 's');
+    el.classList.add('in');
+  });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { chains.forEach(c => c.items.forEach(el => el.classList.add('in'))); return; }
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (!e.isIntersecting && e.boundingClientRect.top > 0) continue;
+      play(chains.find(c => c.trigger === e.target));
+      io.unobserve(e.target);
+    }
+  }, { rootMargin: '0px 0px -75% 0px' });
+  chains.forEach(c => io.observe(c.trigger));
+})();
 </script>
 </html>

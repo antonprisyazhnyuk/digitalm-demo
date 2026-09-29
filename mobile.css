@@ -6,34 +6,29 @@ html{ font-size: calc(100vw / 22.5); }
   --gut:  1rem;        
   --pad:  1rem;        
   --cross: 0.5rem;     
-  --mm: .75rem;          
   --plate-h: 2rem;       
   --btn-size: 0.75rem;   
   --btn-h: 2.75rem;      
   --btn-pad: 1.25rem;    
   --plate-w: 14.75rem;   
   --bar: calc(100lvh - 100svh);
-  --menu-b: calc(var(--bar) + .5rem);
+  --menu-b: 0rem;       
+  --ui-inset: .5rem;    
 }
-.sheet{ bottom:auto; height:100lvh; }
+.sheet{ bottom:auto; height:100svh; }
 .menu{ bottom:var(--menu-b); }
 .menu-wrap{ bottom:calc(var(--menu-b) + var(--btn-h)); }
-.scale{ bottom:calc(var(--menu-b) - .25rem); }
 .window > .x.bl, .window > .x.br{ bottom:calc(var(--menu-b) - var(--cross) / 2); }   
-.logo{ top:.5rem; }
-.kicker{ left:auto; right:var(--inset); top:.5rem; width:6rem; text-align:right;
+.logo{ padding:calc(var(--ui-inset) - 1px); }   
+.kicker{ left:auto; right:var(--ui-inset); top:var(--ui-inset); width:6rem; text-align:right;
          font-size:.75rem; line-height:1rem; }
-.scale{ top:auto; bottom:var(--menu-b); right:var(--inset); background:none; padding-left:0; }
+.scale{ top:auto; bottom:0; right:0; }   
 .contact{ display:none; }
 .menu{ width:var(--plate-w); }
 .menu-wrap{ width:var(--plate-w); }
 .grain-hot{ display:none; }            
 .stage{ overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
-  scrollbar-width:none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 3rem, #000 3.75rem,
-                      #000 calc(100% - var(--menu-b) - 3.5rem), transparent calc(100% - var(--menu-b) - 2.75rem), transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0, transparent 3rem, #000 3.75rem,
-                      #000 calc(100% - var(--menu-b) - 3.5rem), transparent calc(100% - var(--menu-b) - 2.75rem), transparent 100%); }
+  scrollbar-width:none; }
 .stage::-webkit-scrollbar{ display:none; }
 .belt{ position:static; height:100%; transform:none !important; will-change:auto; }   
 .scene.scene-hero{ height:100%;   
@@ -84,7 +79,7 @@ html{ font-size: calc(100vw / 22.5); }
 }
 .menu-contacts{ display:flex; flex-direction:column; gap:1rem; margin:0; padding:1.25rem;
   background-image: repeating-linear-gradient(to right, var(--terra) 0 10px, transparent 10px 13px);
-  background-size:100% 1px; background-repeat:no-repeat; background-position:bottom left; }
+  background-size:100% .5px; background-repeat:no-repeat; background-position:bottom left; }   
 .menu-panel a:last-of-type::after{ z-index:2; }
 .menu-contacts div{ display:flex; flex-direction:column; gap:.25rem; }
 .menu-contacts dt{ font-size:var(--btn-size); line-height:1rem; letter-spacing:.08em; text-transform:uppercase; color:var(--mark-dark); }
