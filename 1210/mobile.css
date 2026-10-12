@@ -64,6 +64,11 @@ html{ font-size: calc(100vw / 22.5); }
 .f.tall{ height:6.75rem; }                             
 .f textarea{ top:2.25rem; bottom:.75rem; font-size:1.25rem; line-height:1.5rem; }
 .form-send{ height:var(--btn-h); }                     
+.form-grid .f, .form-grid .f.tall{ height:4rem; }                                   
+.form-grid .f-label, .form-grid .f.tall .f-file{ top:.5rem; }
+.form-grid .f input{ bottom:.5rem; }
+.form-grid .f textarea{ top:1.75rem; bottom:.5rem; line-height:1.75rem; padding:0; scrollbar-width:none; }   
+.form-grid .f textarea::-webkit-scrollbar{ display:none; }
 .form-info{ position:static; grid-column:1 / -1; grid-template-columns:1fr 1fr; column-gap:var(--gut);
             row-gap:1rem; margin:1.5rem 0 7rem; }
 .form-info div:nth-child(2){ grid-column:1 / -1; order:3; }
@@ -89,7 +94,7 @@ html{ font-size: calc(100vw / 22.5); }
 .menu-contacts a{ color:inherit; text-decoration:none; display:inline; height:auto; padding:0; overflow:visible;
                   font-size:inherit; letter-spacing:inherit; text-transform:none; }
 .menu-panel .menu-contacts a::before, .menu-panel .menu-contacts a::after{ content:none; }   
-.menu-contacts a:active, .menu-contacts .lnk:active{ color:var(--terra); }
+.menu-contacts a:active{ color:var(--terra); }
 .scene-cases{ display:block; padding:4rem 0 0; }
 .cases-head{ display:none; }
 .cases-tape{ margin:0; overflow-x:auto; overflow-y:hidden; padding-bottom:2rem;   
