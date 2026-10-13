@@ -517,7 +517,7 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-title .r-rubric{ position:absolute; left:var(--c4); top:14.25rem; margin:0;
   font-size:1.25rem; line-height:1.5rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); }
 .r-title .r-name{ position:absolute; left:var(--c4); top:0; height:43rem; width:87rem; margin:0; display:flex; align-items:flex-end;
-  font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:7.5rem; line-height:7.5rem; }      
+  font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:7.5rem; line-height:8.75rem; }      
 .r-title .r-lead{ position:absolute; left:var(--c4); top:45.5rem; width:57rem; margin:0;
   font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:2rem; line-height:2.625rem; letter-spacing:-.02em; }   
 .r-title .r-date{ position:absolute; left:var(--c4); top:59.25rem; margin:0;
@@ -587,7 +587,7 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-adepts .r-head{ position:absolute; left:var(--c4); top:7.75rem; width:57rem; }
 .r-adepts .r-ad-prof{ position:absolute; left:var(--c4); top:13.25rem; width:67rem; margin:0;
   font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.25rem; line-height:2rem; letter-spacing:-.02em; }
-.r-sc-grid{ position:absolute; left:var(--c4); top:23.5rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem);
+.r-sc-grid{ position:absolute; left:var(--c4); top:15.5rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem);
   column-gap:3rem; row-gap:2rem; }
 .r-sc{ border-top:1px solid var(--ink); padding-top:.75rem; }
 .r-sc-n{ margin:0; font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
@@ -637,6 +637,235 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-lg-v{ margin:.25rem 0 1.25rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.75rem; letter-spacing:-.02em; }
 .r-logic .r-lg-sum{ position:absolute; left:var(--c4); top:47rem; width:67rem; margin:0; border-top:1px solid var(--terra); padding-top:1.5rem;
   font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.75rem; line-height:2.5rem; letter-spacing:-.02em; }
+.r-rdc .r-head-s{ text-transform:none; letter-spacing:.02em; }
+.r-rdc .r-table td, .r-rdc .r-table tbody th{ padding:.5rem .5rem; }
+.r-rdc .r-table thead th{ padding:.625rem .5rem; }
+.r-rdc .q{ color:var(--bark); opacity:.7; }
+.r-rdc tr.sum th, .r-rdc tr.sum td{ border-top:1px solid var(--ink); background:var(--g2); }
+.r-rdc-a th:nth-child(1){ width:11rem; }
+.r-rdc-a .t-avg{ border-left:1px solid var(--ink); }
+.r-rdc-a .t-sum{ width:7.5rem; }
+.r-rdc-a td .q{ display:block; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8125rem; line-height:1.25rem; }
+.r-rdc-a td{ font-size:.9375rem; }
+.r-rdc-key{ position:absolute; left:var(--c4); top:47rem; margin:0; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.8125rem; line-height:1.25rem; letter-spacing:.06em; text-transform:uppercase; color:var(--mark-dark); }
+.r-rdc-key span{ color:var(--ink); text-transform:none; margin-right:.25rem; }
+.r-rdc-key span.q{ margin-left:1.5rem; color:var(--bark); opacity:1; }
+.r-rdc-b thead th.grp{ text-align:center; border-bottom:1px solid var(--bark); }
+.r-rdc-b thead tr + tr th{ font-size:.6875rem; padding-top:.375rem; }
+.r-rdc-b td.q{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.875rem; }
+.r-rdc-b td.q + td{ border-left:1px solid var(--ash); }
+.r-rdc-b td.sum, .r-rdc-b th.sum{ background:var(--g2); }
+.r-rdc-b thead th.sum{ background:var(--ink); }
+.r-rdc-b tbody th{ width:10rem; white-space:nowrap; }
+.r-rdc-b thead tr:first-child th:nth-child(6){ width:8rem; }
+.r-rdc-b td, .r-rdc-b tbody th{ padding:.3125rem .5rem; }
+.r-rdc-b tr.avg th, .r-rdc-b tr.avg td{ border-top:1px solid var(--ink); }
+.r-rdc-b tr.cost td{ font-family:"Viaoda Libre",Georgia,serif; font-size:1.25rem; }
+.r-div-bg{ position:absolute; left:78rem; right:0; top:0; bottom:0; margin:0; overflow:hidden; }
+.r-div-bg img{ width:100%; height:100%; object-fit:cover; display:block; }
+.r-div:has(.r-div-bg) .r-div-t{ width:44rem; }   
+.r-div:has(.r-div-bg) .r-div-s{ width:40rem; }
+.slide .r-head-s{ position:absolute; left:var(--c4); top:13rem; margin:0; }
+.slide h3{ font-weight:400; }
+.r-title .r-logo{ position:absolute; left:var(--c4); top:5.5rem; height:6.5rem; color:var(--terra); }   
+.r-title .r-logo svg{ height:100%; width:auto; display:block; }
+.r-hello .r-say{ position:absolute; left:var(--c4); top:0; height:43rem; width:80rem; margin:0; display:flex; align-items:flex-end;
+  font-family:"Viaoda Libre",Georgia,serif; font-size:5.5rem; line-height:6.25rem; }
+.r-skills .r-head, .r-prod .r-head, .r-team .r-head, .r-logos .r-head, .r-letters .r-head, .r-toc .r-head, .r-sw .r-head, .r-day .r-head,
+.r-video .r-head, .r-months .r-head, .r-donuts .r-head, .r-funnel .r-head, .r-shot .r-head, .r-fraud .r-head, .r-cases .r-head{
+  position:absolute; left:var(--c4); top:7.75rem; width:87rem; }
+.r-sk-rows{ position:absolute; left:var(--c4); top:17rem; width:87rem; }
+.r-sk{ display:grid; grid-template-columns:3rem 54rem 30rem; align-items:start; padding:1.5rem 0 2rem; border-top:1px solid var(--ink); }
+.r-sk .r-n{ font-size:1rem; line-height:1.5rem; color:var(--terra); padding-top:1rem; }
+.r-sk h3{ margin:0; font-family:"Viaoda Libre",Georgia,serif; font-size:3.5rem; line-height:3.75rem; }
+.r-sk ul{ list-style:none; padding:.75rem 0 0; margin:0; font-size:1rem; line-height:1.625rem; letter-spacing:.06em; text-transform:uppercase; }
+.r-pr-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
+.r-pr{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-pr .r-n{ font-size:1rem; line-height:1.5rem; color:var(--terra); }
+.r-pr h3{ margin:1.5rem 0 2rem; font-family:"Viaoda Libre",Georgia,serif; font-size:3.5rem; line-height:3.75rem; }
+.r-pr p{ margin:0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.375rem; line-height:2.125rem; letter-spacing:-.02em; }
+.r-tm-row{ position:absolute; left:var(--c4); top:14.125rem; display:grid; grid-template-columns:repeat(5, 15rem); column-gap:3rem; }
+.r-tm{ margin:0; }
+.r-tm img{ width:15rem; height:15rem; object-fit:cover; display:block; filter:grayscale(1); background:var(--mark-dark); }
+.r-tm figcaption{ display:flex; flex-direction:column; }
+.r-tm span{ height:1.5rem; margin-top:.5rem; display:flex; align-items:flex-end; white-space:nowrap;
+  font-size:1rem; line-height:1.25rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); }
+.r-tm b{ margin-top:.5625rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2rem; }
+.r-tm-list{ position:absolute; left:var(--c4); top:39rem; width:87rem; list-style:none; padding:0; margin:0;
+  display:grid; grid-template-columns:repeat(3, 33rem); column-gap:3rem; grid-auto-rows:5rem; }
+.r-tm-list li{ display:flex; flex-direction:column; gap:.375rem; padding-top:.5rem; }
+.r-tm-list b{ font-family:"IBM Plex Sans",system-ui,sans-serif; font-weight:400; font-size:1.375rem; line-height:1.75rem; letter-spacing:-.02em; }
+.r-tm-list span{ font-size:1rem; line-height:1.5rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mark-dark); }
+.r-lo-cols{ position:absolute; left:var(--c4); top:15.5rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
+.r-lo-col{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-lo-grid{ display:grid; grid-template-columns:repeat(var(--c), 1fr); gap:.5rem; }
+.r-lo-grid img{ width:100%; height:5rem; object-fit:contain; padding:.625rem; box-sizing:border-box; background:#fff;
+  filter:grayscale(1) contrast(1.05); mix-blend-mode:multiply; }
+.r-logos-cls .r-lo-grid img{ height:4rem; padding:.5rem; }
+.r-lt-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:grid; grid-template-columns:repeat(4, 1fr); column-gap:1.5rem; align-items:center; }
+.r-lt-row figure{ margin:0; height:100%; display:flex; align-items:center; justify-content:center; }
+.r-lt-row img{ max-width:100%; max-height:100%; display:block; box-shadow:0 .125rem 1.5rem rgba(33,30,27,.12); }
+.r-toc-list{ position:absolute; left:var(--c4); top:17rem; width:87rem; list-style:none; padding:0; margin:0; }
+.r-toc-list li{ display:grid; grid-template-columns:3rem 1fr auto; align-items:baseline; padding:1rem 0 1.125rem; border-top:1px solid var(--ash); }
+.r-toc-list li:first-child{ border-top-color:var(--ink); }
+.r-toc-list .r-n{ font-size:1rem; color:var(--terra); }
+.r-toc-list b{ font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:3rem; line-height:3.25rem; }
+.r-toc-list i{ font-style:normal; font-size:1rem; letter-spacing:.08em; color:var(--bark); }
+.r-sw .r-sw-text{ position:absolute; left:var(--c4); top:15.5rem; width:57rem; }
+.r-sw .r-sw-text .r-p{ font-size:1.25rem; line-height:2rem; }
+.r-figs{ position:absolute; left:91.5rem; top:15.5rem; width:27rem; margin:0; }
+.r-figs div{ border-top:1px solid var(--ink); padding:.75rem 0 1.75rem; }
+.r-figs dt{ font-family:"Viaoda Libre",Georgia,serif; font-size:4.5rem; line-height:4.75rem; color:var(--terra); }
+.r-figs dd{ margin:.25rem 0 0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; }
+.r-sw .r-src{ position:absolute; left:var(--c4); top:59.75rem; margin:0; font-size:.8125rem; line-height:1.25rem; color:var(--bark); }
+.r-day-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; list-style:none; padding:0; margin:0;
+  display:grid; grid-template-columns:repeat(5, 1fr); column-gap:1.5rem; }
+.r-day-row > li{ position:relative; border-top:1px solid var(--ink); padding-top:1.25rem; }
+.r-day-row > li::before{ content:""; position:absolute; left:0; top:-.375rem; width:.75rem; height:.75rem; border-radius:50%; background:var(--terra); }
+.r-day-row .r-n{ font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
+.r-day-row b{ display:block; margin:.5rem 0 1rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2.25rem; min-height:4.5rem; }
+.r-day-row p{ margin:0 0 .75rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--bark); }
+.r-day-row ul{ list-style:none; padding:0; margin:0; }
+.r-day-row ul li{ position:relative; padding:.375rem 0 .375rem 1.25rem; border-top:1px solid var(--ash);
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; letter-spacing:-.02em; }
+.r-day-row ul li::before{ content:"—"; position:absolute; left:0; color:var(--mark-dark); }
+.r-vd-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:flex; gap:3rem; justify-content:flex-start; }
+.r-vd-row video{ height:100%; width:auto; display:block; background:var(--g1); object-fit:cover; }
+.r-mo-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
+.r-mo{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-mo .r-n{ font-size:1rem; color:var(--terra); }
+.r-mo h3{ margin:.5rem 0 1.25rem; font-family:"Viaoda Libre",Georgia,serif; font-size:3rem; line-height:3.25rem; }
+.r-mo .r-dash{ margin:0; font-size:1rem; line-height:1.5rem; }
+.r-mo .r-dash li{ padding-top:.375rem; padding-bottom:.375rem; border-top:1px solid var(--ash); }
+.r-dn-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
+.r-dn{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-dn h3{ margin:0; font-family:"Viaoda Libre",Georgia,serif; font-size:2.25rem; line-height:2.5rem; }
+.r-dn-plot{ width:27rem; height:20.5rem; }
+.r-dn dl{ margin:0; }
+.r-dn dl div{ display:flex; justify-content:space-between; align-items:baseline; padding:.375rem 0; border-top:1px solid var(--ash); }
+.r-dn dt{ font-size:.875rem; letter-spacing:.08em; text-transform:uppercase; color:var(--bark); }
+.r-dn dd{ margin:0; font-family:"Viaoda Libre",Georgia,serif; font-size:1.75rem; line-height:2rem; font-variant-numeric:tabular-nums; }
+.r-dn-key{ position:absolute; left:var(--c4); top:59.5rem; width:87rem; list-style:none; padding:0; margin:0; display:flex; gap:2.25rem;
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; }
+.r-dn-key li{ display:flex; align-items:center; gap:.5rem; }
+.r-dn-key i{ width:.875rem; height:.875rem; display:inline-block; }
+.r-fn-text{ position:absolute; left:var(--c4); top:19.25rem; width:27rem; }
+.r-fn-text .r-p{ font-size:1.25rem; line-height:2rem; }
+.r-fn{ position:absolute; left:60.75rem; top:19.25rem; width:57rem; display:flex; flex-direction:column; align-items:center; }
+.r-fn-st{ width:var(--w); box-sizing:border-box; padding:1.25rem 1.5rem; background:var(--g3); display:flex; flex-direction:column; align-items:center; }
+.r-fn-st b{ font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:4.5rem; line-height:4.75rem; }
+.r-fn-st span{ font-size:.875rem; letter-spacing:.08em; text-transform:uppercase; }
+.r-fn-st + .r-fn-cr + .r-fn-st{ background:var(--g4); }
+.r-fn .r-fn-st.hot{ background:var(--terra); color:var(--paper); }
+.r-fn-cr{ margin:0; padding:.5rem 0; font-size:1rem; line-height:1.5rem; letter-spacing:.08em; color:var(--bark); }
+.r-fn-cr::before{ content:"↓ "; color:var(--terra); }
+.r-fn-all{ margin:1.25rem 0 0; font-size:1rem; letter-spacing:.06em; text-transform:uppercase; color:var(--terra); }
+.r-sh-img{ margin:0; }
+.r-sh-img img{ display:block; width:100%; height:auto; box-shadow:0 .125rem 1.5rem rgba(33,30,27,.12); }
+.r-shot-wide .r-sh-img{ position:absolute; left:var(--c4); top:15.5rem; width:87rem; }
+.r-shot-wide .r-sh-text{ position:absolute; left:var(--c4); top:46rem; width:87rem; display:grid; grid-template-columns:42rem 42rem; column-gap:3rem; }
+.r-shot-side .r-sh-text{ position:absolute; left:var(--c4); top:19.25rem; width:27rem; }
+.r-shot-side .r-sh-img{ position:absolute; left:60.75rem; top:15.5rem; width:57rem; }
+.r-shot .r-p{ font-size:1.25rem; line-height:2rem; }
+.r-fr-pair, .r-cs-pair{ position:absolute; left:var(--c4); top:17rem; width:87rem; display:grid; grid-template-columns:42rem 42rem; column-gap:3rem; }
+.r-fr-pair > div, .r-cs{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-fr-pair h3, .r-cs h3{ margin:.5rem 0 1.5rem; font-family:"Viaoda Libre",Georgia,serif; font-size:2.5rem; line-height:2.75rem; }
+.r-fr-pair .r-p, .r-cs .r-p{ font-size:1.25rem; line-height:2rem; }
+.slide .r-fig{ margin:0 0 1.5rem; display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; }
+.slide .r-fig b{ font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:5rem; line-height:5rem; color:var(--terra); }
+.slide .r-fig span{ font-size:1rem; letter-spacing:.06em; text-transform:uppercase; color:var(--bark); }
+.r-cs .r-n{ font-size:1rem; color:var(--terra); }
+.r-lock{ white-space:nowrap; }
+.r-lock .r-lock-m{ height:1.229em; width:auto; vertical-align:-.245em; margin-left:.246em; display:inline-block; }
+.slide{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "dlig" 0, "clig" 0, "hlig" 0; }
+.r-sc-t{ min-height:4rem; display:flex; align-items:flex-end; }
+.r-sc-prof p:last-child{ margin:.5rem 0 0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.25rem; line-height:2rem; letter-spacing:-.02em; }
+.r-cols{ position:absolute; left:var(--c4); top:15.5rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; align-items:start; }
+.r-col{ border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-col-2{ grid-column:span 2; }
+.r-col .r-k{ margin-bottom:1rem; }
+.r-col .r-k-next{ margin-top:1.5rem; }
+.r-col .r-p{ margin-bottom:1rem; }
+.r-col .r-dash{ margin:0 0 1rem; }
+.r-dash-b li{ margin-bottom:.75rem; }
+.r-dash-b b{ font-weight:500; }
+.r-aud{ top:38.5rem; }   
+.r-aud th:nth-child(1){ width:6rem; } .r-aud th:nth-child(2){ width:19rem; } .r-aud th:nth-child(3){ width:10rem; } .r-aud th:nth-child(4){ width:17rem; }
+.r-cols .r-p, .r-cols .r-dash{ font-size:1.25rem; line-height:2rem; }   
+.r-cols .r-dash li{ margin-bottom:.25rem; }
+.r-cols .r-dash-b li{ margin-bottom:.75rem; }
+.r-table td, .r-table tbody th{ transition:box-shadow .12s ease; }
+.r-table .t-hl, .r-table .t-hl-c{ box-shadow:inset 0 0 0 100rem rgba(224,98,44,.07); }
+.r-table .t-hl.t-hl-c{ box-shadow:inset 0 0 0 100rem rgba(224,98,44,.12); }
+.r-table td.t-hl-x{ box-shadow:inset 0 0 0 100rem rgba(224,98,44,.16), inset 0 0 0 1px var(--ink); }
+.r-table tbody td{ cursor:default; }
+.t-tip{ display:none; position:fixed; z-index:50; pointer-events:none; max-width:26rem; background:var(--paper); border:1px solid var(--ink);
+  padding:1.5rem 2rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.375rem; color:var(--ink); }   
+.t-tip b{ display:block; font-weight:400; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.75rem; line-height:1rem;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
+.t-tip i{ display:block; font-style:normal; color:#38362D; margin-top:.25rem; }
+.t-tip span{ display:block; margin-top:.75rem; font-family:"Viaoda Libre",Georgia,serif; font-size:2.25rem; line-height:2.375rem; }   
+.r-ad .r-head{ position:absolute; left:var(--c4); top:7.75rem; width:87rem; }
+.r-ad .r-ad-lead{ position:absolute; left:var(--c4); top:13.25rem; width:72rem; margin:0;
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.375rem; line-height:2.125rem; letter-spacing:-.02em; }
+.r-ar-rows{ position:absolute; left:var(--c4); top:23rem; width:87rem; }
+.r-ar{ display:grid; grid-template-columns:3rem 24rem 57rem; column-gap:0; align-items:start; padding:1rem 0 .75rem; border-top:1px solid var(--ash); }
+.r-ar:first-child{ border-top-color:var(--ink); }
+.r-ar .r-n{ font-size:1rem; line-height:2rem; color:var(--terra); }
+.r-ar h3{ margin:0; padding-right:2rem; font-family:"Viaoda Libre",Georgia,serif; font-size:1.75rem; line-height:2rem; }
+.r-ar .r-dash{ margin:0; columns:2; column-gap:3rem; font-size:1rem; line-height:1.5rem; }
+.r-ar .r-dash li{ break-inside:avoid; margin-bottom:.25rem; }
+.r-ab-l{ position:absolute; left:var(--c4); top:15.5rem; width:27rem; border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-ab-prof{ margin:0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.5rem; line-height:2.25rem; letter-spacing:-.02em; }
+.r-ab-list{ position:absolute; left:60.75rem; top:15.5rem; width:57rem; list-style:none; padding:0; margin:0; }
+.r-ab-list li{ border-top:1px solid var(--ash); padding:.75rem 0 1rem; }
+.r-ab-list li:first-child{ border-top-color:var(--ink); }
+.r-ab-list .r-n{ font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
+.r-ab-list h3{ margin:.25rem 0 .375rem; font-family:"Viaoda Libre",Georgia,serif; font-size:1.75rem; line-height:2rem; }
+.r-ab-list p{ margin:0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; letter-spacing:-.01em; color:#38362D; }
+.r-ac-row{ position:absolute; left:var(--c4); top:23rem; display:grid; grid-template-columns:repeat(5, 15rem); column-gap:3rem; }
+.r-ac{ border-top:1px solid var(--ink); padding-top:.5rem; }
+.r-ac-n{ display:block; font-family:"Viaoda Libre",Georgia,serif; font-size:4.5rem; line-height:4.5rem; color:var(--g4); }
+.r-ac h3{ margin:.5rem 0 1rem; min-height:6rem; font-family:"Viaoda Libre",Georgia,serif; font-size:1.75rem; line-height:2rem; }
+.r-ac .r-dash{ margin:0; font-size:1rem; line-height:1.5rem; }
+.r-ac .r-dash li{ margin-bottom:.5rem; }
+.r-ad-mix .r-ar-rows{ left:60.75rem; top:15.5rem; width:57rem; }
+.r-ad-mix .r-ar{ grid-template-columns:3rem 22rem 32rem; padding:.875rem 0 .625rem; }
+.r-ad-mix .r-ar .r-dash{ columns:1; }
+.r-ad-mix .r-ar .r-dash li{ margin-bottom:.125rem; }
+.r-ad .r-ad-prof{ position:absolute; left:var(--c4); top:13.5rem; width:87rem; border-top:1px solid var(--ink); padding-top:.75rem; }
+.r-ad .r-ad-prof p:last-child{ margin:0; max-width:80rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.5rem; line-height:2.25rem; letter-spacing:-.02em; }
+.r-ad-a .r-ar-rows{ top:24.75rem; }   
+.r-ad-a .r-ar:first-child{ border-top-color:var(--ash); }
+.r-ad-final .r-ar-rows{ left:60.75rem; top:15.5rem; width:57rem; }
+.r-ad-final .r-ar{ grid-template-columns:2.5rem 16rem 38.5rem; padding:.75rem 0 .5rem; }
+.r-ad-final .r-ar:first-child{ border-top-color:var(--ink); }
+.r-ad-final .r-ar h3{ font-size:1.5rem; line-height:1.75rem; padding-right:1.5rem; }
+.r-ad-final .r-ar .r-dash{ column-gap:2rem; font-size:.9375rem; line-height:1.375rem; }
+.r-ad-final .r-ar .r-n{ line-height:1.75rem; }
+.r-toc-list li{ cursor:pointer; transition:color .2s ease; }
+.r-toc-list li b{ transition:color .2s ease; }
+.r-toc-list li:hover b, .r-toc-list li:focus-visible b{ color:var(--terra); }
+.r-toc-list li i::after{ content:"→"; display:inline-block; margin-left:.75rem; opacity:0; transform:translateX(-.5rem); transition:opacity .2s ease, transform .2s ease; color:var(--terra); }
+.r-toc-list li:hover i::after, .r-toc-list li:focus-visible i::after{ opacity:1; transform:none; }
+.r-toc-list li:focus-visible{ outline:none; }
+.r-ai .r-vals{ align-items:stretch; }
+.r-ai .r-vals li{ border-top:0; background:var(--g2); padding:1.25rem 1.5rem 1.5rem; gap:.5rem; }
+.r-ai .r-vals b{ color:var(--ink); font-size:1.75rem; line-height:2rem; }
+.r-rdc .r-table{ left:var(--c4); width:calc(100% - var(--c4) - .75rem); top:17.5rem; }      
+.r-rdc-a th:nth-child(1){ width:12rem; }
+.r-rdc-a td{ font-size:1.0625rem; }
+.r-rdc-a td, .r-rdc-a tbody th{ padding:.875rem .75rem; font-size:1.0625rem; }
+.r-rdc-a td .q{ font-size:.875rem; line-height:1.5rem; }
+.r-rdc-a .t-sum{ width:9rem; }
+.r-rdc .r-table thead th{ padding:.75rem .75rem; }
+.r-rdc-key{ left:var(--c4); top:46.5rem; }   
+.r-rdc-b td, .r-rdc-b tbody th{ padding:.4375rem .75rem; font-size:1.0625rem; }
+.r-rdc-b tbody th{ width:12rem; }
+.r-rdc .r-rdc-a td, .r-rdc .r-rdc-a tbody th{ padding:1.375rem .75rem; }   
+.r-rdc .r-rdc-a thead th{ padding:1rem .75rem; }
+.r-rdc-key{ top:56rem; }
 @media (max-width: 767px){
 html{ font-size: calc(100vw / 22.5); }
 :root{
@@ -777,18 +1006,109 @@ html{ font-size: calc(100vw / 22.5); }
 </style>
 <div class="sheet">
   <div class="window paper" id="win">
-    <section class="slide r-title on" data-kicker="salestech agency" data-num="01 / 19" data-title="Титул">
-      <p class="r-rubric">РСТИ · ЖК «Кинопарк»</p>
+    <section class="slide r-title on" data-kicker="salestech agency" data-num="01 / 39" data-title="Титул">
+      <div class="r-logo" role="img" aria-label="РСТИ"><svg viewBox="25.6 15.5 67.8 67.8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M59.5,18.7c-16.9,0-30.7,13.8-30.7,30.7s13.8,30.7,30.7,30.7s30.7-13.8,30.7-30.7S76.4,18.7,59.5,18.7M59.5,83.3c-18.7,0-33.9-15.2-33.9-33.9s15.2-33.9,33.9-33.9s33.9,15.2,33.9,33.9S78.2,83.3,59.5,83.3" fill="currentColor"/><path d="M40.5,48.8h-2v-2.9h2c0.8,0,1.4,0.7,1.4,1.5C41.9,48.1,41.3,48.8,40.5,48.8 M40.8,42.9h-5.5v12.9h3.2v-4.1 h2.3c2.4,0,4.4-2,4.4-4.4S43.2,42.9,40.8,42.9" fill="currentColor"/><path d="M55.8,51.9c-0.7,0.8-1.6,1.2-2.7,1.2c-2,0-3.7-1.7-3.7-3.7c0-2.1,1.6-3.7,3.7-3.7c1.1,0,2.1,0.5,2.7,1.2l2.4-2.2c-1.3-1.4-3.1-2.3-5.1-2.3c-3.8,0-6.9,3.1-6.9,6.9c0,3.8,3.1,6.9,6.9,6.9c2,0,3.9-0.9,5.1-2.3L55.8,51.9z" fill="currentColor"/><polygon points="69.8,42.9 59.3,42.9 59.3,46 62.9,46 62.9,55.8 66.2,55.8 66.2,46 69.8,46" fill="currentColor"/><polygon points="81.9,42.9 74.8,50 74.8,42.9 71.6,42.9 71.6,55.8 73.3,55.8 80.6,48.7 80.6,55.8 83.8,55.8 83.8,42.9" fill="currentColor"/></svg></div>
       <h1 class="r-name">Стратегия продвижения ЖК&nbsp;«Кинопарк»</h1>
-      <p class="r-lead">Рынок, аудитория, стратегия и&nbsp;медиатактика на&nbsp;октябрь&nbsp;— декабрь</p>
+      <p class="r-lead">Рынок, аудитория, стратегия и&nbsp;медиатактика на&nbsp;октябрь&nbsp;—&nbsp;декабрь</p>
       <p class="r-date">Санкт-Петербург · 2026</p>
     </section>
-    <section class="slide r-div" data-kicker="02 · сводка по рынку" data-num="02 / 19" data-title="Сводка по рынку · обложка">
-      <p class="r-num">02</p>
-      <h2 class="r-div-t">Сводка по&nbsp;рынку</h2>
-      <p class="r-div-s">Продажи конкурентов, интерес к&nbsp;покупке недвижимости в&nbsp;Петербурге, семейная ипотека и&nbsp;аудитория</p>
+    <section class="slide r-hello" data-kicker="об агентстве" data-num="02 / 39" data-title="Привет">
+      <p class="r-say">Привет! Мы Digital&nbsp;M.<br>Просто и&nbsp;быстро о&nbsp;том, кто мы и&nbsp;что умеем.</p>
     </section>
-    <section class="slide r-wide" data-kicker="02 · сводка по рынку" data-num="03 / 19" data-title="Конкуренты">
+    <section class="slide r-skills" data-kicker="об агентстве" data-num="03 / 39" data-title="Что умеем">
+      <h2 class="r-head">Что умеем</h2>
+      <div class="r-sk-rows">
+        <div class="r-sk"><span class="r-n">01</span><h3>Brandformance</h3><ul><li>performance-маркетинг</li><li>медийная реклама</li><li>контекстная реклама</li></ul></div>
+        <div class="r-sk"><span class="r-n">02</span><h3>Social Media</h3><ul><li>инфлюэнс-маркетинг</li><li>SMM-стратегии</li><li>контент и&nbsp;продвижение</li><li>посевы в&nbsp;пабликах</li><li>спецпроекты</li></ul></div>
+        <div class="r-sk"><span class="r-n">03</span><h3>Promo</h3><ul><li>чековые промо под ключ</li><li>креативные идеи</li><li>механики и&nbsp;промо-сайты</li><li>размещение и&nbsp;модерация</li></ul></div>
+      </div>
+    </section>
+    <section class="slide r-prod" data-kicker="об агентстве" data-num="04 / 39" data-title="Продукты">
+      <h2 class="r-head">Продукты Digital&nbsp;M</h2>
+      <div class="r-pr-row">
+        <div class="r-pr"><span class="r-n">01</span><h3 class="r-lock">Product<svg class="r-lock-m" viewBox="2610 224 1064 1120" aria-hidden="true"><path d="M3674 224H2610V1344H3674V224Z" fill="#E0622C"/><path d="M2834 448L3142 946.355L3065.06 1070.94L2988.04 946.355V1120H2834V448Z" fill="#211E1B"/><path d="M3450 448L3142 946.355L3219 1070.94L3295.99 946.355V1120H3450V448Z" fill="#211E1B"/></svg></h3><p>Собственная разработка. Система прослушки и&nbsp;анализа звонков. ИИ-отчёты.</p></div>
+        <div class="r-pr"><span class="r-n">02</span><h3 class="r-lock">Dashboard<svg class="r-lock-m" viewBox="2610 224 1064 1120" aria-hidden="true"><path d="M3674 224H2610V1344H3674V224Z" fill="#E0622C"/><path d="M2834 448L3142 946.355L3065.06 1070.94L2988.04 946.355V1120H2834V448Z" fill="#211E1B"/><path d="M3450 448L3142 946.355L3219 1070.94L3295.99 946.355V1120H3450V448Z" fill="#211E1B"/></svg></h3><p>Интерактивный отчёт о&nbsp;результатах рекламной кампании. Обновляется раз в&nbsp;сутки.</p></div>
+        <div class="r-pr"><span class="r-n">03</span><h3 class="r-lock">Research<svg class="r-lock-m" viewBox="2610 224 1064 1120" aria-hidden="true"><path d="M3674 224H2610V1344H3674V224Z" fill="#E0622C"/><path d="M2834 448L3142 946.355L3065.06 1070.94L2988.04 946.355V1120H2834V448Z" fill="#211E1B"/><path d="M3450 448L3142 946.355L3219 1070.94L3295.99 946.355V1120H3450V448Z" fill="#211E1B"/></svg></h3><p>Аналитика баннеров с&nbsp;помощью ИИ. Аудит рекламных кампаний по&nbsp;всей воронке продаж.</p></div>
+      </div>
+    </section>
+    <section class="slide r-team" data-kicker="об агентстве" data-num="05 / 39" data-title="Команда">
+      <h2 class="r-head">Команда</h2>
+      <div class="r-tm-row">
+        <figure class="r-tm"><img src="rsti/img/team-1.jpg" alt=""><figcaption><span>CEO</span><b>Марина<br>Зрилова</b></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-2.jpg" alt=""><figcaption><span>директор по&nbsp;развитию</span><b>Анастасия<br>Шелехова</b></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-3.jpg" alt=""><figcaption><span>медиадиректор</span><b>Анна<br>Стец</b></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-4.jpg" alt=""><figcaption><span>performance-директор</span><b>Варвара<br>Негробова</b></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-5.jpg" alt=""><figcaption><span>аккаунт-менеджер</span><b>Ксения<br>Брылёва</b></figcaption></figure>
+      </div>
+      <ul class="r-tm-list">
+        <li><b>Юлия Шагарова</b><span>медиапланер</span></li>
+        <li><b>Семён Бобер</b><span>контекстный специалист</span></li>
+        <li><b>Александра Лещёва</b><span>ИИ-специалист</span></li>
+        <li><b>Анастасия Цыганкова</b><span>дизайнер</span></li>
+        <li><b>Марк Лазарев</b><span>специалист по&nbsp;фидам</span></li>
+        <li><b>Ксения Самсонова</b><span>арбитраж звонков</span></li>
+      </ul>
+    </section>
+    <section class="slide r-logos" data-kicker="об агентстве" data-num="06 / 39" data-title="Опыт в недвижимости">
+      <h2 class="r-head">Опыт команды в&nbsp;недвижимости</h2>
+      <div class="r-lo-cols">
+        <div class="r-lo-col"><p class="r-k">Москва и&nbsp;МО</p><div class="r-lo-grid" style="--c:2"><img src="rsti/img/logo/6-msk-01.png" alt=""><img src="rsti/img/logo/6-msk-02.png" alt=""><img src="rsti/img/logo/6-msk-03.png" alt=""><img src="rsti/img/logo/6-msk-04.png" alt=""><img src="rsti/img/logo/6-msk-05.png" alt=""><img src="rsti/img/logo/6-msk-06.png" alt=""><img src="rsti/img/logo/6-msk-07.png" alt=""><img src="rsti/img/logo/6-msk-08.png" alt=""></div></div>
+        <div class="r-lo-col"><p class="r-k">Петербург и&nbsp;ЛО</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/6-spb-01.png" alt=""><img src="rsti/img/logo/6-spb-02.png" alt=""><img src="rsti/img/logo/6-spb-03.png" alt=""><img src="rsti/img/logo/6-spb-04.png" alt=""><img src="rsti/img/logo/6-spb-05.png" alt=""><img src="rsti/img/logo/6-spb-06.png" alt=""><img src="rsti/img/logo/6-spb-07.png" alt=""><img src="rsti/img/logo/6-spb-08.png" alt=""><img src="rsti/img/logo/6-spb-09.png" alt=""><img src="rsti/img/logo/6-spb-10.png" alt=""><img src="rsti/img/logo/6-spb-11.png" alt=""><img src="rsti/img/logo/6-spb-12.png" alt=""><img src="rsti/img/logo/6-spb-13.png" alt=""><img src="rsti/img/logo/6-spb-14.png" alt=""><img src="rsti/img/logo/6-spb-15.png" alt=""></div></div>
+        <div class="r-lo-col"><p class="r-k">Регионы</p><div class="r-lo-grid" style="--c:2"><img src="rsti/img/logo/6-reg-01.png" alt=""><img src="rsti/img/logo/6-reg-02.png" alt=""><img src="rsti/img/logo/6-reg-03.png" alt=""><img src="rsti/img/logo/6-reg-04.png" alt=""><img src="rsti/img/logo/6-reg-05.png" alt=""><img src="rsti/img/logo/6-reg-06.png" alt=""></div></div>
+      </div>
+    </section>
+    <section class="slide r-logos r-logos-cls" data-kicker="об агентстве" data-num="07 / 39" data-title="Опыт по классам">
+      <h2 class="r-head">Опыт работы команды</h2>
+      <div class="r-lo-cols">
+        <div class="r-lo-col"><p class="r-k">Премиум</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-prem-01.png" alt=""><img src="rsti/img/logo/7-prem-02.png" alt=""><img src="rsti/img/logo/7-prem-03.png" alt=""><img src="rsti/img/logo/7-prem-04.png" alt=""><img src="rsti/img/logo/7-prem-05.png" alt=""><img src="rsti/img/logo/7-prem-06.png" alt=""><img src="rsti/img/logo/7-prem-07.png" alt=""><img src="rsti/img/logo/7-prem-08.png" alt=""><img src="rsti/img/logo/7-prem-09.png" alt=""><img src="rsti/img/logo/7-prem-10.png" alt=""><img src="rsti/img/logo/7-prem-11.png" alt=""><img src="rsti/img/logo/7-prem-12.png" alt=""><img src="rsti/img/logo/7-prem-13.png" alt=""><img src="rsti/img/logo/7-prem-14.png" alt=""><img src="rsti/img/logo/7-prem-15.png" alt=""><img src="rsti/img/logo/7-prem-16.png" alt=""><img src="rsti/img/logo/7-prem-17.png" alt=""><img src="rsti/img/logo/7-prem-18.png" alt=""><img src="rsti/img/logo/7-prem-19.png" alt=""></div></div>
+        <div class="r-lo-col"><p class="r-k">Бизнес</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-biz-01.png" alt=""><img src="rsti/img/logo/7-biz-02.png" alt=""><img src="rsti/img/logo/7-biz-03.png" alt=""><img src="rsti/img/logo/7-biz-04.png" alt=""><img src="rsti/img/logo/7-biz-05.png" alt=""><img src="rsti/img/logo/7-biz-06.png" alt=""><img src="rsti/img/logo/7-biz-07.png" alt=""><img src="rsti/img/logo/7-biz-08.png" alt=""><img src="rsti/img/logo/7-biz-09.png" alt=""><img src="rsti/img/logo/7-biz-10.png" alt=""><img src="rsti/img/logo/7-biz-11.png" alt=""><img src="rsti/img/logo/7-biz-12.png" alt=""><img src="rsti/img/logo/7-biz-13.png" alt=""><img src="rsti/img/logo/7-biz-14.png" alt=""><img src="rsti/img/logo/7-biz-15.png" alt=""><img src="rsti/img/logo/7-biz-16.png" alt=""><img src="rsti/img/logo/7-biz-17.png" alt=""><img src="rsti/img/logo/7-biz-18.png" alt=""><img src="rsti/img/logo/7-biz-19.png" alt=""><img src="rsti/img/logo/7-biz-20.png" alt=""></div></div>
+        <div class="r-lo-col"><p class="r-k">Комфорт</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-comf-01.png" alt=""><img src="rsti/img/logo/7-comf-02.png" alt=""><img src="rsti/img/logo/7-comf-03.png" alt=""><img src="rsti/img/logo/7-comf-04.png" alt=""><img src="rsti/img/logo/7-comf-05.png" alt=""><img src="rsti/img/logo/7-comf-06.png" alt=""><img src="rsti/img/logo/7-comf-07.png" alt=""><img src="rsti/img/logo/7-comf-08.png" alt=""><img src="rsti/img/logo/7-comf-09.png" alt=""><img src="rsti/img/logo/7-comf-10.png" alt=""><img src="rsti/img/logo/7-comf-11.png" alt=""><img src="rsti/img/logo/7-comf-12.png" alt=""><img src="rsti/img/logo/7-comf-13.png" alt=""><img src="rsti/img/logo/7-comf-14.png" alt=""><img src="rsti/img/logo/7-comf-15.png" alt=""><img src="rsti/img/logo/7-comf-16.png" alt=""><img src="rsti/img/logo/7-comf-17.png" alt=""><img src="rsti/img/logo/7-comf-18.png" alt=""><img src="rsti/img/logo/7-comf-19.png" alt=""><img src="rsti/img/logo/7-comf-20.png" alt=""><img src="rsti/img/logo/7-comf-21.png" alt=""><img src="rsti/img/logo/7-comf-22.png" alt=""><img src="rsti/img/logo/7-comf-23.png" alt=""><img src="rsti/img/logo/7-comf-24.png" alt=""><img src="rsti/img/logo/7-comf-25.png" alt=""></div></div>
+      </div>
+    </section>
+    <section class="slide r-letters" data-kicker="об агентстве" data-num="08 / 39" data-title="Благодарственные письма">
+      <h2 class="r-head">Благодарственные письма</h2>
+      <div class="r-lt-row">
+        <figure><img src="rsti/img/letter-1.jpg" alt=""></figure>
+        <figure><img src="rsti/img/letter-2.jpg" alt=""></figure>
+        <figure><img src="rsti/img/letter-3.jpg" alt=""></figure>
+        <figure><img src="rsti/img/letter-4.jpg" alt=""></figure>
+      </div>
+    </section>
+    <section class="slide r-toc" data-kicker="об агентстве" data-num="09 / 39" data-title="Содержание">
+      <h2 class="r-head">Содержание</h2>
+      <ol class="r-toc-list">
+        <li data-sec="01"><span class="r-n">01</span><b>Рынок и&nbsp;конкуренты</b><i>10–15</i></li>
+        <li data-sec="02"><span class="r-n">02</span><b>Аудитория</b><i>16–20</i></li>
+        <li data-sec="03"><span class="r-n">03</span><b>Стратегия</b><i>21–28</i></li>
+        <li data-sec="04"><span class="r-n">04</span><b>Медиаплан и&nbsp;бюджет</b><i>29–33</i></li>
+        <li data-sec="05"><span class="r-n">05</span><b>Отчётность</b><i>34–37</i></li>
+        <li data-sec="06"><span class="r-n">06</span><b>Кейсы</b><i>38–39</i></li>
+      </ol>
+    </section>
+    <section class="slide r-div" data-kicker="01 · рынок и конкуренты" data-num="10 / 39" data-sec="01" data-menu="РЫНОК И КОНКУРЕНТЫ" data-title="Рынок и конкуренты · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-aerial.jpg" alt="ЖК «Кинопарк» с высоты"></figure>
+      <p class="r-num">01</p>
+      <h2 class="r-div-t">Рынок и&nbsp;конкуренты</h2>
+      <p class="r-div-s">Спрос, цены и&nbsp;активность пяти соседних проектов</p>
+    </section>
+    <section class="slide r-sw" data-kicker="01 · рынок и конкуренты" data-num="11 / 39" data-title="Юго-Запад Петербурга">
+      <h2 class="r-head">Юго-Запад Санкт-Петербурга</h2>
+      <div class="r-sw-text">
+        <p class="r-k">динамика продаж</p>
+        <p class="r-p">Сдержанная, но&nbsp;устойчивая. В&nbsp;отличие от&nbsp;севера города или крупных агломераций Ленобласти, нового предложения на&nbsp;Юго-Западе мало: продажи сосредоточены буквально в&nbsp;нескольких ключевых проектах. Из-за дефицита площадок под редевелопмент темп продаж на&nbsp;один жилой комплекс здесь традиционно выше среднего по&nbsp;городу.</p>
+        <p class="r-k">новостройки</p>
+        <p class="r-p">Средняя стоимость квадратного метра держится на&nbsp;уровне 320–330&nbsp;тыс.&nbsp;₽, средний бюджет покупки&nbsp;— 11–12+&nbsp;млн&nbsp;₽. Спрос стимулируют адресные программы: семейная ипотека и&nbsp;рассрочки от&nbsp;девелоперов, которые временно замещают дорогую стандартную ипотеку.</p>
+        <p class="r-k">структура спроса</p>
+        <p class="r-p">Лидируют компактные лоты (студии и&nbsp;евродвушки) как первый бюджетный старт, а&nbsp;также квартиры для семейного расширения внутри района.</p>
+      </div>
+      <dl class="r-figs">
+        <div><dt>320–330</dt><dd>тыс.&nbsp;₽ за&nbsp;м² в&nbsp;новостройках</dd></div>
+        <div><dt>11–12+</dt><dd>млн&nbsp;₽&nbsp;— средний бюджет покупки</dd></div>
+        <div><dt>55–60&nbsp;%</dt><dd>сделок с&nbsp;кредитными средствами</dd></div>
+      </dl>
+      <p class="s-note r-src">источники: «Деловой Петербург» (dp.ru), базы и&nbsp;ценовые индексы Restate.ru и&nbsp;«Циан»</p>
+    </section>
+    <section class="slide r-wide" data-kicker="01 · рынок и конкуренты" data-num="12 / 39" data-title="Конкуренты">
       <h2 class="r-head">Конкуренты ЖК&nbsp;«Кинопарк»</h2>
       <p class="r-head-s">Девять проектов комфорт-класса рядом: цены, отделка, сроки сдачи</p>
       <table class="r-table r-t9">
@@ -808,18 +1128,7 @@ html{ font-size: calc(100vw / 22.5); }
         </tbody>
       </table>
     </section>
-    <section class="slide r-map" data-axis="10" data-kicker="02 · сводка по рынку" data-num="04 / 19" data-title="Конкуренты на карте">
-      <figure class="r-map-img"><img src="rsti/img/karta-konkurentov.png" alt="Карта: ЖК «Кинопарк» и конкуренты"></figure>
-      <div class="r-map-col">
-        <h2 class="r-head">Конкуренты на&nbsp;карте</h2>
-        <ul class="r-legend">
-          <li class="hot"><i></i>ЖК «Кинопарк»</li>
-          <li><i></i>Конкуренты, 9 проектов</li>
-        </ul>
-      </div>
-      <p class="s-note r-map-note">источник: Яндекс Карты</p>
-    </section>
-    <section class="slide r-wide" data-kicker="02 · сводка по рынку" data-num="05 / 19" data-title="Продажи за 2026 год">
+    <section class="slide r-wide" data-kicker="01 · рынок и конкуренты" data-num="13 / 39" data-title="Продажи за 2026 год">
       <h2 class="r-head">Продажи за&nbsp;2026&nbsp;год</h2>
       <p class="r-head-s">Январь&nbsp;— август, по&nbsp;месяцам</p>
       <table class="r-table r-t5">
@@ -837,7 +1146,7 @@ html{ font-size: calc(100vw / 22.5); }
         </tbody>
       </table>
     </section>
-    <section class="slide r-chart" data-kicker="02 · сводка по рынку" data-num="06 / 19" data-title="Продажи конкурентов">
+    <section class="slide r-chart" data-kicker="01 · рынок и конкуренты" data-num="14 / 39" data-title="Продажи конкурентов">
       <h2 class="r-head">Продажи конкурентов</h2>
       <p class="r-head-s">Январь&nbsp;— август 2026, девять ЖК вместе с&nbsp;«Кинопарком»</p>
       <div class="r-text">
@@ -848,7 +1157,7 @@ html{ font-size: calc(100vw / 22.5); }
       </div>
       <div class="r-plot" data-chart="rsti-sales"></div>
     </section>
-    <section class="slide r-chart" data-kicker="02 · сводка по рынку" data-num="07 / 19" data-title="Анализ ёмкости">
+    <section class="slide r-chart" data-kicker="01 · рынок и конкуренты" data-num="15 / 39" data-title="Анализ ёмкости">
       <h2 class="r-head">Анализ ёмкости</h2>
       <p class="r-head-s">Показатель спроса по&nbsp;ЖК</p>
       <div class="r-text">
@@ -859,12 +1168,13 @@ html{ font-size: calc(100vw / 22.5); }
       </div>
       <div class="r-plot" data-chart="rsti-demand"></div>
     </section>
-    <section class="slide r-div" data-kicker="02 · сводка по рынку" data-num="08 / 19" data-title="Целевая аудитория · обложка">
-      <p class="r-num">02 · аудитория</p>
-      <h2 class="r-div-t">Целевая аудитория</h2>
-      <p class="r-div-s">Четыре сегмента: молодые семьи, семьи с&nbsp;детьми, зрелые пары и&nbsp;адепты места</p>
+    <section class="slide r-div" data-kicker="02 · аудитория" data-num="16 / 39" data-sec="02" data-menu="АУДИТОРИЯ" data-title="Аудитория · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-balcony.jpg" alt="Балкон с видом на двор"></figure>
+      <p class="r-num">02</p>
+      <h2 class="r-div-t">Аудитория</h2>
+      <p class="r-div-s">Кто покупает ЖК&nbsp;«Кинопарк»</p>
     </section>
-    <section class="slide r-ca" data-kicker="02 · сводка по рынку · аудитория" data-num="09 / 19" data-title="Молодые семьи">
+    <section class="slide r-ca" data-kicker="02 · аудитория" data-num="17 / 39" data-title="Молодые семьи">
       <h2 class="r-head">Молодые семьи</h2>
       <div class="r-ca-text">
         <figure class="r-ca-photo"><img src="rsti/img/ca-molodye-semi.png" alt="Молодая пара дома"></figure>
@@ -881,7 +1191,7 @@ html{ font-size: calc(100vw / 22.5); }
         </ol>
       </div>
     </section>
-    <section class="slide r-ca" data-kicker="02 · сводка по рынку · аудитория" data-num="10 / 19" data-title="Семьи с детьми дошкольного возраста">
+    <section class="slide r-ca" data-kicker="02 · аудитория" data-num="18 / 39" data-title="Семьи с детьми дошкольного возраста">
       <h2 class="r-head">Семьи с&nbsp;детьми дошкольного возраста</h2>
       <div class="r-ca-text">
         <figure class="r-ca-photo"><img src="rsti/img/ca-semi-s-detmi.png" alt="Семья с ребёнком дома"></figure>
@@ -898,7 +1208,7 @@ html{ font-size: calc(100vw / 22.5); }
         </ol>
       </div>
     </section>
-    <section class="slide r-ca" data-kicker="02 · сводка по рынку · аудитория" data-num="11 / 19" data-title="Зрелые пары с взрослыми детьми">
+    <section class="slide r-ca" data-kicker="02 · аудитория" data-num="19 / 39" data-title="Зрелые пары с взрослыми детьми">
       <h2 class="r-head">Зрелые пары с&nbsp;взрослыми детьми</h2>
       <div class="r-ca-text">
         <figure class="r-ca-photo"><img src="rsti/img/ca-zrelye-pary.png" alt="Пара старшего возраста дома"></figure>
@@ -924,29 +1234,88 @@ html{ font-size: calc(100vw / 22.5); }
         </div>
       </div>
     </section>
-    <section class="slide r-adepts" data-kicker="02 · сводка по рынку · аудитория" data-num="12 / 19" data-title="Адепты места">
+<section class="slide r-ad r-ad-a r-ad-final" data-kicker="02 · аудитория" data-num="20 / 39" data-title="Адепты места">
       <h2 class="r-head">Адепты места</h2>
-      <p class="r-ad-prof">30–65 лет, живут в&nbsp;Красносельском районе или рядом много лет. Хорошо знают инфраструктуру, привыкли к&nbsp;маршрутам,
-        школам, поликлиникам, магазинам. Переезжать в&nbsp;другой район не&nbsp;хотят. Доход средний и&nbsp;выше среднего, часто есть своя квартира и&nbsp;автомобиль.</p>
-      <div class="r-sc-grid">
-        <div class="r-sc"><p class="r-sc-n">сценарий 1</p><h3 class="r-sc-t">Обновление жилья с&nbsp;сохранением района</h3>
-          <ul><li>Хотят из&nbsp;старой квартиры в&nbsp;новую, но&nbsp;в&nbsp;привычном месте.</li><li>Не&nbsp;готовы менять школу, поликлинику, круг общения.</li><li>Район обжитой, всё рядом&nbsp;— не&nbsp;надо привыкать заново.</li><li>Важны надёжность застройщика и&nbsp;понятные сроки сдачи.</li></ul></div>
-        <div class="r-sc"><p class="r-sc-n">сценарий 2</p><h3 class="r-sc-t">Расширение площади под рост семьи</h3>
-          <ul><li>Живут в&nbsp;районе давно, квартира стала тесной.</li><li>Планируют пополнение, нужна комната для ребёнка.</li><li>Хотят остаться, чтобы не&nbsp;менять садик, школу, врачей.</li><li>Смотрят 2- и&nbsp;3-комнатные с&nbsp;запасом по&nbsp;площади.</li></ul></div>
-        <div class="r-sc"><p class="r-sc-n">сценарий 3</p><h3 class="r-sc-t">Разъезд с&nbsp;выросшими детьми</h3>
-          <ul><li>Дети и&nbsp;родители хотят жить отдельно.</li><li>Продают большую квартиру, покупают две: себе компактнее и&nbsp;ребёнку.</li><li>Остаются в&nbsp;любимом районе, где всё знакомо.</li><li>Важны комфорт, безопасность, привычная инфраструктура.</li></ul></div>
-        <div class="r-sc"><p class="r-sc-n">сценарий 4</p><h3 class="r-sc-t">Переезд из&nbsp;старого фонда в&nbsp;новое</h3>
-          <ul><li>Живут в&nbsp;старом доме без лифта, коммуникации устарели.</li><li>Хотят лифт, подземный паркинг, закрытый двор.</li><li>Район менять не&nbsp;готовы&nbsp;— здесь прошла большая часть жизни.</li><li>Ценят комфорт, но&nbsp;не&nbsp;хотят уезжать от&nbsp;привычного.</li></ul></div>
-        <div class="r-sc"><p class="r-sc-n">сценарий 5</p><h3 class="r-sc-t">Дети покупают родителям рядом с&nbsp;собой</h3>
-          <ul><li>Взрослые дети уже живут в&nbsp;районе и&nbsp;покупают квартиру родителям.</li><li>Хотят быть рядом, но&nbsp;в&nbsp;отдельном жилье.</li><li>Важны доступная среда, поликлиника, тихий двор, мало этажей.</li><li>Чаще смотрят 1- и&nbsp;2-комнатные.</li></ul></div>
+      <div class="r-ab-l"><p class="r-k">профиль</p><p class="r-ab-prof">30–65 лет, живут в&nbsp;Красносельском районе или рядом много лет. Хорошо знают инфраструктуру, привыкли к&nbsp;маршрутам,
+        школам, поликлиникам, магазинам. Переезжать в&nbsp;другой район не&nbsp;хотят. Доход средний и&nbsp;выше среднего, часто есть своя квартира и&nbsp;автомобиль.</p></div>
+      <div class="r-ar-rows">
+        <div class="r-ar"><span class="r-n">01</span><h3>Обновление жилья с&nbsp;сохранением района</h3><ul class="r-dash"><li>Хотят из&nbsp;старой квартиры в&nbsp;новую, но&nbsp;в&nbsp;привычном месте.</li><li>Не&nbsp;готовы менять школу, поликлинику, круг общения.</li><li>Район обжитой, всё рядом&nbsp;— не&nbsp;надо привыкать заново.</li><li>Важны надёжность застройщика и&nbsp;понятные сроки сдачи.</li></ul></div>
+        <div class="r-ar"><span class="r-n">02</span><h3>Расширение площади под рост семьи</h3><ul class="r-dash"><li>Живут в&nbsp;районе давно, квартира стала тесной.</li><li>Планируют пополнение, нужна комната для ребёнка.</li><li>Хотят остаться, чтобы не&nbsp;менять садик, школу, врачей.</li><li>Смотрят 2- и&nbsp;3-комнатные с&nbsp;запасом по&nbsp;площади.</li></ul></div>
+        <div class="r-ar"><span class="r-n">03</span><h3>Разъезд с&nbsp;выросшими детьми</h3><ul class="r-dash"><li>Дети и&nbsp;родители хотят жить отдельно.</li><li>Продают большую квартиру, покупают две: себе компактнее и&nbsp;ребёнку.</li><li>Остаются в&nbsp;любимом районе, где всё знакомо.</li><li>Важны комфорт, безопасность, привычная инфраструктура.</li></ul></div>
+        <div class="r-ar"><span class="r-n">04</span><h3>Переезд из&nbsp;старого фонда в&nbsp;новое</h3><ul class="r-dash"><li>Живут в&nbsp;старом доме без лифта, коммуникации устарели.</li><li>Хотят лифт, подземный паркинг, закрытый двор.</li><li>Район менять не&nbsp;готовы&nbsp;— здесь прошла большая часть жизни.</li><li>Ценят комфорт, но&nbsp;не&nbsp;хотят уезжать от&nbsp;привычного.</li></ul></div>
+        <div class="r-ar"><span class="r-n">05</span><h3>Дети покупают родителям рядом с&nbsp;собой</h3><ul class="r-dash"><li>Взрослые дети уже живут в&nbsp;районе и&nbsp;покупают квартиру родителям.</li><li>Хотят быть рядом, но&nbsp;в&nbsp;отдельном жилье.</li><li>Важны доступная среда, поликлиника, тихий двор, мало этажей.</li><li>Чаще смотрят 1- и&nbsp;2-комнатные.</li></ul></div>
       </div>
     </section>
-    <section class="slide r-div" data-kicker="03 · ии возможности" data-num="13 / 19" data-title="ИИ возможности · обложка">
+    <section class="slide r-div" data-kicker="03 · стратегия" data-num="21 / 39" data-sec="03" data-menu="СТРАТЕГИЯ" data-title="Стратегия · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-arch.jpg" alt="Арка и фасад ЖК «Кинопарк»"></figure>
       <p class="r-num">03</p>
-      <h2 class="r-div-t">ИИ возможности</h2>
-      <p class="r-div-s">ИИ-ассистент для заявок в&nbsp;нерабочее время и&nbsp;ИИ-креативы против баннерной слепоты</p>
+      <h2 class="r-div-t">Стратегия</h2>
+      <p class="r-div-s">Стратегические решения и&nbsp;логика взаимодействия с&nbsp;покупателем</p>
     </section>
-    <section class="slide r-ai" data-kicker="03 · ии возможности" data-num="14 / 19" data-title="ИИ-агенты для обработки заявок">
+    <section class="slide r-blk" data-kicker="03 · стратегия" data-num="22 / 39" data-title="Блок 1. Упор на адептов места">
+      <p class="r-rub">блок 1</p>
+      <h2 class="r-head">Упор на&nbsp;адептов места</h2>
+      <div class="r-cols">
+        <div class="r-col"><p class="r-k">суть решения</p>
+          <p class="r-p">Ядро стратегии&nbsp;— те, кто уже живёт в&nbsp;Красносельском районе и&nbsp;не&nbsp;хочет уезжать. Мы не&nbsp;убеждаем их переезжать к&nbsp;нам, а&nbsp;предлагаем остаться в&nbsp;привычном месте, но&nbsp;в&nbsp;новом качестве. Самая тёплая аудитория: причина выбрать проект у&nbsp;неё уже есть&nbsp;— район.</p></div>
+        <div class="r-col r-col-2"><p class="r-k">инструменты</p>
+          <ul class="r-dash r-dash-b">
+            <li><b>Геотаргетинг в&nbsp;Яндекс Директе и&nbsp;VK.</b> Показы по&nbsp;радиусу вокруг «Кинопарка» и&nbsp;по&nbsp;всему району, только тем, кто живёт здесь постоянно,&nbsp;— бюджет не&nbsp;уходит на&nbsp;весь город.</li>
+            <li><b>ГЕО-медийка на&nbsp;картах.</b> Баннеры в&nbsp;Яндекс Картах на&nbsp;ежедневных маршрутах: работа, школа, поликлиника, торговые центры. Реклама читается как часть знакомой среды.</li>
+            <li><b>Трейд-ин как главный оффер.</b> Главный барьер&nbsp;— «что делать со&nbsp;старой квартирой». Полный сценарий переезда: оценка, зачёт в&nbsp;счёт новой, помощь с&nbsp;продажей, юридическое сопровождение.</li>
+          </ul></div>
+      </div>
+      <table class="r-table r-aud">
+        <thead><tr><th>Возраст</th><th>Сценарий</th><th>Формат</th><th>Важно</th><th>Сообщение</th></tr></thead>
+        <tbody>
+          <tr><th>30–40</th><td>обновление жилья, расширение под ребёнка</td><td>2–3-комнатные</td><td>садик, школа, планировки</td><td>«Оставайтесь в&nbsp;своём районе. Новая квартира с&nbsp;детской, школа и&nbsp;садик рядом»</td></tr>
+          <tr><th>40–50</th><td>расширение, улучшение качества</td><td>3–4-комнатные</td><td>школа, паркинг, безопасность</td><td>«Больше пространства для семьи. Тот&nbsp;же район, новый уровень комфорта»</td></tr>
+          <tr><th>50–60</th><td>разъезд с&nbsp;детьми, комфорт</td><td>1–2-комнатные</td><td>тишина, поликлиника, лифт</td><td>«Разъезд с&nbsp;детьми рядом. Две квартиры в&nbsp;любимом районе»</td></tr>
+          <tr><th>60+</th><td>переезд из&nbsp;старого фонда</td><td>1–2-комнатные</td><td>доступная среда, рядом с&nbsp;детьми</td><td>«Современное жильё там, где всё знакомо. Лифт, паркинг, тихий двор»</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="slide r-blk" data-kicker="03 · стратегия" data-num="23 / 39" data-title="Блок 2. Охватный инструмент раз в месяц">
+      <p class="r-rub">блок 2</p>
+      <h2 class="r-head">Охватный инструмент раз в&nbsp;месяц</h2>
+      <div class="r-cols">
+        <div class="r-col"><p class="r-k">суть решения</p>
+          <p class="r-p">Адепты места&nbsp;— ядро, но&nbsp;ограниченное по&nbsp;размеру. Чтобы проект рос, воронку нужно постоянно подпитывать новой аудиторией: раз в&nbsp;месяц запускаем один охватный инструмент на&nbsp;весь город, а&nbsp;не&nbsp;только на&nbsp;район.</p></div>
+        <div class="r-col"><p class="r-k">почему расширенное ГЕО</p>
+          <p class="r-p">Красносельский район&nbsp;— не&nbsp;просто спальный, а&nbsp;одна из&nbsp;лучших локаций Петербурга:</p>
+          <ul class="r-dash">
+            <li>близость к&nbsp;Петергофу и&nbsp;загородным резиденциям</li>
+            <li>самый экологичный и&nbsp;зелёный район города</li>
+            <li>транспорт: ЗСД, Петергофское шоссе, КАД</li>
+            <li>новая станция метро «Юго-Западная»</li>
+            <li>детские сады, школы, поликлиники</li>
+          </ul>
+          <p class="r-p">Значит, можно говорить и&nbsp;с&nbsp;людьми из&nbsp;других районов: для них Красносельский&nbsp;— апгрейд по&nbsp;качеству жизни.</p></div>
+        <div class="r-col"><p class="r-k">инструменты</p>
+          <ul class="r-dash">
+            <li>медийная кампания в&nbsp;Авито Медиа</li>
+            <li>медийная кампания в&nbsp;Яндекс Директе</li>
+            <li>Telegram-каналы: посевы у&nbsp;городских пабликов о&nbsp;недвижимости</li>
+            <li>программатик: расширенный охват по&nbsp;интересу «новостройки»</li>
+            <li>видеореклама VK: ролик о&nbsp;районе и&nbsp;проекте</li>
+          </ul>
+          <p class="r-k r-k-next">цель каждого запуска</p>
+          <p class="r-p">Собрать новую аудиторию, которая не&nbsp;знала о&nbsp;проекте, и&nbsp;прогреть её до&nbsp;заявки через ретаргетинг.</p></div>
+      </div>
+    </section>
+    <section class="slide r-day" data-kicker="03 · стратегия" data-num="24 / 39" data-title="Как добиться внимания">
+      <h2 class="r-head">Как добиться внимания целевой аудитории</h2>
+      <p class="r-head-s">День покупателя и&nbsp;где его застать</p>
+      <ol class="r-day-row">
+        <li><span class="r-n">утро</span><b>Завтрак</b><p>Чтобы не&nbsp;терять время и&nbsp;провести его с&nbsp;пользой:</p><ul><li>полезное на&nbsp;YouTube</li><li>телеграм-каналы и&nbsp;новостные порталы</li><li>подкасты</li></ul></li>
+        <li><span class="r-n">в&nbsp;пути</span><b>Дорога на&nbsp;работу и&nbsp;домой</b><p>Поездки чаще всего сопровождают:</p><ul><li>навигатор, Яндекс Карты</li><li>радио</li><li>наружная реклама</li></ul></li>
+        <li><span class="r-n">день</span><b>Работа</b><p>Очень занят, открывает только то, что нужно для работы:</p><ul><li>мессенджеры с&nbsp;коллегами и&nbsp;партнёрами</li><li>банковские приложения</li></ul></li>
+        <li><span class="r-n">полдень</span><b>Обед</b><p>С&nbsp;партнёрами или один:</p><ul><li>быстрый скролл телеграм-каналов: бизнес, новости, инвестиции, недвижимость</li><li>новостные и&nbsp;тематические площадки</li><li>банковские приложения</li><li>навигатор, если обед выездной</li></ul></li>
+        <li><span class="r-n">вечер</span><b>Дома, хобби</b><p>Наедине, с&nbsp;семьёй, за&nbsp;хобби или спортом:</p><ul><li>соцсети, ресурсы на&nbsp;интересную тему</li><li>фильмы на&nbsp;киносервисах</li></ul></li>
+      </ol>
+    </section>
+    <section class="slide r-ai" data-kicker="03 · стратегия" data-num="25 / 39" data-title="ИИ-агенты для обработки заявок">
+      <p class="r-rub">блок 3</p>
       <h2 class="r-head">ИИ-агенты для обработки заявок</h2>
       <div class="r-ai-pair">
         <div><p class="r-k">проблема</p><p class="r-p">Отдел продаж застройщика работает по&nbsp;графику. Заявки вечером, ночью и&nbsp;в&nbsp;выходные остаются без ответа до&nbsp;утра&nbsp;— человек уходит к&nbsp;конкуренту или остывает. Терять такие лиды нельзя: они уже пришли.</p></div>
@@ -970,7 +1339,8 @@ html{ font-size: calc(100vw / 22.5); }
         </ul>
       </div>
     </section>
-    <section class="slide r-ai" data-kicker="03 · ии возможности" data-num="15 / 19" data-title="ИИ для подготовки баннеров">
+    <section class="slide r-ai" data-kicker="03 · стратегия" data-num="26 / 39" data-title="ИИ для подготовки баннеров">
+      <p class="r-rub">блок 4</p>
       <h2 class="r-head">ИИ для подготовки баннеров</h2>
       <div class="r-ai-pair">
         <div><p class="r-k">проблема</p><p class="r-p">Баннерная слепота: пользователь привык к&nbsp;однотипным креативам и&nbsp;не&nbsp;замечает их. Стандартные баннеры с&nbsp;фасадом и&nbsp;логотипом уже не&nbsp;работают.</p></div>
@@ -993,80 +1363,15 @@ html{ font-size: calc(100vw / 22.5); }
         </ul>
       </div>
     </section>
-    <section class="slide r-div" data-kicker="04 · стратегические решения" data-num="16 / 19" data-title="Стратегические решения · обложка">
-      <p class="r-num">04</p>
-      <h2 class="r-div-t">Стратегические решения</h2>
-      <p class="r-div-s">Адепты места, охват раз в&nbsp;месяц и&nbsp;итоговая логика стратегии</p>
-    </section>
-    <section class="slide r-blk" data-kicker="04 · стратегические решения" data-num="17 / 19" data-title="Блок 1. Упор на адептов места">
-      <p class="r-rub">блок 1</p>
-      <h2 class="r-head">Упор на&nbsp;адептов места</h2>
-      <div class="r-blk-l">
-        <p class="r-k">суть решения</p>
-        <p class="r-p">Ядро стратегии&nbsp;— те, кто уже живёт в&nbsp;Красносельском районе и&nbsp;не&nbsp;хочет уезжать. Мы не&nbsp;убеждаем их переезжать к&nbsp;нам,
-          а&nbsp;предлагаем остаться в&nbsp;привычном месте, но&nbsp;в&nbsp;новом качестве. Самая тёплая аудитория: причина выбрать проект у&nbsp;неё уже есть&nbsp;— район.</p>
-        <p class="r-k">инструменты</p>
-        <ol class="r-list r-tools">
-          <li><span class="r-n">01</span><span><b>Геотаргетинг в&nbsp;Яндекс Директе и&nbsp;VK.</b> Показы по&nbsp;радиусу вокруг «Кинопарка» и&nbsp;по&nbsp;всему району,
-            только тем, кто живёт здесь постоянно,&nbsp;— бюджет не&nbsp;уходит на&nbsp;весь город.</span></li>
-          <li><span class="r-n">02</span><span><b>ГЕО-медийка на&nbsp;картах.</b> Баннеры в&nbsp;Яндекс Картах и&nbsp;2ГИС&nbsp;— на&nbsp;ежедневных маршрутах: работа,
-            школа, поликлиника, торговые центры. Реклама читается как часть знакомой среды.</span></li>
-          <li><span class="r-n">03</span><span><b>Трейд-ин как главный оффер.</b> Главный барьер&nbsp;— «что делать со&nbsp;старой квартирой». Полный сценарий
-            переезда: оценка, зачёт в&nbsp;счёт новой, помощь с&nbsp;продажей, юридическое сопровождение.</span></li>
-        </ol>
-      </div>
-      <div class="r-blk-r">
-        <p class="r-k">ключевая аудитория</p>
-        <table class="r-mini">
-          <thead><tr><th>возраст</th><th>сценарий</th><th>формат</th><th>важно</th></tr></thead>
-          <tbody>
-            <tr><th>30–40</th><td>обновление жилья, расширение под ребёнка</td><td>2–3-комнатные</td><td>садик, школа, планировки</td></tr>
-            <tr><th>40–50</th><td>расширение, улучшение качества</td><td>3–4-комнатные</td><td>школа, паркинг, безопасность</td></tr>
-            <tr><th>50–60</th><td>разъезд с&nbsp;детьми, комфорт</td><td>1–2-комнатные</td><td>тишина, поликлиника, лифт</td></tr>
-            <tr><th>60+</th><td>переезд из&nbsp;старого фонда</td><td>1–2-комнатные</td><td>доступная среда, рядом с&nbsp;детьми</td></tr>
-          </tbody>
-        </table>
-        <p class="r-k">сообщения по&nbsp;возрастам</p>
-        <ul class="r-msgs">
-          <li><span class="r-age">30–40</span><q>Оставайтесь в&nbsp;своём районе. Новая квартира с&nbsp;детской, школа и&nbsp;садик рядом</q></li>
-          <li><span class="r-age">40–50</span><q>Больше пространства для семьи. Тот же район, новый уровень комфорта</q></li>
-          <li><span class="r-age">50–60</span><q>Разъезд с&nbsp;детьми рядом. Две квартиры в&nbsp;любимом районе</q></li>
-          <li><span class="r-age">60+</span><q>Современное жильё там, где всё знакомо. Лифт, паркинг, тихий двор</q></li>
-        </ul>
+    <section class="slide r-video" data-kicker="03 · стратегия" data-num="27 / 39" data-title="Продакшн ИИ-видеороликов">
+      <h2 class="r-head">Продакшн ИИ-видеороликов</h2>
+      <div class="r-vd-row">
+        <video src="rsti/video/ai-video-1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+        <video src="rsti/video/ai-video-2.mp4" muted loop playsinline autoplay preload="metadata"></video>
+        <video src="rsti/video/ai-video-3.mp4" muted loop playsinline autoplay preload="metadata"></video>
       </div>
     </section>
-    <section class="slide r-blk" data-kicker="04 · стратегические решения" data-num="18 / 19" data-title="Блок 2. Охватный инструмент раз в месяц">
-      <p class="r-rub">блок 2</p>
-      <h2 class="r-head">Охватный инструмент раз в&nbsp;месяц</h2>
-      <div class="r-blk-l">
-        <p class="r-k">суть решения</p>
-        <p class="r-p">Адепты места&nbsp;— ядро, но&nbsp;ограниченное по&nbsp;размеру. Чтобы проект рос, воронку нужно постоянно подпитывать новой аудиторией:
-          раз в&nbsp;месяц запускаем один охватный инструмент на&nbsp;весь город, а&nbsp;не&nbsp;только на&nbsp;район.</p>
-        <p class="r-k">почему расширенное гео</p>
-        <p class="r-p">Красносельский район&nbsp;— не&nbsp;просто спальный, а&nbsp;одна из&nbsp;лучших локаций Петербурга:</p>
-        <ul class="r-dash">
-          <li>близость к&nbsp;Петергофу и&nbsp;загородным резиденциям;</li>
-          <li>самый экологичный и&nbsp;зелёный район города;</li>
-          <li>транспорт: ЗСД, Петергофское шоссе, КАД;</li>
-          <li>новая станция метро «Юго-Западная»;</li>
-          <li>детские сады, школы, поликлиники.</li>
-        </ul>
-        <p class="r-p">Значит, можно говорить и&nbsp;с&nbsp;людьми из&nbsp;других районов: для них Красносельский&nbsp;— апгрейд по&nbsp;качеству жизни.</p>
-      </div>
-      <div class="r-blk-r">
-        <p class="r-k">инструменты</p>
-        <ol class="r-list">
-          <li><span class="r-n">01</span><span>Медийная кампания в&nbsp;Авито Медиа.</span></li>
-          <li><span class="r-n">02</span><span>Медийная кампания в&nbsp;Яндекс Директе.</span></li>
-          <li><span class="r-n">03</span><span>Telegram-каналы: посевы у&nbsp;городских пабликов о&nbsp;недвижимости.</span></li>
-          <li><span class="r-n">04</span><span>Программатик: расширенный охват по&nbsp;интересу «новостройки».</span></li>
-          <li><span class="r-n">05</span><span>Видеореклама VK: ролик о&nbsp;районе и&nbsp;проекте.</span></li>
-        </ol>
-        <p class="r-k r-goal-k">цель каждого запуска</p>
-        <p class="r-goal">Собрать новую аудиторию, которая не&nbsp;знала о&nbsp;проекте, и&nbsp;прогреть её до&nbsp;заявки через ретаргетинг.</p>
-      </div>
-    </section>
-    <section class="slide r-logic" data-kicker="04 · стратегические решения" data-num="19 / 19" data-title="Итоговая логика стратегии">
+    <section class="slide r-logic" data-kicker="03 · стратегия" data-num="28 / 39" data-title="Итоговая логика стратегии">
       <h2 class="r-head">Итоговая логика стратегии</h2>
       <div class="r-lg-row">
         <div class="r-lg"><p class="r-lg-n">01</p><h3 class="r-lg-t">Адепты места</h3>
@@ -1081,7 +1386,172 @@ html{ font-size: calc(100vw / 22.5); }
       <p class="r-lg-sum">Четыре опоры: удерживаем своих через адептов места, привлекаем новых через охват, не&nbsp;теряем тёплых через
         ИИ-агента и&nbsp;выделяемся визуально через ИИ-креативы.</p>
     </section>
-    <script type="application/json" id="deck-menu">{"sections": [{"label": "СВОДКА ПО РЫНКУ", "from": 2}, {"label": "ИИ ВОЗМОЖНОСТИ", "from": 13}, {"label": "СТРАТЕГИЧЕСКИЕ РЕШЕНИЯ", "from": 16}], "links": [{"label": "В НАЧАЛО", "to": 1}]}</script>
+    <section class="slide r-div" data-kicker="04 · медиаплан и бюджет" data-num="29 / 39" data-sec="04" data-menu="МЕДИАПЛАН И БЮДЖЕТ" data-title="Медиаплан и бюджет · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-night.jpg" alt="ЖК «Кинопарк» вечером"></figure>
+      <p class="r-num">04</p>
+      <h2 class="r-div-t">Медиаплан и&nbsp;бюджет</h2>
+      <p class="r-div-s">Медиаплан в&nbsp;диапазоне октябрь&nbsp;— ноябрь, годовой план</p>
+    </section>
+    <section class="slide r-months" data-kicker="04 · медиаплан и бюджет" data-num="30 / 39" data-title="Медиатактика на 3 месяца">
+      <h2 class="r-head">Медиатактика на&nbsp;3&nbsp;месяца</h2>
+      <p class="r-head-s">Октябрь&nbsp;— декабрь 2026</p>
+      <div class="r-mo-row">
+        <div class="r-mo"><span class="r-n">01</span><h3>Октябрь</h3>
+          <p class="r-p">Первый месяц&nbsp;— запуски, массивные настройки и&nbsp;обучение рекламных кампаний. Работа с&nbsp;базами недвижимости: наполнение информацией и&nbsp;подготовка материалов.</p>
+          <ul class="r-dash"><li>Запуски и&nbsp;настройка РК</li><li>Оптимизация</li><li>Подготовка и&nbsp;наполнение источников материалами</li><li>Первичная аналитика и&nbsp;корректировка стратегии</li><li>Упор на&nbsp;ЦА «Адепты места»: РК по&nbsp;ГЕО</li></ul></div>
+        <div class="r-mo"><span class="r-n">02</span><h3>Ноябрь</h3>
+          <p class="r-p">Добавляем в&nbsp;сплит охватные инструменты. Продолжаем прорабатывать одну из&nbsp;ключевых РК и&nbsp;заранее собираем новую аудиторию для дальнейшей работы с&nbsp;ней.</p>
+          <ul class="r-dash"><li>Запуск охватных инструментов</li><li>Оптимизация РК по&nbsp;итогам октября</li><li>Упор на&nbsp;ЦА «Адепты места» и&nbsp;сбор новой аудитории</li></ul></div>
+        <div class="r-mo"><span class="r-n">03</span><h3>Декабрь</h3>
+          <p class="r-p">Есть костяк инструментов, которые дают качественные целевые обращения, а&nbsp;охватные продолжают наращивать новую аудиторию.</p>
+          <ul class="r-dash"><li>Докручиваем стратегию: ретаргетинг, новогодние спецпредложения, удержание интереса</li><li>Охватные инструменты&nbsp;— до&nbsp;20-х чисел декабря</li><li>Оптимизация РК по&nbsp;итогам двух месяцев</li></ul></div>
+      </div>
+    </section>
+    <section class="slide r-donuts" data-kicker="04 · медиаплан и бюджет" data-num="31 / 39" data-title="Бюджет на 3 месяца">
+      <h2 class="r-head">Бюджет на&nbsp;3&nbsp;месяца</h2>
+      <p class="r-head-s">Доля каналов в&nbsp;бюджете месяца · ₽ с&nbsp;АК и&nbsp;НДС</p>
+      <div class="r-dn-row">
+        <div class="r-dn"><h3>Октябрь</h3><div class="r-dn-plot" data-chart="rsti-donut-0"></div>
+          <dl><div><dt>бюджет</dt><dd>4&#8239;072&#8239;796</dd></div><div><dt>ЦО</dt><dd>113</dd></div><div><dt>CPA</dt><dd>36&#8239;042</dd></div></dl></div>
+        <div class="r-dn"><h3>Ноябрь</h3><div class="r-dn-plot" data-chart="rsti-donut-1"></div>
+          <dl><div><dt>бюджет</dt><dd>4&#8239;351&#8239;856</dd></div><div><dt>ЦО</dt><dd>116</dd></div><div><dt>CPA</dt><dd>37&#8239;516</dd></div></dl></div>
+        <div class="r-dn"><h3>Декабрь</h3><div class="r-dn-plot" data-chart="rsti-donut-2"></div>
+          <dl><div><dt>бюджет</dt><dd>4&#8239;129&#8239;611</dd></div><div><dt>ЦО</dt><dd>113</dd></div><div><dt>CPA</dt><dd>36&#8239;545</dd></div></dl></div>
+      </div>
+      <ul class="r-dn-key">
+        <li><i style="background:#C9A676"></i>Базы недвижимости</li><li><i style="background:#7F6239"></i>Контекстная реклама</li>
+        <li><i style="background:#E0C8A3"></i>Таргетированная реклама</li><li><i style="background:#417E8D"></i>Охватная реклама</li><li><i style="background:#D9D6D1"></i>Геомедийная реклама</li>
+      </ul>
+    </section>
+    <section class="slide r-wide r-rdc" data-kicker="04 · медиаплан и бюджет" data-num="32 / 39" data-title="Расчёт договорной цены">
+      <h2 class="r-head">Расчёт договорной цены</h2>
+      <p class="r-head-s">ЖК «Кинопарк» · октябрь 2026&nbsp;— сентябрь 2027 · ₽ за&nbsp;целевое обращение (ЦО) и&nbsp;число ЦО</p>
+      <table class="r-table r-rdc-a">
+        <thead><tr><th>Канал</th><th class="n">окт<span class="t-sub">2026</span></th><th class="n">ноя<span class="t-sub">2026</span></th><th class="n">дек<span class="t-sub">2026</span></th><th class="n">янв<span class="t-sub">2027</span></th><th class="n">фев<span class="t-sub">2027</span></th><th class="n">мар<span class="t-sub">2027</span></th><th class="n">апр<span class="t-sub">2027</span></th><th class="n">май<span class="t-sub">2027</span></th><th class="n">июн<span class="t-sub">2027</span></th><th class="n">июл<span class="t-sub">2027</span></th><th class="n">авг<span class="t-sub">2027</span></th><th class="n">сен<span class="t-sub">2027</span></th><th class="n t-avg">₽ за ЦО<span class="t-sub">среднее</span></th><th class="n">ЦО<span class="t-sub">всего</span></th><th class="n t-sum">₽ за период</th></tr></thead>
+        <tbody>
+        <tr><th>Контекстная реклама</th><td class="n">28&#8239;300<span class="q">44</span></td><td class="n">28&#8239;080<span class="q">46</span></td><td class="n">29&#8239;481<span class="q">51</span></td><td class="n">30&#8239;000<span class="q">44</span></td><td class="n">29&#8239;500<span class="q">46</span></td><td class="n">29&#8239;000<span class="q">47</span></td><td class="n">29&#8239;000<span class="q">47</span></td><td class="n">29&#8239;500<span class="q">46</span></td><td class="n">29&#8239;400<span class="q">47</span></td><td class="n">29&#8239;400<span class="q">47</span></td><td class="n">29&#8239;000<span class="q">48</span></td><td class="n">28&#8239;500<span class="q">49</span></td><td class="n t-avg">29&#8239;097</td><td class="n">562</td><td class="n t-sum">16&#8239;352&#8239;511</td></tr>
+        <tr><th>Таргетированная реклама</th><td class="n">20&#8239;647<span class="q">13</span></td><td class="n">20&#8239;130<span class="q">14</span></td><td class="n">20&#8239;647<span class="q">13</span></td><td class="n">21&#8239;000<span class="q">13</span></td><td class="n">20&#8239;600<span class="q">14</span></td><td class="n">20&#8239;500<span class="q">14</span></td><td class="n">20&#8239;500<span class="q">14</span></td><td class="n">20&#8239;600<span class="q">13</span></td><td class="n">20&#8239;500<span class="q">13</span></td><td class="n">20&#8239;500<span class="q">13</span></td><td class="n">20&#8239;500<span class="q">14</span></td><td class="n">20&#8239;000<span class="q">14</span></td><td class="n t-avg">20&#8239;505</td><td class="n">162</td><td class="n t-sum">3&#8239;321&#8239;842</td></tr>
+        <tr><th>Медийная реклама</th><td class="n">18&#8239;937<span class="q">6</span></td><td class="n">18&#8239;326<span class="q">6</span></td><td class="n">18&#8239;937<span class="q">6</span></td><td class="n">22&#8239;000<span class="q">4</span></td><td class="n">20&#8239;000<span class="q">5</span></td><td class="n">20&#8239;000<span class="q">6</span></td><td class="n">18&#8239;000<span class="q">7</span></td><td class="n">19&#8239;000<span class="q">6</span></td><td class="n">22&#8239;000<span class="q">5</span></td><td class="n">22&#8239;000<span class="q">5</span></td><td class="n">20&#8239;000<span class="q">6</span></td><td class="n">20&#8239;000<span class="q">7</span></td><td class="n t-avg">19&#8239;786</td><td class="n">69</td><td class="n t-sum">1&#8239;365&#8239;200</td></tr>
+        <tr><th>Реклама в&nbsp;классифайдах</th><td class="n">48&#8239;180<span class="q">50</span></td><td class="n">48&#8239;409<span class="q">50</span></td><td class="n">48&#8239;528<span class="q">43</span></td><td class="n">49&#8239;000<span class="q">40</span></td><td class="n">49&#8239;000<span class="q">45</span></td><td class="n">56&#8239;000<span class="q">50</span></td><td class="n">56&#8239;000<span class="q">53</span></td><td class="n">56&#8239;000<span class="q">48</span></td><td class="n">56&#8239;000<span class="q">46</span></td><td class="n">56&#8239;000<span class="q">45</span></td><td class="n">56&#8239;000<span class="q">50</span></td><td class="n">60&#8239;000<span class="q">55</span></td><td class="n t-avg">53&#8239;449</td><td class="n">575</td><td class="n t-sum">30&#8239;733&#8239;154</td></tr>
+        <tr><th>Сопровождающие расходы</th><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n">36&#8239;600<span class="q">—</span></td><td class="n t-avg">—</td><td class="n">—</td><td class="n t-sum">439&#8239;200</td></tr>
+        <tr class="sum"><th>Итого</th><td class="n">36&#8239;042<span class="q">113</span></td><td class="n">37&#8239;516<span class="q">116</span></td><td class="n">36&#8239;545<span class="q">113</span></td><td class="n">36&#8239;411<span class="q">101</span></td><td class="n">36&#8239;245<span class="q">110</span></td><td class="n">39&#8239;372<span class="q">117</span></td><td class="n">39&#8239;509<span class="q">121</span></td><td class="n">39&#8239;499<span class="q">113</span></td><td class="n">39&#8239;377<span class="q">111</span></td><td class="n">39&#8239;226<span class="q">110</span></td><td class="n">39&#8239;284<span class="q">118</span></td><td class="n">41&#8239;224<span class="q">125</span></td><td class="n t-avg">38&#8239;409</td><td class="n">1&#8239;368</td><td class="n t-sum">52&#8239;543&#8239;367</td></tr>
+        </tbody>
+      </table>
+      <p class="r-rdc-key"><span>28&#8239;300</span> ₽ за&nbsp;ЦО <span class="q">44</span> число ЦО</p>
+    </section>
+    <section class="slide r-funnel" data-kicker="04 · медиаплан и бюджет" data-num="33 / 39" data-title="Воронка продаж">
+      <h2 class="r-head">Воронка продаж</h2>
+      <div class="r-fn-text">
+        <p class="r-k">задача</p><p class="r-p">Обеспечить план продаж.</p>
+        <p class="r-k">решение</p><p class="r-p">Расчёт обратной воронки по&nbsp;бенчмаркам рынка. CR из&nbsp;звонка в&nbsp;сделку&nbsp;— 6&nbsp;%, на&nbsp;основе опыта работы агентства.</p>
+      </div>
+      <div class="r-fn">
+        <div class="r-fn-st" style="--w:100%"><b>113</b><span>целевых обращений</span></div>
+        <p class="r-fn-cr">CR&nbsp;23&nbsp;%</p>
+        <div class="r-fn-st" style="--w:62%"><b>25</b><span>встреч</span></div>
+        <p class="r-fn-cr">CR&nbsp;27&nbsp;%</p>
+        <div class="r-fn-st hot" style="--w:30%"><b>6</b><span>сделок</span></div>
+        <p class="r-fn-all">из&nbsp;обращения в&nbsp;сделку&nbsp;— CR&nbsp;6&nbsp;%</p>
+      </div>
+    </section>
+    <section class="slide r-div" data-kicker="05 · отчётность" data-num="34 / 39" data-sec="05" data-menu="ОТЧЁТНОСТЬ" data-title="Отчётность · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-facade.jpg" alt="Фасад ЖК «Кинопарк»"></figure>
+      <p class="r-num">05</p>
+      <h2 class="r-div-t">Отчётность</h2>
+      <p class="r-div-s">Дашборд&nbsp;М, HTML-отчёты, анализ креативов, работа с&nbsp;фродом и&nbsp;арбитраж звонков с&nbsp;баз недвижимости</p>
+    </section>
+    <section class="slide r-shot r-shot-wide" data-kicker="05 · отчётность" data-num="35 / 39" data-title="Дашборд М">
+      <h2 class="r-head r-lock">Dashboard<svg class="r-lock-m" viewBox="2610 224 1064 1120" aria-hidden="true"><path d="M3674 224H2610V1344H3674V224Z" fill="#E0622C"/><path d="M2834 448L3142 946.355L3065.06 1070.94L2988.04 946.355V1120H2834V448Z" fill="#211E1B"/><path d="M3450 448L3142 946.355L3219 1070.94L3295.99 946.355V1120H3450V448Z" fill="#211E1B"/></svg></h2>
+      <figure class="r-sh-img"><img src="rsti/img/dashboard-m.jpg" alt="Дашборд М: расход, лиды, CPA"></figure>
+      <div class="r-sh-text">
+        <p class="r-p">Автоматизированный дашборд: каждый день и&nbsp;без ручного вмешательства собирает данные со&nbsp;всех рекламных каналов. В&nbsp;одном окне&nbsp;— вся ключевая информация по&nbsp;каждому инструменту.</p>
+        <p class="r-p">Обновляется ежедневно: всегда актуальная картина, а&nbsp;не&nbsp;данные месячной давности. Отклонения видно сразу, решение принимается до&nbsp;того, как бюджет будет слит.</p>
+      </div>
+    </section>
+    <section class="slide r-shot r-shot-side" data-kicker="05 · отчётность" data-num="36 / 39" data-title="HTML-отчёты">
+      <h2 class="r-head">HTML-отчёты</h2>
+      <div class="r-sh-text">
+        <p class="r-p">Оформленный отчёт заменяет еженедельные и&nbsp;ежемесячные срезы в&nbsp;таблицах и&nbsp;презентациях.</p>
+        <p class="r-p">Вся информация&nbsp;— в&nbsp;одном документе с&nbsp;визуализацией: графики, динамика, сегментация и&nbsp;другое по&nbsp;запросу.</p>
+      </div>
+      <figure class="r-sh-img"><img src="rsti/img/html-report.jpg" alt="HTML-отчёт о продвижении"></figure>
+    </section>
+    <section class="slide r-fraud" data-kicker="05 · отчётность" data-num="37 / 39" data-title="Фрод и арбитраж звонков">
+      <h2 class="r-head">Работа с&nbsp;фродом и&nbsp;арбитраж</h2>
+      <div class="r-fr-pair">
+        <div><h3>Работа с&nbsp;фродом</h3>
+          <p class="r-p">Все входящие звонки прослушиваем и&nbsp;тегируем вручную&nbsp;— чтобы сразу отсеивать некачественные обращения: спам, ошибочные звонки, нецелевые запросы, звонки не&nbsp;по&nbsp;теме.</p>
+          <p class="r-p">Как только источник даёт мусорный трафик, сразу принимаем меры: корректируем ставки, отключаем площадки, меняем таргетинг. Это не&nbsp;отчёт постфактум, а&nbsp;живая ежедневная работа с&nbsp;качеством лидов.</p></div>
+        <div><h3>Арбитраж звонков с&nbsp;классифайдов</h3>
+          <p class="r-p">Каждый день обрабатываем все обращения с&nbsp;баз недвижимости (Циан, Авито, Домклик, Яндекс Недвижимость) и&nbsp;проверяем каждое на&nbsp;качество.</p>
+          <p class="r-p">Некачественные фиксируем, собираем материалы для оспаривания и&nbsp;направляем на&nbsp;арбитраж.</p>
+          <p class="r-fig"><b>500&#8239;000&nbsp;руб.</b><span>в&nbsp;месяц&nbsp;— средняя экономия по&nbsp;этому направлению</span></p></div>
+      </div>
+    </section>
+    <section class="slide r-div" data-kicker="06 · кейсы" data-num="38 / 39" data-sec="06" data-menu="КЕЙСЫ" data-title="Кейсы · обложка">
+      <figure class="r-div-bg"><img src="rsti/img/kp-facade-2.jpg" alt="Фасад ЖК «Кинопарк»"></figure>
+      <p class="r-num">06</p>
+      <h2 class="r-div-t">Кейсы</h2>
+      <p class="r-div-s">Гордимся нашим опытом</p>
+    </section>
+    <section class="slide r-cases" data-kicker="06 · кейсы" data-num="39 / 39" data-title="Кейсы">
+      <h2 class="r-head">Кейсы</h2>
+      <div class="r-cs-pair">
+        <div class="r-cs"><span class="r-n">01</span><h3>Перепозиционирование проекта застройщика Ленстройтрест</h3>
+          <p class="r-p">Разработали и&nbsp;провели стратегические сессии (бренд-штурмы) с&nbsp;командой и&nbsp;клиентом для нового позиционирования флагманского проекта. Создали стратегию запуска с&nbsp;новым неймингом, позиционированием и&nbsp;визуализацией.</p>
+          <p class="r-p">Формат бренд-штурмов потом вынесли в&nbsp;отдельную услугу агентства.</p></div>
+        <div class="r-cs"><span class="r-n">02</span><h3>Работа с&nbsp;воронкой продаж и&nbsp;рост конверсии</h3>
+          <p class="r-fig"><b>+30&nbsp;%</b><span>конверсии</span></p>
+          <p class="r-p">Аудит всех процессов, включая прослушивание звонков: проблема оказалась не&nbsp;в&nbsp;рекламе, а&nbsp;в&nbsp;обработке лидов отделом продаж клиента. Подготовили новые скрипты, шаблоны ответов и&nbsp;инструкции&nbsp;— воронка перестала терять покупателей.</p></div>
+      </div>
+    </section>
+    <script type="application/json" id="deck-menu">{"sections": [{"label": "ОБ АГЕНТСТВЕ", "from": 2}, {"label": "РЫНОК И КОНКУРЕНТЫ", "from": 10}, {"label": "АУДИТОРИЯ", "from": 16}, {"label": "СТРАТЕГИЯ", "from": 21}, {"label": "МЕДИАПЛАН И БЮДЖЕТ", "from": 29}, {"label": "ОТЧЁТНОСТЬ", "from": 34}, {"label": "КЕЙСЫ", "from": 38}], "links": [{"label": "В НАЧАЛО", "to": 1}]}</script><script>(() => { const vids = [...document.querySelectorAll('.slide video')]; vids.forEach((v) => v.removeAttribute('autoplay'));
+  const sync = () => vids.forEach((v) => { const on = v.closest('.slide').classList.contains('on');
+    if (!on) { v.pause(); v.dataset.tries = ''; return; }
+    if (!v.paused) return; if (!v.dataset.tries) v.currentTime = 0;
+    const n = +(v.dataset.tries || 0); if (n > 16) return; v.dataset.tries = n + 1;
+    v.play().catch(() => {}); setTimeout(sync, 250); });
+  document.addEventListener('deck:slide', () => { vids.forEach((v) => { v.dataset.tries = ''; }); sync(); }); addEventListener('load', sync); })();</script><script>
+(() => {
+  const tip = document.createElement('div'); tip.className = 't-tip'; document.body.appendChild(tip);
+  const grid = (rows) => {
+    const out = [], taken = [];
+    rows.forEach((tr, r) => { let c = 0; out[r] = [];
+      [...tr.cells].forEach((cell) => { while (taken[r] && taken[r][c]) c++;
+        for (let i = 0; i < cell.rowSpan; i++) for (let j = 0; j < cell.colSpan; j++) { (taken[r + i] = taken[r + i] || [])[c + j] = 1; }
+        out[r].push({ cell, col: c, span: cell.colSpan }); c += cell.colSpan; }); });
+    return out;
+  };
+  const txt = (el) => [...el.childNodes].map((n) => n.textContent).join(' ').replace(/\s+/g, ' ').trim();
+  document.querySelectorAll('.slide table.r-table').forEach((table) => {
+    const head = grid([...table.tHead.rows]), body = grid([...table.tBodies[0].rows]);
+    const label = (col) => head.map((row) => row.find((x) => col >= x.col && col < x.col + x.span)).filter(Boolean)
+      .map((x) => txt(x.cell)).filter((v, i, a) => v && a.indexOf(v) === i).join(' · ');
+    const clear = () => { table.querySelectorAll('.t-hl, .t-hl-c, .t-hl-x').forEach((e) => e.classList.remove('t-hl', 't-hl-c', 't-hl-x')); tip.style.display = 'none'; };
+    table.addEventListener('mouseleave', clear);
+    table.tBodies[0].addEventListener('mousemove', (e) => {
+      const td = e.target.closest('td'); if (!td) return clear();
+      const r = td.parentElement.sectionRowIndex, me = body[r].find((x) => x.cell === td);
+      if (table._cur !== td) { clear(); table._cur = td;
+        body.forEach((row) => row.forEach((x) => { if (me.col >= x.col && me.col < x.col + x.span) x.cell.classList.add('t-hl-c'); }));
+        body[r].forEach((x) => x.cell.classList.add('t-hl')); td.classList.add('t-hl-x');
+        const rowName = txt(td.parentElement.cells[0]), q = td.querySelector('.q');
+        const val = q ? txt(td.firstChild) + ' ₽ за ЦО · ' + txt(q) + ' ЦО' : txt(td);
+        tip.innerHTML = '<b>' + rowName + '</b><i>' + label(me.col) + '</i><span>' + val.replace(/\s*₽/g, '\u00a0руб.') + '</span>'; }
+      tip.style.display = 'block';
+      const w = tip.offsetWidth, h = tip.offsetHeight, k = 16;
+      tip.style.left = Math.min(e.clientX + k, innerWidth - w - 8) + 'px';
+      tip.style.top = (e.clientY + k + h > innerHeight ? e.clientY - k - h : e.clientY + k) + 'px';
+    });
+  });
+  document.addEventListener('deck:slide', () => { tip.style.display = 'none'; });
+})();
+</script><script>(() => { const slides = [...document.querySelectorAll('.slide')];
+  document.querySelectorAll('.r-toc-list li[data-sec]').forEach((li) => {
+    const i = slides.findIndex((s) => s.classList.contains('r-div') && s.dataset.sec === li.dataset.sec);
+    if (i < 0) return; li.setAttribute('role', 'link'); li.tabIndex = 0;
+    const go = () => show(i); li.addEventListener('click', go);
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); go(); } }); }); })();</script>
     <div class="kicker" id="kicker"></div>
     <div class="logo"><svg class="logo-svg" viewBox="322 224 3352 1120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Digital M">
 <path d="M3674 224H2610V1344H3674V224Z" fill="#E0622C"/>
@@ -1101,7 +1571,6 @@ html{ font-size: calc(100vw / 22.5); }
 <path d="M2246.73 1106.48C2256.22 1109.27 2263.2 1110.67 2267.67 1110.67C2277.72 1110.67 2284.14 1107.32 2286.93 1100.62C2289.72 1093.36 2291.12 1082.75 2291.12 1068.79V495.116C2285.53 496.791 2279.11 497.628 2271.85 497.628C2264.04 497.628 2255.66 496.791 2246.73 495.116V472.504H2254.27C2254.27 475.854 2257.06 479.204 2262.64 482.554C2268.78 485.345 2274.65 486.741 2280.23 486.741C2293.07 486.741 2304.24 483.391 2313.73 476.691C2323.22 469.433 2327.97 460.221 2327.97 449.054H2343.88L2343.04 1068.79C2343.04 1083.31 2344.16 1093.92 2346.39 1100.62C2349.18 1107.32 2355.04 1110.67 2363.98 1110.67C2368.44 1110.67 2375.42 1109.27 2384.91 1106.48V1119.04H2246.73V1106.48Z" fill="currentColor"/>
 <path d="M2246.73 1106.48L2247.01 1105.52L2245.73 1105.14V1106.48H2246.73ZM2286.93 1100.62L2287.85 1101L2287.86 1100.99L2287.86 1100.97L2286.93 1100.62ZM2291.12 495.116H2292.12V493.772L2290.83 494.158L2291.12 495.116ZM2246.73 495.116H2245.73V495.946L2246.55 496.099L2246.73 495.116ZM2246.73 472.504V471.504H2245.73V472.504H2246.73ZM2254.27 472.504H2255.27V471.504H2254.27V472.504ZM2262.64 482.554L2262.13 483.411L2262.18 483.44L2262.23 483.464L2262.64 482.554ZM2313.73 476.691L2314.31 477.508L2314.32 477.497L2314.34 477.486L2313.73 476.691ZM2327.97 449.054V448.054H2326.97V449.054H2327.97ZM2343.88 449.054L2344.88 449.056L2344.88 448.054H2343.88V449.054ZM2343.04 1068.79L2342.04 1068.79V1068.79H2343.04ZM2346.39 1100.62L2345.44 1100.93L2345.45 1100.97L2345.47 1101L2346.39 1100.62ZM2384.91 1106.48H2385.91V1105.14L2384.63 1105.52L2384.91 1106.48ZM2384.91 1119.04V1120.04H2385.91V1119.04H2384.91ZM2246.73 1119.04H2245.73V1120.04H2246.73V1119.04ZM2246.73 1106.48L2246.45 1107.44C2255.95 1110.23 2263.05 1111.67 2267.67 1111.67V1110.67V1109.67C2263.36 1109.67 2256.5 1108.31 2247.01 1105.52L2246.73 1106.48ZM2267.67 1110.67V1111.67C2277.94 1111.67 2284.84 1108.22 2287.85 1101L2286.93 1100.62L2286.01 1100.23C2283.43 1106.41 2277.5 1109.67 2267.67 1109.67V1110.67ZM2286.93 1100.62L2287.86 1100.97C2290.72 1093.54 2292.12 1082.79 2292.12 1068.79H2291.12H2290.12C2290.12 1082.71 2288.72 1093.17 2286 1100.26L2286.93 1100.62ZM2291.12 1068.79H2292.12V495.116H2291.12H2290.12V1068.79H2291.12ZM2291.12 495.116L2290.83 494.158C2285.36 495.799 2279.04 496.628 2271.85 496.628V497.628V498.628C2279.19 498.628 2285.71 497.782 2291.4 496.074L2291.12 495.116ZM2271.85 497.628V496.628C2264.11 496.628 2255.8 495.798 2246.91 494.133L2246.73 495.116L2246.55 496.099C2255.53 497.783 2263.97 498.628 2271.85 498.628V497.628ZM2246.73 495.116H2247.73V472.504H2246.73H2245.73V495.116H2246.73ZM2246.73 472.504V473.504H2254.27V472.504V471.504H2246.73V472.504ZM2254.27 472.504H2253.27C2253.27 476.435 2256.52 480.044 2262.13 483.411L2262.64 482.554L2263.16 481.696C2257.6 478.364 2255.27 475.272 2255.27 472.504H2254.27ZM2262.64 482.554L2262.23 483.464C2268.47 486.303 2274.48 487.741 2280.23 487.741V486.741V485.741C2274.82 485.741 2269.09 484.388 2263.06 481.643L2262.64 482.554ZM2280.23 486.741V487.741C2293.25 487.741 2304.63 484.34 2314.31 477.508L2313.73 476.691L2313.15 475.874C2303.85 482.443 2292.89 485.741 2280.23 485.741V486.741ZM2313.73 476.691L2314.34 477.486C2324.05 470.054 2328.97 460.557 2328.97 449.054H2327.97H2326.97C2326.97 459.885 2322.39 468.813 2313.12 475.897L2313.73 476.691ZM2327.97 449.054V450.054H2343.88V449.054V448.054H2327.97V449.054ZM2343.88 449.054L2342.88 449.053L2342.04 1068.79L2343.04 1068.79L2344.04 1068.79L2344.88 449.056L2343.88 449.054ZM2343.04 1068.79H2342.04C2342.04 1083.33 2343.15 1094.07 2345.44 1100.93L2346.39 1100.62L2347.34 1100.3C2345.16 1093.76 2344.04 1083.29 2344.04 1068.79H2343.04ZM2346.39 1100.62L2345.47 1101C2346.94 1104.54 2349.25 1107.23 2352.38 1109.02C2355.51 1110.81 2359.39 1111.67 2363.98 1111.67V1110.67V1109.67C2359.63 1109.67 2356.12 1108.85 2353.38 1107.28C2350.65 1105.73 2348.63 1103.39 2347.31 1100.23L2346.39 1100.62ZM2363.98 1110.67V1111.67C2368.6 1111.67 2375.7 1110.23 2385.2 1107.44L2384.91 1106.48L2384.63 1105.52C2375.15 1108.31 2368.29 1109.67 2363.98 1109.67V1110.67ZM2384.91 1106.48H2383.91V1119.04H2384.91H2385.91V1106.48H2384.91ZM2384.91 1119.04V1118.04H2246.73V1119.04V1120.04H2384.91V1119.04ZM2246.73 1119.04H2247.73V1106.48H2246.73H2245.73V1119.04H2246.73Z" fill="currentColor"/>
 </svg></div>
-    <div class="plate contact"><span>связаться</span></div>
     <div class="plate menu" role="button" tabindex="0"><span>меню</span><i></i></div>
     <div class="scale" id="scale"></div>
   </div>
@@ -1325,9 +1794,30 @@ const grainHot = { style: {} };
   const RSTI_D = [['Морская миля', 5992], ['Кинопарк', 5815], ['Любоград', 5352], ['Дворцовый фасад', 4385], ['Южный Форт', 2612],
                   ['Огни Залива', 1885], ['Таллинский парк', 732], ['Сандэй', 346], ['Кронунг ЮГ', 111]];
   const sp = (v) => String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+  const RSTI_CH = [['Базы недвижимости', g(5)], ['Контекстная реклама', g(7)], ['Таргетированная реклама', g(3)], ['Охватная реклама', '#417E8D'], ['Геомедийная реклама', C.ash]];
+  const RSTI_B = [[2409000, 1245174.7, 268400, 0, 113621.2], [2420440, 1291675, 281820, 211365, 109956], [2086700, 1503509.7, 268400, 120780, 113621.2]];
+  const tipBox = (r) => ({ trigger: 'item', backgroundColor: C.paper, borderColor: C.ink, borderWidth: 1, borderRadius: 0, padding: [r * 1.5, r * 2],
+    extraCssText: 'box-shadow:none;', textStyle: { color: C.ink, fontFamily: '"IBM Plex Sans", system-ui, sans-serif', fontSize: r } });
+  const tipHtml = (r, k, v, s) => '<div style="font-family:IBM Plex Mono,monospace;font-size:' + r * 0.75 + 'px;letter-spacing:.08em;text-transform:uppercase;color:' + C.terra + '">' + k + '</div>'
+    + '<div style="font-family:Viaoda Libre,Georgia,serif;font-size:' + r * 2.625 + 'px;line-height:1.05;margin-top:' + r * 0.75 + 'px;margin-bottom:' + r * 0.5 + 'px">' + v + '</div>' + (s ? '<div style="color:#38362D">' + s + '</div>' : '');
+  const tip = (r) => ({ trigger: 'item', backgroundColor: C.paper, borderColor: C.ink, borderWidth: 1, borderRadius: 0, padding: [r * 1.5, r * 2],
+    extraCssText: 'box-shadow:none;', textStyle: { color: C.ink, fontFamily: '"IBM Plex Sans", system-ui, sans-serif', fontSize: r },
+    formatter: (p) => '<div style="font-family:IBM Plex Mono,monospace;font-size:' + r * 0.75 + 'px;letter-spacing:.08em;text-transform:uppercase;color:' + C.terra + '">' + p.name + '</div>'
+      + '<div style="font-family:Viaoda Libre,Georgia,serif;font-size:' + r * 2.625 + 'px;line-height:1.05;margin-top:' + r * 0.75 + 'px;margin-bottom:' + r * 0.5 + 'px">' + sp(Math.round(p.value)) + '&nbsp;руб.</div>'
+      + '<div style="color:#38362D">' + ru(p.percent.toFixed(1)) + ' % бюджета месяца</div>' });
+  const donut = (k) => (r) => ({
+    animation: true, animationDuration: 1100, animationEasing: 'cubicOut', tooltip: tip(r),
+    series: [{ type: 'pie', radius: ['52%', '80%'], center: ['50%', '50%'], startAngle: 90, avoidLabelOverlap: true,
+      itemStyle: { borderColor: C.paper, borderWidth: 2 },
+      label: { show: true, position: 'outside', formatter: (p) => p.percent >= 2 ? ru(Math.round(p.percent)) + ' %' : '', color: C.ink,
+        fontFamily: '"Viaoda Libre", Georgia, serif', fontSize: r * 1.375 },
+      labelLine: { length: r * 0.5, length2: r * 0.5, lineStyle: { color: C.mark } },
+      emphasis: { scale: true, scaleSize: r * 0.5, label: { fontSize: r * 1.625 } },
+      data: RSTI_CH.map(([n, c], i) => ({ name: n, value: RSTI_B[k][i], itemStyle: { color: c } })).filter((d) => d.value > 0) }] });
   const CHARTS = {
+    'rsti-donut-0': donut(0), 'rsti-donut-1': donut(1), 'rsti-donut-2': donut(2),
     'rsti-sales': (r) => ({
-      animation: true, animationDuration: 900, animationEasing: 'cubicOut', animationDelay: (i) => i * 70,
+      tooltip: Object.assign(tipBox(r), { formatter: (p) => tipHtml(r, p.name + ' 2026', sp(p.value), 'продаж у девяти ЖК') }), animation: true, animationDuration: 900, animationEasing: 'cubicOut', animationDelay: (i) => i * 70,
       grid: { left: 0, right: 0, top: r * 2, bottom: r * 2.5 },
       xAxis: { type: 'category', data: RSTI_M, axisLine: { lineStyle: { color: C.ink, width: 1 } }, axisTick: { show: false },
         axisLabel: { color: C.ink, fontFamily: MONO, fontSize: r * 0.875, margin: r * 0.875 } },
@@ -1337,7 +1827,7 @@ const grainHot = { style: {} };
           label: v === Math.max(...RSTI_S) ? { color: C.terra } : undefined })),
         label: { show: true, position: 'top', distance: r * 0.375, color: C.ink, fontFamily: '"Viaoda Libre", Georgia, serif', fontSize: r * 1.75 } }] }),
     'rsti-demand': (r) => ({
-      animation: true, animationDuration: 900, animationEasing: 'cubicOut', animationDelay: (i) => i * 70,
+      tooltip: Object.assign(tipBox(r), { formatter: (p) => tipHtml(r, 'ЖК «' + p.name + '»', sp(p.value), 'показатель спроса') }), animation: true, animationDuration: 900, animationEasing: 'cubicOut', animationDelay: (i) => i * 70,
       grid: { left: r * 10.5, right: r * 4.5, top: 0, bottom: 0 },
       xAxis: { type: 'value', show: false, max: (v) => v.max },
       yAxis: { type: 'category', inverse: true, data: RSTI_D.map((d) => d[0]), axisLine: { lineStyle: { color: C.ink, width: 1 } }, axisTick: { show: false },
@@ -1349,6 +1839,7 @@ const grainHot = { style: {} };
         label: { show: true, position: 'right', distance: r * 0.625, formatter: (p) => sp(p.value), color: C.ink,
           fontFamily: '"Viaoda Libre", Georgia, serif', fontSize: r * 1.5 } }] }),
     'lst18-bars': (r) => ({
+      tooltip: Object.assign(tipBox(r), { formatter: (p) => tipHtml(r, ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][p.dataIndex % 12] + ' ' + (2024 + Math.floor(p.dataIndex / 12)), sp(p.value), 'динамика продаж, тыс.') }),
       animation: true, animationDuration: 900, animationEasing: 'cubicOut', animationDelay: (i) => i * 28,
       grid: { left: 0, right: 0, top: r * 1.375, bottom: r * 1.75 }, xAxis: xAxis(r), yAxis: { show: false, max: (v) => v.max },
       series: [{ type: 'bar', barCategoryGap: '18%',
@@ -1358,6 +1849,7 @@ const grainHot = { style: {} };
           label: STYLE === 'gold' && v === Math.max(...SALES) ? { color: C.terra } : undefined })),
         label: { show: true, position: 'top', distance: r * 0.25, formatter: (p) => ru(p.value), color: C.ink, fontFamily: MONO, fontSize: r * 0.625 } }] }),
     'lst18-line': (r) => ({
+      tooltip: Object.assign(tipBox(r), { formatter: (p) => p.value == null ? '' : tipHtml(r, ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][p.dataIndex % 12] + ' ' + (2024 + Math.floor(p.dataIndex / 12)), ru(typeof p.value === 'object' ? p.value.value : p.value), 'ср. стоимость проданного кв.&nbsp;м') }),
       animation: true, animationDuration: 1600, animationEasing: 'cubicInOut', animationDelay: 600,
       grid: { left: r * 1.25, right: r * 1.25, top: r * 1.5, bottom: r * 1.75 }   , xAxis: Object.assign(xAxis(r), { boundaryGap: false }),
       yAxis: { show: true, min: 290, max: 440, axisLine: { show: false }, axisLabel: { show: false }, axisTick: { show: false },
