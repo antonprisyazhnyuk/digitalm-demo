@@ -692,8 +692,8 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-tm span{ height:1.5rem; margin-top:.5rem; display:flex; align-items:flex-end; white-space:nowrap;
   font-size:1rem; line-height:1.25rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); }
 .r-tm b{ margin-top:.5625rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2rem; }
-.r-tm-list{ position:absolute; left:var(--c4); top:39rem; width:87rem; list-style:none; padding:0; margin:0;
-  display:grid; grid-template-columns:repeat(3, 33rem); column-gap:3rem; grid-auto-rows:5rem; }
+.r-tm-list{ position:absolute; left:var(--c4); top:41rem; width:87rem; list-style:none; padding:0; margin:0;
+  display:grid; grid-template-columns:33rem 33rem 15rem; column-gap:3rem; grid-auto-rows:6.25rem; }   
 .r-tm-list li{ display:flex; flex-direction:column; gap:.375rem; padding-top:.5rem; }
 .r-tm-list b{ font-family:"IBM Plex Sans",system-ui,sans-serif; font-weight:400; font-size:1.375rem; line-height:1.75rem; letter-spacing:-.02em; }
 .r-tm-list span{ font-size:1rem; line-height:1.5rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mark-dark); }
@@ -866,6 +866,12 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-rdc .r-rdc-a td, .r-rdc .r-rdc-a tbody th{ padding:1.375rem .75rem; }   
 .r-rdc .r-rdc-a thead th{ padding:1rem .75rem; }
 .r-rdc-key{ top:56rem; }
+.r-tm em{ font-style:normal; margin-top:.5rem; font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--bark); }
+.r-year .r-head{ position:absolute; left:var(--c4); top:7.75rem; width:87rem; }
+.r-year .r-year-p{ position:absolute; left:var(--c4); top:19.25rem; width:72rem; margin:0; font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:1.75rem; line-height:2.5rem; letter-spacing:-.02em; }
+.r-year .r-year-p2{ top:33rem; color:#38362D; border-top:1px solid var(--terra); padding-top:1.5rem; }
+.r-tm-list em{ font-style:normal; font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--bark); }
 @media (max-width: 767px){
 html{ font-size: calc(100vw / 22.5); }
 :root{
@@ -1034,19 +1040,19 @@ html{ font-size: calc(100vw / 22.5); }
     <section class="slide r-team" data-kicker="об агентстве" data-num="05 / 39" data-title="Команда">
       <h2 class="r-head">Команда</h2>
       <div class="r-tm-row">
-        <figure class="r-tm"><img src="rsti/img/team-1.jpg" alt=""><figcaption><span>CEO</span><b>Марина<br>Зрилова</b></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-2.jpg" alt=""><figcaption><span>директор по&nbsp;развитию</span><b>Анастасия<br>Шелехова</b></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-3.jpg" alt=""><figcaption><span>медиадиректор</span><b>Анна<br>Стец</b></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-4.jpg" alt=""><figcaption><span>performance-директор</span><b>Варвара<br>Негробова</b></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-5.jpg" alt=""><figcaption><span>аккаунт-менеджер</span><b>Ксения<br>Брылёва</b></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-1.jpg" alt=""><figcaption><span>CEO</span><b>Марина<br>Зрилова</b><em>опыт 15 лет</em></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-2.jpg" alt=""><figcaption><span>директор по&nbsp;развитию</span><b>Анастасия<br>Шелехова</b><em>опыт 7 лет</em></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-3.jpg" alt=""><figcaption><span>медиадиректор</span><b>Анна<br>Стец</b><em>опыт 13 лет</em></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-4.jpg" alt=""><figcaption><span>performance-директор</span><b>Варвара<br>Негробова</b><em>опыт 14 лет</em></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-5.jpg" alt=""><figcaption><span>аккаунт-менеджер</span><b>Ксения<br>Брылёва</b><em>опыт 4 года</em></figcaption></figure>
       </div>
       <ul class="r-tm-list">
-        <li><b>Юлия Шагарова</b><span>медиапланер</span></li>
-        <li><b>Семён Бобер</b><span>контекстный специалист</span></li>
-        <li><b>Александра Лещёва</b><span>ИИ-специалист</span></li>
-        <li><b>Анастасия Цыганкова</b><span>дизайнер</span></li>
-        <li><b>Марк Лазарев</b><span>специалист по&nbsp;фидам</span></li>
-        <li><b>Ксения Самсонова</b><span>арбитраж звонков</span></li>
+        <li><b>Юлия Шагарова</b><span>медиапланер</span><em>опыт 10 лет</em></li>
+        <li><b>Семён Бобер</b><span>контекстный специалист</span><em>опыт 10 лет</em></li>
+        <li><b>Александра Лещёва</b><span>ИИ-специалист</span><em>опыт 3 года</em></li>
+        <li><b>Анастасия Цыганкова</b><span>дизайнер</span><em>опыт 6 лет</em></li>
+        <li><b>Марк Лазарев</b><span>специалист по&nbsp;фидам</span><em>опыт 3 года</em></li>
+        <li><b>Ксения Самсонова</b><span>контроль входящих звонков</span><em>опыт 1 год</em></li>
       </ul>
     </section>
     <section class="slide r-logos" data-kicker="об агентстве" data-num="06 / 39" data-title="Опыт в недвижимости">
@@ -1423,7 +1429,12 @@ html{ font-size: calc(100vw / 22.5); }
         <li><i style="background:#E0C8A3"></i>Таргетированная реклама</li><li><i style="background:#417E8D"></i>Охватная реклама</li><li><i style="background:#D9D6D1"></i>Геомедийная реклама</li>
       </ul>
     </section>
-    <section class="slide r-wide r-rdc" data-kicker="04 · медиаплан и бюджет" data-num="32 / 39" data-title="Расчёт договорной цены">
+    <section class="slide r-year" data-kicker="04 · медиаплан и бюджет" data-num="32 / 39" data-title="Медиатактика в разрезе года">
+      <h2 class="r-head">Медиатактика в&nbsp;разрезе года</h2>
+      <p class="r-year-p">Мы подготовили прогнозный расчёт на&nbsp;год с&nbsp;целевыми лидами и&nbsp;CPA. Однако важно учитывать, что дать точный прогноз на&nbsp;месяц вперёд сейчас крайне сложно из-за внешних факторов. Рынок недвижимости высококонкурентный, аукционы и&nbsp;алгоритмы площадок меняются ежедневно.</p>
+      <p class="r-year-p r-year-p2">Поэтому мы рекомендуем делать пересчёт медиатактики, чтобы учитывать динамику изменений, оценивать эффективность каждого канала и&nbsp;при необходимости перераспределять бюджет в&nbsp;пользу инструментов, которые покажут лучший результат.</p>
+    </section>
+    <section class="slide r-wide r-rdc" data-kicker="04 · медиаплан и бюджет" data-num="33 / 39" data-title="Расчёт договорной цены">
       <h2 class="r-head">Расчёт договорной цены</h2>
       <p class="r-head-s">ЖК «Кинопарк» · октябрь 2026&nbsp;— сентябрь 2027 · ₽ за&nbsp;целевое обращение (ЦО) и&nbsp;число ЦО</p>
       <table class="r-table r-rdc-a">
@@ -1438,21 +1449,6 @@ html{ font-size: calc(100vw / 22.5); }
         </tbody>
       </table>
       <p class="r-rdc-key"><span>28&#8239;300</span> ₽ за&nbsp;ЦО <span class="q">44</span> число ЦО</p>
-    </section>
-    <section class="slide r-funnel" data-kicker="04 · медиаплан и бюджет" data-num="33 / 39" data-title="Воронка продаж">
-      <h2 class="r-head">Воронка продаж</h2>
-      <div class="r-fn-text">
-        <p class="r-k">задача</p><p class="r-p">Обеспечить план продаж.</p>
-        <p class="r-k">решение</p><p class="r-p">Расчёт обратной воронки по&nbsp;бенчмаркам рынка. CR из&nbsp;звонка в&nbsp;сделку&nbsp;— 6&nbsp;%, на&nbsp;основе опыта работы агентства.</p>
-      </div>
-      <div class="r-fn">
-        <div class="r-fn-st" style="--w:100%"><b>113</b><span>целевых обращений</span></div>
-        <p class="r-fn-cr">CR&nbsp;23&nbsp;%</p>
-        <div class="r-fn-st" style="--w:62%"><b>25</b><span>встреч</span></div>
-        <p class="r-fn-cr">CR&nbsp;27&nbsp;%</p>
-        <div class="r-fn-st hot" style="--w:30%"><b>6</b><span>сделок</span></div>
-        <p class="r-fn-all">из&nbsp;обращения в&nbsp;сделку&nbsp;— CR&nbsp;6&nbsp;%</p>
-      </div>
     </section>
     <section class="slide r-div" data-kicker="05 · отчётность" data-num="34 / 39" data-sec="05" data-menu="ОТЧЁТНОСТЬ" data-title="Отчётность · обложка">
       <figure class="r-div-bg"><img src="rsti/img/kp-facade.jpg" alt="Фасад ЖК «Кинопарк»"></figure>
@@ -1480,12 +1476,12 @@ html{ font-size: calc(100vw / 22.5); }
       <h2 class="r-head">Работа с&nbsp;фродом и&nbsp;арбитраж</h2>
       <div class="r-fr-pair">
         <div><h3>Работа с&nbsp;фродом</h3>
-          <p class="r-p">Все входящие звонки прослушиваем и&nbsp;тегируем вручную&nbsp;— чтобы сразу отсеивать некачественные обращения: спам, ошибочные звонки, нецелевые запросы, звонки не&nbsp;по&nbsp;теме.</p>
+          <p class="r-p">Все входящие звонки прослушиваем и&nbsp;тегируем с&nbsp;помощью внутреннего продукта&nbsp;М&nbsp;— чтобы сразу отсеивать некачественные обращения: спам, ошибочные звонки, нецелевые запросы, звонки не&nbsp;по&nbsp;теме.</p>
           <p class="r-p">Как только источник даёт мусорный трафик, сразу принимаем меры: корректируем ставки, отключаем площадки, меняем таргетинг. Это не&nbsp;отчёт постфактум, а&nbsp;живая ежедневная работа с&nbsp;качеством лидов.</p></div>
         <div><h3>Арбитраж звонков с&nbsp;классифайдов</h3>
-          <p class="r-p">Каждый день обрабатываем все обращения с&nbsp;баз недвижимости (Циан, Авито, Домклик, Яндекс Недвижимость) и&nbsp;проверяем каждое на&nbsp;качество.</p>
+          <p class="r-p">Каждый день обрабатываем все обращения с&nbsp;баз недвижимости (Циан, Авито, Домклик, Яндекс Недвижимость). Ведём отдельную таблицу со&nbsp;статусами, доступ&nbsp;— у&nbsp;всех участников процесса.</p>
           <p class="r-p">Некачественные фиксируем, собираем материалы для оспаривания и&nbsp;направляем на&nbsp;арбитраж.</p>
-          <p class="r-fig"><b>500&#8239;000&nbsp;руб.</b><span>в&nbsp;месяц&nbsp;— средняя экономия по&nbsp;этому направлению</span></p></div>
+          <p class="r-fig"><b>~700&#8239;000&nbsp;руб.</b><span>в&nbsp;месяц&nbsp;— средняя экономия по&nbsp;этому направлению</span></p></div>
       </div>
     </section>
     <section class="slide r-div" data-kicker="06 · кейсы" data-num="38 / 39" data-sec="06" data-menu="КЕЙСЫ" data-title="Кейсы · обложка">
