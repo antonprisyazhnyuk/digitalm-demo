@@ -675,17 +675,31 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-figs dt{ font-family:"Viaoda Libre",Georgia,serif; font-size:4.5rem; line-height:4.75rem; color:var(--terra); }
 .r-figs dd{ margin:.25rem 0 0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; }
 .r-sw .r-src{ position:absolute; left:var(--c4); top:59.75rem; margin:0; font-size:.8125rem; line-height:1.25rem; color:var(--bark); }
-.r-day-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; list-style:none; padding:0; margin:0;
-  display:grid; grid-template-columns:repeat(5, 1fr); column-gap:1.5rem; }
-.r-day-row > li{ position:relative; border-top:1px solid var(--ink); padding-top:1.25rem; }
-.r-day-row > li::before{ content:""; position:absolute; left:0; top:-.375rem; width:.75rem; height:.75rem; border-radius:50%; background:var(--terra); }
-.r-day-row .r-n{ font-size:.875rem; line-height:1.25rem; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
-.r-day-row b{ display:block; margin:.5rem 0 1rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2.25rem; min-height:4.5rem; }
-.r-day-row p{ margin:0 0 .75rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--bark); }
-.r-day-row ul{ list-style:none; padding:0; margin:0; }
-.r-day-row ul li{ position:relative; padding:.375rem 0 .375rem 1.25rem; border-top:1px solid var(--ash);
+.r-ring{ position:absolute; left:var(--c4); top:17rem; width:46rem; height:46rem; }
+.r-ring svg{ display:block; width:100%; height:100%; overflow:visible; }
+.r-ring .seg{ cursor:pointer; transition:fill .25s; stroke:var(--paper); stroke-width:.18; }
+.r-ring .seg.sleep{ cursor:default; }
+.r-ring .seg.on{ fill:var(--terra); }
+.r-ring .num{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.75px; letter-spacing:.06em; fill:var(--ink); pointer-events:none; transition:fill .25s; }
+.r-ring .num.dark, .r-ring .num.on{ fill:var(--paper); }
+.r-ring .tick{ stroke:var(--ink); stroke-width:.06; }
+.r-ring .tick.big{ stroke-width:.1; }
+.r-ring .hour{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8px; fill:var(--bark); }
+.r-ring .ctr-t{ font-family:"Viaoda Libre",Georgia,serif; font-size:2.6px; fill:var(--ink); }
+.r-ring .ctr-k{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.7px; letter-spacing:.1em; fill:var(--terra); text-transform:uppercase; }
+.r-ring-list{ position:absolute; left:80.75rem; top:19.25rem; width:37rem; list-style:none; padding:0; margin:0; }
+.r-ring-list > li{ display:grid; grid-template-columns:3rem 1fr; border-top:1px solid var(--ink); padding:1rem 0 1.125rem; cursor:pointer; }
+.r-ring-list > li:last-child{ border-bottom:1px solid var(--ink); }
+.r-ring-list .r-n{ font-size:1rem; line-height:2.25rem; color:var(--terra); }
+.r-ring-list b{ font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2.25rem; transition:color .25s; }
+.r-ring-list > li.on b{ color:var(--terra); }
+.r-ring-more{ grid-column:2; max-height:0; overflow:hidden; opacity:0; transition:max-height .4s cubic-bezier(.2,.7,.2,1), opacity .25s; }
+.r-ring-list > li.on .r-ring-more{ max-height:20rem; opacity:1; }
+.r-ring-more p{ margin:.75rem 0 .5rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--bark); }
+.r-ring-more ul{ list-style:none; padding:0; margin:0; }
+.r-ring-more ul li{ position:relative; padding:.375rem 0 .375rem 1.25rem; border-top:1px solid var(--ash);
   font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; letter-spacing:-.02em; }
-.r-day-row ul li::before{ content:"—"; position:absolute; left:0; color:var(--mark-dark); }
+.r-ring-more ul li::before{ content:"—"; position:absolute; left:0; color:var(--mark-dark); }
 .r-vd-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:flex; gap:3rem; justify-content:flex-start; }
 .r-vd-row video{ height:100%; width:auto; display:block; background:var(--g1); object-fit:cover; }
 .r-mo-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
@@ -1248,12 +1262,13 @@ html{ font-size: calc(100vw / 22.5); }
     <section class="slide r-day" data-kicker="03 · стратегия" data-num="24 / 42" data-title="Как добиться внимания">
       <h2 class="r-head">Как добиться внимания целевой аудитории</h2>
       <p class="r-head-s">День покупателя и&nbsp;где его застать</p>
-      <ol class="r-day-row">
-        <li><span class="r-n">утро</span><b>Завтрак</b><p>Чтобы не&nbsp;терять время и&nbsp;провести его с&nbsp;пользой:</p><ul><li>полезное на&nbsp;YouTube</li><li>телеграм-каналы и&nbsp;новостные порталы</li><li>подкасты</li></ul></li>
-        <li><span class="r-n">в&nbsp;пути</span><b>Дорога на&nbsp;работу и&nbsp;домой</b><p>Поездки чаще всего сопровождают:</p><ul><li>навигатор, Яндекс Карты</li><li>радио</li><li>наружная реклама</li></ul></li>
-        <li><span class="r-n">день</span><b>Работа</b><p>Очень занят, открывает только то, что нужно для работы:</p><ul><li>мессенджеры с&nbsp;коллегами и&nbsp;партнёрами</li><li>банковские приложения</li></ul></li>
-        <li><span class="r-n">полдень</span><b>Обед</b><p>С&nbsp;партнёрами или один:</p><ul><li>быстрый скролл телеграм-каналов: бизнес, новости, инвестиции, недвижимость</li><li>новостные и&nbsp;тематические площадки</li><li>банковские приложения</li><li>навигатор, если обед выездной</li></ul></li>
-        <li><span class="r-n">вечер</span><b>Дома, хобби</b><p>Наедине, с&nbsp;семьёй, за&nbsp;хобби или спортом:</p><ul><li>соцсети, ресурсы на&nbsp;интересную тему</li><li>фильмы на&nbsp;киносервисах</li></ul></li>
+      <div class="r-ring" aria-hidden="true"></div>
+      <ol class="r-ring-list">
+        <li data-h="6-7.5" data-g="4"><span class="r-n">01</span><b>Завтрак</b><div class="r-ring-more"><p>Чтобы не&nbsp;терять время и&nbsp;провести его с&nbsp;пользой:</p><ul><li>полезное на&nbsp;YouTube</li><li>телеграм-каналы и&nbsp;новостные порталы</li><li>подкасты</li></ul></div></li>
+        <li data-h="7.5-9 18-19.5" data-g="6"><span class="r-n">02</span><b>Дорога на&nbsp;работу и&nbsp;домой</b><div class="r-ring-more"><p>Поездки чаще всего сопровождают:</p><ul><li>навигатор, Яндекс Карты</li><li>радио</li><li>наружная реклама</li></ul></div></li>
+        <li data-h="9-12.5 13.5-18" data-g="2"><span class="r-n">03</span><b>Работа</b><div class="r-ring-more"><p>Очень занят, открывает только то, что нужно для работы:</p><ul><li>мессенджеры с&nbsp;коллегами и&nbsp;партнёрами</li><li>банковские приложения</li></ul></div></li>
+        <li data-h="12.5-13.5" data-g="5"><span class="r-n">04</span><b>Обед</b><div class="r-ring-more"><p>С&nbsp;партнёрами или один:</p><ul><li>быстрый скролл телеграм-каналов: бизнес, новости, инвестиции, недвижимость</li><li>новостные и&nbsp;тематические площадки</li><li>банковские приложения</li><li>навигатор, если обед выездной</li></ul></div></li>
+        <li data-h="19.5-23" data-g="3"><span class="r-n">05</span><b>Дома, хобби</b><div class="r-ring-more"><p>Наедине, с&nbsp;семьёй, за&nbsp;хобби или спортом:</p><ul><li>соцсети, ресурсы на&nbsp;интересную тему</li><li>фильмы на&nbsp;киносервисах</li></ul></div></li>
       </ol>
     </section>
     <section class="slide r-ai" data-kicker="03 · стратегия" data-num="25 / 42" data-title="ИИ-агенты для обработки заявок">
@@ -1608,6 +1623,67 @@ html{ font-size: calc(100vw / 22.5); }
   addEventListener('resize', () => { if (slide.classList.contains('on')) { run++; final(); } });
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(sync);
   sync();
+})();
+</script><script>
+(() => {
+  const slide = document.querySelector('.slide.r-day'); if (!slide) return;
+  const box = slide.querySelector('.r-ring'), rows = [...slide.querySelectorAll('.r-ring-list > li')];
+  const GOLD = ['#F6F2EC', '#EBDDC8', '#E0C8A3', '#D4B78C', '#C9A676', '#A98552', '#7F6239'];
+  const R0 = 12.5, R1 = 20, NS = 'http://www.w3.org/2000/svg';
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pt = (h, r) => { const a = h / 24 * 2 * Math.PI; return [r * Math.sin(a), -r * Math.cos(a)]; };
+  const f = (v) => +v.toFixed(3);
+  const arc = (h1, h2) => {
+    const big = h2 - h1 > 12 ? 1 : 0, [a, b] = pt(h1, R1), [c, d] = pt(h2, R1), [e, g] = pt(h2, R0), [k, l] = pt(h1, R0);
+    return `M${f(a)} ${f(b)}A${R1} ${R1} 0 ${big} 1 ${f(c)} ${f(d)}L${f(e)} ${f(g)}A${R0} ${R0} 0 ${big} 0 ${f(k)} ${f(l)}Z`;
+  };
+  const hh = (h) => String(Math.floor(h)).padStart(2, '0') + ':' + (h % 1 ? '30' : '00');
+  const el = (tag, attrs, parent, text) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text != null) n.textContent = text; parent.appendChild(n); return n; };
+  const moments = rows.map((li, i) => ({ li, i, g: +li.dataset.g, spans: li.dataset.h.split(' ').map((s) => s.split('-').map(Number)) }));
+  const busy = moments.flatMap((m) => m.spans).sort((a, b) => a[0] - b[0]);
+  const sleep = busy.map(([, b], i) => [b, i + 1 < busy.length ? busy[i + 1][0] : busy[0][0] + 24]).filter(([a, b]) => b > a);
+  const svg = el('svg', { viewBox: '-24 -24 48 48' }, box);
+  const defs = el('defs', {}, svg), mask = el('mask', { id: 'r-ring-mask' }, defs);
+  const RM = (R0 + R1) / 2, CIRC = 2 * Math.PI * RM;
+  const sweep = el('circle', { r: RM, fill: 'none', stroke: '#fff', 'stroke-width': R1 - R0 + 1, transform: 'rotate(-90)', 'stroke-dasharray': CIRC, 'stroke-dashoffset': 0 }, mask);
+  const ring = el('g', { mask: 'url(#r-ring-mask)' }, svg);
+  sleep.forEach(([a, b]) => el('path', { d: arc(a, b), fill: GOLD[0], class: 'seg sleep' }, ring));
+  moments.forEach((m) => {
+    m.segs = m.spans.map(([a, b]) => el('path', { d: arc(a, b), fill: GOLD[m.g - 1], class: 'seg' }, ring));
+    m.nums = m.spans.map(([a, b]) => { const [x, y] = pt((a + b) / 2, RM); return el('text', { x: f(x), y: f(y), 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'num' + (m.g >= 6 ? ' dark' : '') }, svg, String(m.i + 1).padStart(2, '0')); });
+  });
+  sleep.forEach(([a, b]) => { if (b - a < 3) return; const [x, y] = pt((a + b) / 2, RM); el('text', { x: f(x), y: f(y), 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'num' }, svg, 'сон'); });
+  const ticks = el('g', {}, svg);
+  for (let h = 0; h < 24; h++) {
+    const big = h % 3 === 0, [x1, y1] = pt(h, R1 + .4), [x2, y2] = pt(h, R1 + (big ? 1.3 : .8));
+    el('line', { x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2), class: 'tick' + (big ? ' big' : '') }, ticks);
+    if (big) { const [x, y] = pt(h, R1 + 2.4); el('text', { x: f(x), y: f(y), 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'hour' }, ticks, String(h).padStart(2, '0')); }
+  }
+  const ctr = el('g', {}, svg);
+  const ck = el('text', { x: 0, y: -4.2, 'text-anchor': 'middle', class: 'ctr-k' }, ctr);
+  const ct = [0, 1].map((k) => el('text', { x: 0, y: (k ? 3.6 : .2), 'text-anchor': 'middle', class: 'ctr-t' }, ctr));
+  let act = -1;
+  function on(i){
+    if (i === act) return; act = i;
+    moments.forEach((m) => { const o = m.i === i; m.li.classList.toggle('on', o); m.segs.forEach((s) => s.classList.toggle('on', o)); m.nums.forEach((s) => s.classList.toggle('on', o)); });
+    const m = moments[i];
+    ck.textContent = m.li.querySelector('b').textContent;
+    const lines = m.spans.map(([a, b]) => hh(a) + '–' + hh(b));
+    ct[0].textContent = lines[0]; ct[1].textContent = lines[1] || '';
+    ct[0].setAttribute('y', lines[1] ? -.4 : 1.2); ct[1].setAttribute('y', 3.2);
+  }
+  moments.forEach((m) => { m.li.addEventListener('mouseenter', () => on(m.i)); m.li.addEventListener('click', () => on(m.i)); m.segs.forEach((s) => { s.addEventListener('mouseenter', () => on(m.i)); s.addEventListener('click', () => on(m.i)); }); });
+  on(0);
+  const fade = [ticks, ctr, ...moments.flatMap((m) => m.nums), ...[...svg.querySelectorAll('.num')]];
+  function draw(){
+    sweep.getAnimations().forEach((a) => a.cancel()); fade.forEach((n) => n.getAnimations().forEach((a) => a.cancel()));
+    if (reduced) return;
+    sweep.animate([{ strokeDashoffset: CIRC }, { strokeDashoffset: 0 }], { duration: 1400, easing: 'cubic-bezier(.65,0,.25,1)', fill: 'backwards', delay: 250 });
+    [...new Set(fade)].forEach((n) => n.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 1300, fill: 'backwards' }));
+  }
+  let was = false;
+  const sync = () => { const now = slide.classList.contains('on'); if (now && !was) { on(0); draw(); } was = now; };
+  document.addEventListener('deck:slide', sync); sync();
 })();
 </script>
     <div class="kicker" id="kicker"></div>
