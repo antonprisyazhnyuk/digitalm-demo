@@ -675,31 +675,37 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-figs dt{ font-family:"Viaoda Libre",Georgia,serif; font-size:4.5rem; line-height:4.75rem; color:var(--terra); }
 .r-figs dd{ margin:.25rem 0 0; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; }
 .r-sw .r-src{ position:absolute; left:var(--c4); top:59.75rem; margin:0; font-size:.8125rem; line-height:1.25rem; color:var(--bark); }
-.r-ring{ position:absolute; left:var(--c4); top:17rem; width:46rem; height:46rem; }
+.r-ring{ position:absolute; left:var(--c4); top:17.5rem; width:38rem; height:38rem; }
 .r-ring svg{ display:block; width:100%; height:100%; overflow:visible; }
 .r-ring .seg{ cursor:pointer; transition:fill .25s; stroke:var(--paper); stroke-width:.18; }
-.r-ring .seg.sleep{ cursor:default; }
 .r-ring .seg.on{ fill:var(--terra); }
-.r-ring .num{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.75px; letter-spacing:.06em; fill:var(--ink); pointer-events:none; transition:fill .25s; }
+.r-ring .num{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.85px; letter-spacing:.06em; fill:var(--ink); pointer-events:none; transition:fill .25s; }
 .r-ring .num.dark, .r-ring .num.on{ fill:var(--paper); }
 .r-ring .tick{ stroke:var(--ink); stroke-width:.06; }
 .r-ring .tick.big{ stroke-width:.1; }
-.r-ring .hour{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8px; fill:var(--bark); }
-.r-ring .ctr-t{ font-family:"Viaoda Libre",Georgia,serif; font-size:2.6px; fill:var(--ink); }
-.r-ring .ctr-k{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.7px; letter-spacing:.1em; fill:var(--terra); text-transform:uppercase; }
-.r-ring-list{ position:absolute; left:80.75rem; top:19.25rem; width:37rem; list-style:none; padding:0; margin:0; }
-.r-ring-list > li{ display:grid; grid-template-columns:3rem 1fr; border-top:1px solid var(--ink); padding:1rem 0 1.125rem; cursor:pointer; }
-.r-ring-list > li:last-child{ border-bottom:1px solid var(--ink); }
+.r-ring .hour{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.95px; fill:var(--bark); }
+.r-ring .ctr-t{ font-family:"Viaoda Libre",Georgia,serif; font-size:2.8px; fill:var(--ink); }
+.r-ring .ctr-k{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8px; letter-spacing:.1em; fill:var(--terra); text-transform:uppercase; }
+.r-ring-list{ position:absolute; left:var(--c8); top:17.5rem; width:47rem; list-style:none; padding:0; margin:0; columns:2; column-gap:3rem; }
+.r-ring-list > li{ break-inside:avoid; display:grid; grid-template-columns:2.5rem 1fr; border-top:1px solid var(--ink); padding:.75rem 0 1rem; }
 .r-ring-list .r-n{ font-size:1rem; line-height:2.25rem; color:var(--terra); }
 .r-ring-list b{ font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2.25rem; transition:color .25s; }
 .r-ring-list > li.on b{ color:var(--terra); }
-.r-ring-more{ grid-column:2; max-height:0; overflow:hidden; opacity:0; transition:max-height .4s cubic-bezier(.2,.7,.2,1), opacity .25s; }
-.r-ring-list > li.on .r-ring-more{ max-height:20rem; opacity:1; }
-.r-ring-more p{ margin:.75rem 0 .5rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--bark); }
+.r-ring-more{ grid-column:2; }
+.r-ring-more p{ margin:.625rem 0 .5rem; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--bark); }
 .r-ring-more ul{ list-style:none; padding:0; margin:0; }
-.r-ring-more ul li{ position:relative; padding:.375rem 0 .375rem 1.25rem; border-top:1px solid var(--ash);
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.125rem; line-height:1.625rem; letter-spacing:-.02em; }
+.r-ring-more ul li{ position:relative; padding:.25rem 0 .25rem 1.25rem; border-top:1px solid var(--ash);
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1.0625rem; line-height:1.5rem; letter-spacing:-.02em; }
 .r-ring-more ul li::before{ content:"—"; position:absolute; left:0; color:var(--mark-dark); }
+.r-ring-tip{ position:absolute; z-index:5; left:0; top:0; width:max-content; max-width:24rem; padding:1.5rem 2rem; background:var(--paper); border:1px solid var(--ink);
+  pointer-events:none; opacity:0; transition:opacity .15s; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:1rem; line-height:1.5rem; color:var(--ink); }
+.r-ring-tip.on{ opacity:1; }
+.r-ring-tip .k{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.75rem; line-height:1rem; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); }
+.r-ring-tip .v{ font-family:"Viaoda Libre",Georgia,serif; font-size:2.625rem; line-height:1.05; margin:.75rem 0 .25rem; }
+.r-ring-tip .s{ color:var(--bark); }
+.r-ring-tip ul{ list-style:none; padding:0; margin:.75rem 0 0; border-top:1px solid var(--ash); }
+.r-ring-tip ul li{ padding:.25rem 0 .25rem 1.25rem; position:relative; }
+.r-ring-tip ul li::before{ content:"—"; position:absolute; left:0; color:var(--mark-dark); }
 .r-vd-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:flex; gap:3rem; justify-content:flex-start; }
 .r-vd-row video{ height:100%; width:auto; display:block; background:var(--g1); object-fit:cover; }
 .r-mo-row{ position:absolute; left:var(--c4); top:19.25rem; width:87rem; display:grid; grid-template-columns:repeat(3, 27rem); column-gap:3rem; }
@@ -1647,7 +1653,7 @@ html{ font-size: calc(100vw / 22.5); }
   const RM = (R0 + R1) / 2, CIRC = 2 * Math.PI * RM;
   const sweep = el('circle', { r: RM, fill: 'none', stroke: '#fff', 'stroke-width': R1 - R0 + 1, transform: 'rotate(-90)', 'stroke-dasharray': CIRC, 'stroke-dashoffset': 0 }, mask);
   const ring = el('g', { mask: 'url(#r-ring-mask)' }, svg);
-  sleep.forEach(([a, b]) => el('path', { d: arc(a, b), fill: GOLD[0], class: 'seg sleep' }, ring));
+  const sleepSegs = sleep.map(([a, b]) => el('path', { d: arc(a, b), fill: GOLD[0], class: 'seg sleep' }, ring));
   moments.forEach((m) => {
     m.segs = m.spans.map(([a, b]) => el('path', { d: arc(a, b), fill: GOLD[m.g - 1], class: 'seg' }, ring));
     m.nums = m.spans.map(([a, b]) => { const [x, y] = pt((a + b) / 2, RM); return el('text', { x: f(x), y: f(y), 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'num' + (m.g >= 6 ? ' dark' : '') }, svg, String(m.i + 1).padStart(2, '0')); });
@@ -1674,6 +1680,25 @@ html{ font-size: calc(100vw / 22.5); }
   }
   moments.forEach((m) => { m.li.addEventListener('mouseenter', () => on(m.i)); m.li.addEventListener('click', () => on(m.i)); m.segs.forEach((s) => { s.addEventListener('mouseenter', () => on(m.i)); s.addEventListener('click', () => on(m.i)); }); });
   on(0);
+  const tip = document.createElement('div'); tip.className = 'r-ring-tip'; slide.appendChild(tip);
+  const dur = (spans) => String(spans.reduce((s, [a, b]) => s + b - a, 0)).replace('.', ',') + '\u00a0ч';
+  const span = (spans) => spans.map(([a, b]) => hh(a % 24) + '–' + hh(b % 24)).join('<br>');
+  const tipFor = (m) => m ? '<div class="k">' + m.li.querySelector('b').textContent + '</div><div class="v">' + span(m.spans) + '</div><div class="s">' + dur(m.spans) + ' в сутки</div>'
+      + '<ul>' + [...m.li.querySelectorAll('ul li')].map((x) => '<li>' + x.innerHTML + '</li>').join('') + '</ul>'
+    : '<div class="k">Сон</div><div class="v">' + span(sleep) + '</div><div class="s">' + dur(sleep) + ' в сутки</div>';
+  const move = (e) => {
+    const S = slide.getBoundingClientRect(), r = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    let x = e.clientX - S.left + r * 1.5, y = e.clientY - S.top + r * 1.5;
+    if (x + tip.offsetWidth > S.width - r) x = e.clientX - S.left - tip.offsetWidth - r * 1.5;
+    if (y + tip.offsetHeight > S.height - r) y = S.height - r - tip.offsetHeight;
+    tip.style.transform = `translate(${x}px, ${y}px)`;
+  };
+  const hook = (segs, m) => segs.forEach((s) => {
+    s.addEventListener('mouseenter', (e) => { tip.innerHTML = tipFor(m); tip.classList.add('on'); move(e); });
+    s.addEventListener('mousemove', move);
+    s.addEventListener('mouseleave', () => tip.classList.remove('on'));
+  });
+  moments.forEach((m) => hook(m.segs, m)); hook(sleepSegs, null);
   const fade = [ticks, ctr, ...moments.flatMap((m) => m.nums), ...[...svg.querySelectorAll('.num')]];
   function draw(){
     sweep.getAnimations().forEach((a) => a.cancel()); fade.forEach((n) => n.getAnimations().forEach((a) => a.cancel()));
