@@ -650,7 +650,7 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
   font-size:1rem; line-height:1.25rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); }
 .r-tm b{ margin-top:.5625rem; font-family:"Viaoda Libre",Georgia,serif; font-weight:400; font-size:2rem; line-height:2rem; }
 .r-tm-list{ position:absolute; left:var(--c4); top:41rem; width:87rem; list-style:none; padding:0; margin:0;
-  display:grid; grid-template-columns:33rem 33rem 15rem; column-gap:3rem; grid-auto-rows:6.25rem; }   
+  display:grid; grid-template-columns:33rem 15rem 33rem; column-gap:3rem; grid-auto-rows:6.25rem; }   
 .r-tm-list li{ display:flex; flex-direction:column; gap:.375rem; padding-top:.5rem; }
 .r-tm-list b{ font-family:"IBM Plex Sans",system-ui,sans-serif; font-weight:400; font-size:1.375rem; line-height:1.75rem; letter-spacing:-.02em; }
 .r-tm-list span{ font-size:1rem; line-height:1.5rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mark-dark); }
@@ -660,8 +660,14 @@ html{ font-size: min(calc(100vw / 120), calc(100vh / 67.5)); }
 .r-lo-grid img{ width:100%; height:5rem; object-fit:contain; padding:.625rem; box-sizing:border-box; background:#fff;
   filter:grayscale(1) contrast(1.05); mix-blend-mode:multiply; }
 .r-logos-cls .r-lo-grid img{ height:4rem; padding:.5rem; }
-.r-lt-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:grid; grid-template-columns:repeat(4, 1fr); column-gap:1.5rem; align-items:center; }
+.r-lo-subs{ display:grid; grid-template-columns:repeat(var(--s), 1fr); column-gap:.5rem; align-items:start; }
+.r-lo-g{ display:flex; flex-direction:column; gap:.5rem; margin-bottom:1rem; }
+.r-lo-g > img{ width:100%; height:3.5rem; object-fit:contain; padding:.5rem; box-sizing:border-box; background:#fff;
+  filter:grayscale(1) contrast(1.05); mix-blend-mode:multiply; outline:1px solid var(--terra); outline-offset:-1px; }
+.r-logos-cls .r-lo-g .r-lo-grid img{ height:3.5rem; }
+.r-lt-row{ position:absolute; left:var(--c4); top:17rem; width:87rem; height:41rem; display:grid; grid-template-columns:repeat(5, 1fr); column-gap:1.5rem; align-items:center; }   
 .r-lt-row figure{ margin:0; height:100%; display:flex; align-items:center; justify-content:center; }
+.r-lt-row a{ display:block; max-height:100%; }
 .r-lt-row img{ max-width:100%; max-height:100%; display:block; box-shadow:0 .125rem 1.5rem rgba(33,30,27,.12); }
 .r-toc-list{ position:absolute; left:var(--c4); top:17rem; width:87rem; list-style:none; padding:0; margin:0; }
 .r-toc-list li{ display:grid; grid-template-columns:3rem 1fr auto; align-items:baseline; padding:1rem 0 1.125rem; border-top:1px solid var(--ash); }
@@ -1035,18 +1041,17 @@ html{ font-size: calc(100vw / 22.5); }
       <h2 class="r-head">Команда</h2>
       <div class="r-tm-row">
         <figure class="r-tm"><img src="rsti/img/team-1.jpg" alt=""><figcaption><span>CEO</span><b>Марина<br>Зрилова</b><em>опыт 15 лет</em></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-2.jpg" alt=""><figcaption><span>директор по&nbsp;развитию</span><b>Анастасия<br>Шелехова</b><em>опыт 7 лет</em></figcaption></figure>
-        <figure class="r-tm"><img src="rsti/img/team-3.jpg" alt=""><figcaption><span>медиадиректор</span><b>Анна<br>Стец</b><em>опыт 13 лет</em></figcaption></figure>
         <figure class="r-tm"><img src="rsti/img/team-4.jpg" alt=""><figcaption><span>performance-директор</span><b>Варвара<br>Негробова</b><em>опыт 14 лет</em></figcaption></figure>
         <figure class="r-tm"><img src="rsti/img/team-5.jpg" alt=""><figcaption><span>аккаунт-менеджер</span><b>Ксения<br>Брылёва</b><em>опыт 4 года</em></figcaption></figure>
+        <figure class="r-tm"><img src="rsti/img/team-3.jpg" alt=""><figcaption><span>медиадиректор</span><b>Анна<br>Стец</b><em>опыт 13 лет</em></figcaption></figure>
       </div>
       <ul class="r-tm-list">
         <li><b>Юлия Шагарова</b><span>медиапланер</span><em>опыт 10 лет</em></li>
-        <li><b>Семён Бобер</b><span>контекстный специалист</span><em>опыт 10 лет</em></li>
         <li><b>Александра Лещёва</b><span>ИИ-специалист</span><em>опыт 3 года</em></li>
+        <li><b>Семён Бобер</b><span>контекстный специалист</span><em>опыт 10 лет</em></li>
         <li><b>Анастасия Цыганкова</b><span>дизайнер</span><em>опыт 6 лет</em></li>
-        <li><b>Марк Лазарев</b><span>специалист по&nbsp;фидам</span><em>опыт 3 года</em></li>
         <li><b>Ксения Самсонова</b><span>контроль входящих звонков</span><em>опыт 1 год</em></li>
+        <li><b>Марк Лазарев</b><span>специалист по&nbsp;фидам</span><em>опыт 3 года</em></li>
       </ul>
     </section>
     <section class="slide r-logos" data-kicker="об агентстве" data-num="06 / 51" data-title="Опыт в недвижимости">
@@ -1060,18 +1065,19 @@ html{ font-size: calc(100vw / 22.5); }
     <section class="slide r-logos r-logos-cls" data-kicker="об агентстве" data-num="07 / 51" data-title="Опыт по классам">
       <h2 class="r-head">Опыт работы команды</h2>
       <div class="r-lo-cols">
-        <div class="r-lo-col"><p class="r-k">Премиум</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-prem-01.png" alt=""><img src="rsti/img/logo/7-prem-02.png" alt=""><img src="rsti/img/logo/7-prem-03.png" alt=""><img src="rsti/img/logo/7-prem-04.png" alt=""><img src="rsti/img/logo/7-prem-05.png" alt=""><img src="rsti/img/logo/7-prem-06.png" alt=""><img src="rsti/img/logo/7-prem-07.png" alt=""><img src="rsti/img/logo/7-prem-08.png" alt=""><img src="rsti/img/logo/7-prem-09.png" alt=""><img src="rsti/img/logo/7-prem-10.png" alt=""><img src="rsti/img/logo/7-prem-11.png" alt=""><img src="rsti/img/logo/7-prem-12.png" alt=""><img src="rsti/img/logo/7-prem-13.png" alt=""><img src="rsti/img/logo/7-prem-14.png" alt=""><img src="rsti/img/logo/7-prem-15.png" alt=""><img src="rsti/img/logo/7-prem-16.png" alt=""><img src="rsti/img/logo/7-prem-17.png" alt=""><img src="rsti/img/logo/7-prem-18.png" alt=""><img src="rsti/img/logo/7-prem-19.png" alt=""></div></div>
-        <div class="r-lo-col"><p class="r-k">Бизнес</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-biz-01.png" alt=""><img src="rsti/img/logo/7-biz-02.png" alt=""><img src="rsti/img/logo/7-biz-03.png" alt=""><img src="rsti/img/logo/7-biz-04.png" alt=""><img src="rsti/img/logo/7-biz-05.png" alt=""><img src="rsti/img/logo/7-biz-06.png" alt=""><img src="rsti/img/logo/7-biz-07.png" alt=""><img src="rsti/img/logo/7-biz-08.png" alt=""><img src="rsti/img/logo/7-biz-09.png" alt=""><img src="rsti/img/logo/7-biz-10.png" alt=""><img src="rsti/img/logo/7-biz-11.png" alt=""><img src="rsti/img/logo/7-biz-12.png" alt=""><img src="rsti/img/logo/7-biz-13.png" alt=""><img src="rsti/img/logo/7-biz-14.png" alt=""><img src="rsti/img/logo/7-biz-15.png" alt=""><img src="rsti/img/logo/7-biz-16.png" alt=""><img src="rsti/img/logo/7-biz-17.png" alt=""><img src="rsti/img/logo/7-biz-18.png" alt=""><img src="rsti/img/logo/7-biz-19.png" alt=""><img src="rsti/img/logo/7-biz-20.png" alt=""></div></div>
-        <div class="r-lo-col"><p class="r-k">Комфорт</p><div class="r-lo-grid" style="--c:3"><img src="rsti/img/logo/7-comf-01.png" alt=""><img src="rsti/img/logo/7-comf-02.png" alt=""><img src="rsti/img/logo/7-comf-03.png" alt=""><img src="rsti/img/logo/7-comf-04.png" alt=""><img src="rsti/img/logo/7-comf-05.png" alt=""><img src="rsti/img/logo/7-comf-06.png" alt=""><img src="rsti/img/logo/7-comf-07.png" alt=""><img src="rsti/img/logo/7-comf-08.png" alt=""><img src="rsti/img/logo/7-comf-09.png" alt=""><img src="rsti/img/logo/7-comf-10.png" alt=""><img src="rsti/img/logo/7-comf-11.png" alt=""><img src="rsti/img/logo/7-comf-12.png" alt=""><img src="rsti/img/logo/7-comf-13.png" alt=""><img src="rsti/img/logo/7-comf-14.png" alt=""><img src="rsti/img/logo/7-comf-15.png" alt=""><img src="rsti/img/logo/7-comf-16.png" alt=""><img src="rsti/img/logo/7-comf-17.png" alt=""><img src="rsti/img/logo/7-comf-18.png" alt=""><img src="rsti/img/logo/7-comf-19.png" alt=""><img src="rsti/img/logo/7-comf-20.png" alt=""><img src="rsti/img/logo/7-comf-21.png" alt=""><img src="rsti/img/logo/7-comf-22.png" alt=""><img src="rsti/img/logo/7-comf-23.png" alt=""><img src="rsti/img/logo/7-comf-24.png" alt=""><img src="rsti/img/logo/7-comf-25.png" alt=""></div></div>
+        <div class="r-lo-col"><p class="r-k">Премиум</p><div class="r-lo-subs" style="--s:2"><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-prem-02.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-03.png" alt=""><img src="rsti/img/logo/7-prem-05.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-07.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-09.png" alt=""><img src="rsti/img/logo/7-prem-10.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-12.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-14.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-15.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-17.png" alt=""></div></div></div><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-prem-01.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-04.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-06.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-08.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-11.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-13.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-tera.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-papushevo.png" alt=""><img src="rsti/img/logo/7-prem-monavie.png" alt=""></div></div></div></div></div>
+        <div class="r-lo-col"><p class="r-k">Бизнес</p><div class="r-lo-subs" style="--s:2"><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-biz-02.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-biz-04.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-biz-07.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-biz-11.png" alt=""><img src="rsti/img/logo/7-biz-10.png" alt=""><img src="rsti/img/logo/7-biz-12.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-biz-13.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-biz-16.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-biz-18.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-biz-20.png" alt=""></div></div></div><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-biz-01.png" alt=""><div class="r-lo-grid" style="--c:2"><img src="rsti/img/logo/7-biz-05.png" alt=""><img src="rsti/img/logo/7-biz-03.png" alt=""><img src="rsti/img/logo/7-biz-06.png" alt=""><img src="rsti/img/logo/7-biz-08.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-biz-09.png" alt=""><div class="r-lo-grid" style="--c:2"><img src="rsti/img/logo/7-biz-14.png" alt=""><img src="rsti/img/logo/7-biz-15.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-biz-17.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-biz-19.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-prem-16.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-prem-18.png" alt=""><img src="rsti/img/logo/7-prem-19.png" alt=""></div></div></div></div></div>
+        <div class="r-lo-col"><p class="r-k">Комфорт</p><div class="r-lo-subs" style="--s:3"><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-comf-02.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-04.png" alt=""><img src="rsti/img/logo/7-comf-08.png" alt=""><img src="rsti/img/logo/7-comf-11.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-comf-12.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-15.png" alt=""><img src="rsti/img/logo/7-comf-18.png" alt=""><img src="rsti/img/logo/7-comf-20.png" alt=""><img src="rsti/img/logo/7-comf-23.png" alt=""><img src="rsti/img/logo/7-comf-25.png" alt=""></div></div></div><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-comf-01.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-05.png" alt=""><img src="rsti/img/logo/7-comf-06.png" alt=""><img src="rsti/img/logo/7-comf-10.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-comf-13.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-16.png" alt=""><img src="rsti/img/logo/7-comf-19.png" alt=""><img src="rsti/img/logo/7-comf-21.png" alt=""></div></div></div><div class="r-lo-sub"><div class="r-lo-g"><img src="rsti/img/logo/7-comf-03.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-07.png" alt=""><img src="rsti/img/logo/7-comf-09.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-comf-14.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-17.png" alt=""></div></div><div class="r-lo-g"><img src="rsti/img/logo/7-comf-22.png" alt=""><div class="r-lo-grid" style="--c:1"><img src="rsti/img/logo/7-comf-24.png" alt=""></div></div></div></div></div>
       </div>
     </section>
     <section class="slide r-letters" data-kicker="об агентстве" data-num="08 / 51" data-title="Благодарственные письма">
       <h2 class="r-head">Благодарственные письма</h2>
       <div class="r-lt-row">
-        <figure><img src="rsti/img/letter-1.jpg" alt=""></figure>
-        <figure><img src="rsti/img/letter-2.jpg" alt=""></figure>
-        <figure><img src="rsti/img/letter-3.jpg" alt=""></figure>
-        <figure><img src="rsti/img/letter-4.jpg" alt=""></figure>
+        <figure><a href="rsti/img/letter-full-1.jpg" target="_blank"><img src="rsti/img/letter-full-1.jpg" alt=""></a></figure>
+        <figure><a href="rsti/img/letter-full-2.jpg" target="_blank"><img src="rsti/img/letter-full-2.jpg" alt=""></a></figure>
+        <figure><a href="rsti/img/letter-full-3.jpg" target="_blank"><img src="rsti/img/letter-full-3.jpg" alt=""></a></figure>
+        <figure><a href="rsti/img/letter-full-4.jpg" target="_blank"><img src="rsti/img/letter-full-4.jpg" alt=""></a></figure>
+        <figure><a href="rsti/img/letter-full-5.jpg" target="_blank"><img src="rsti/img/letter-full-5.jpg" alt=""></a></figure>
       </div>
     </section>
     <section class="slide r-toc" data-kicker="об агентстве" data-num="09 / 51" data-title="Содержание">
@@ -1498,7 +1504,7 @@ html{ font-size: calc(100vw / 22.5); }
     <section class="slide r-div" data-kicker="06 · кейсы" data-num="39 / 51" data-sec="06" data-menu="КЕЙСЫ" data-title="Кейсы · обложка">
       <figure class="r-div-bg"><img src="rsti/img/kp-facade-2.jpg" alt="Фасад ЖК «Кинопарк»"></figure>
       <p class="r-num">06</p>
-      <h2 class="r-div-t">Кейсы</h2>
+      <h2 class="r-div-t">Кейсы нашей команды</h2>
       <p class="r-div-s">Гордимся нашим опытом</p>
     </section>
     <section class="slide m3 flip" data-kicker="06 · кейсы" data-num="40 / 51" data-title="МФК SAAN">
